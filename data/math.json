@@ -1,17 +1,4313 @@
 {
   "subject": "math",
   "levels": [
-    {"id":"1","name":{"zh":"一年级","en":"Grade 1"},"questions":[{"id":"m1a","type":"number","question":{"zh":"3 + 5 = ?","en":"3 + 5 = ?"},"answer":8,"knowledge":"addition"},{"id":"m1b","type":"number","question":{"zh":"10 - 6 = ?","en":"10 - 6 = ?"},"answer":4,"knowledge":"subtraction"}]},
-    {"id":"2","name":{"zh":"二年级","en":"Grade 2"},"questions":[{"id":"m2a","type":"number","question":{"zh":"6 × 4 = ?","en":"6 × 4 = ?"},"answer":24,"knowledge":"multiplication"},{"id":"m2b","type":"number","question":{"zh":"20 ÷ 5 = ?","en":"20 ÷ 5 = ?"},"answer":4,"knowledge":"division"}]},
-    {"id":"3","name":{"zh":"三年级","en":"Grade 3"},"questions":[{"id":"m3a","type":"number","question":{"zh":"125 + 238 = ?","en":"125 + 238 = ?"},"answer":363,"knowledge":"addition"},{"id":"m3b","type":"number","question":{"zh":"长 8 cm、宽 5 cm 的长方形面积是多少？","en":"What is the area of an 8 cm by 5 cm rectangle?"},"answer":40,"knowledge":"area"}]},
-    {"id":"4","name":{"zh":"四年级","en":"Grade 4"},"questions":[{"id":"m4a","type":"number","question":{"zh":"36 × 12 = ?","en":"36 × 12 = ?"},"answer":432,"knowledge":"multiplication"},{"id":"m4b","type":"number","question":{"zh":"3/4 的 100 是多少？","en":"What is 3/4 of 100?"},"answer":75,"knowledge":"fraction"}]},
-    {"id":"5","name":{"zh":"五年级","en":"Grade 5"},"questions":[{"id":"m5a","type":"number","question":{"zh":"0.8 × 25 = ?","en":"0.8 × 25 = ?"},"answer":20,"knowledge":"decimal multiplication"},{"id":"m5b","type":"number","question":{"zh":"150 的 12% 是多少？","en":"What is 12% of 150?"},"answer":18,"knowledge":"percentage"}]},
-    {"id":"6","name":{"zh":"六年级","en":"Grade 6"},"questions":[{"id":"m6a","type":"number","question":{"zh":"解方程：x + 17 = 42，x = ?","en":"Solve x + 17 = 42. x = ?"},"answer":25,"knowledge":"equation"},{"id":"m6b","type":"number","question":{"zh":"半径为 3 的圆，取 π=3.14，面积是多少？","en":"Area of a radius-3 circle using π=3.14?"},"answer":28.26,"knowledge":"circle area"}]},
-    {"id":"7","name":{"zh":"七年级","en":"Grade 7"},"questions":[{"id":"m7a","type":"number","question":{"zh":"-8 + 15 = ?","en":"-8 + 15 = ?"},"answer":7,"knowledge":"integers"},{"id":"m7b","type":"number","question":{"zh":"2x - 5 = 13，x = ?","en":"Solve 2x - 5 = 13. x = ?"},"answer":9,"knowledge":"linear equation"}]},
-    {"id":"8","name":{"zh":"八年级","en":"Grade 8"},"questions":[{"id":"m8a","type":"number","question":{"zh":"√144 = ?","en":"√144 = ?"},"answer":12,"knowledge":"square root"},{"id":"m8b","type":"number","question":{"zh":"直角三角形两边为 6 和 8，斜边是多少？","en":"A right triangle has legs 6 and 8. What is its hypotenuse?"},"answer":10,"knowledge":"pythagorean theorem"}]},
-    {"id":"9","name":{"zh":"九年级","en":"Grade 9"},"questions":[{"id":"m9a","type":"number","question":{"zh":"x² = 49，取正数解，x = ?","en":"Solve x² = 49; use the positive root."},"answer":7,"knowledge":"quadratic equation"},{"id":"m9b","type":"number","question":{"zh":"sin 30° = ?","en":"sin 30° = ?"},"answer":0.5,"knowledge":"trigonometry"}]},
-    {"id":"10","name":{"zh":"高一","en":"Grade 10"},"questions":[{"id":"m10a","type":"number","question":{"zh":"f(x)=2x²，f(3)=?","en":"For f(x)=2x², f(3)=?"},"answer":18,"knowledge":"function"},{"id":"m10b","type":"number","question":{"zh":"等差数列首项 3、公差 4，第 5 项是多少？","en":"An arithmetic sequence has first term 3 and difference 4. What is term 5?"},"answer":19,"knowledge":"sequence"}]},
-    {"id":"11","name":{"zh":"高二","en":"Grade 11"},"questions":[{"id":"m11a","type":"number","question":{"zh":"f(x)=x²，f'(3)=?","en":"For f(x)=x², what is f'(3)?"},"answer":6,"knowledge":"derivative"},{"id":"m11b","type":"number","question":{"zh":"从 5 个元素中选 2 个，有多少种组合？","en":"How many combinations choose 2 from 5?"},"answer":10,"knowledge":"combinatorics"}]},
-    {"id":"12","name":{"zh":"高三","en":"Grade 12"},"questions":[{"id":"m12a","type":"number","question":{"zh":"∫0到1 2x dx = ?","en":"Evaluate ∫₀¹ 2x dx."},"answer":1,"knowledge":"integral"},{"id":"m12b","type":"number","question":{"zh":"矩阵 [[1,2],[3,4]] 的行列式是多少？","en":"What is the determinant of [[1,2],[3,4]]?"},"answer":-2,"knowledge":"matrix"}]}
+    {
+      "id": "1",
+      "name": {
+        "zh": "一年级",
+        "en": "Grade 1"
+      },
+      "questions": [
+        {
+          "id": "m1_01",
+          "type": "number",
+          "question": {
+            "zh": "1 + 1 = ?",
+            "en": "1 + 1 = ?"
+          },
+          "answer": 2,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_02",
+          "type": "number",
+          "question": {
+            "zh": "6 - 4 = ?",
+            "en": "6 - 4 = ?"
+          },
+          "answer": 2,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_03",
+          "type": "number",
+          "question": {
+            "zh": "7 + 11 = ?",
+            "en": "7 + 11 = ?"
+          },
+          "answer": 18,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_04",
+          "type": "number",
+          "question": {
+            "zh": "10 - 6 = ?",
+            "en": "10 - 6 = ?"
+          },
+          "answer": 4,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_05",
+          "type": "number",
+          "question": {
+            "zh": "3 + 4 = ?",
+            "en": "3 + 4 = ?"
+          },
+          "answer": 7,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_06",
+          "type": "number",
+          "question": {
+            "zh": "12 - 6 = ?",
+            "en": "12 - 6 = ?"
+          },
+          "answer": 6,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_07",
+          "type": "number",
+          "question": {
+            "zh": "9 + 9 = ?",
+            "en": "9 + 9 = ?"
+          },
+          "answer": 18,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_08",
+          "type": "number",
+          "question": {
+            "zh": "18 - 2 = ?",
+            "en": "18 - 2 = ?"
+          },
+          "answer": 16,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_09",
+          "type": "number",
+          "question": {
+            "zh": "5 + 11 = ?",
+            "en": "5 + 11 = ?"
+          },
+          "answer": 16,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_10",
+          "type": "number",
+          "question": {
+            "zh": "10 - 8 = ?",
+            "en": "10 - 8 = ?"
+          },
+          "answer": 2,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_11",
+          "type": "number",
+          "question": {
+            "zh": "1 + 13 = ?",
+            "en": "1 + 13 = ?"
+          },
+          "answer": 14,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_12",
+          "type": "number",
+          "question": {
+            "zh": "8 - 4 = ?",
+            "en": "8 - 4 = ?"
+          },
+          "answer": 4,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_13",
+          "type": "number",
+          "question": {
+            "zh": "7 + 9 = ?",
+            "en": "7 + 9 = ?"
+          },
+          "answer": 16,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_14",
+          "type": "number",
+          "question": {
+            "zh": "10 - 6 = ?",
+            "en": "10 - 6 = ?"
+          },
+          "answer": 4,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_15",
+          "type": "number",
+          "question": {
+            "zh": "3 + 3 = ?",
+            "en": "3 + 3 = ?"
+          },
+          "answer": 6,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_16",
+          "type": "number",
+          "question": {
+            "zh": "6 - 6 = ?",
+            "en": "6 - 6 = ?"
+          },
+          "answer": 0,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_17",
+          "type": "number",
+          "question": {
+            "zh": "9 + 4 = ?",
+            "en": "9 + 4 = ?"
+          },
+          "answer": 13,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_18",
+          "type": "number",
+          "question": {
+            "zh": "14 - 2 = ?",
+            "en": "14 - 2 = ?"
+          },
+          "answer": 12,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_19",
+          "type": "number",
+          "question": {
+            "zh": "5 + 1 = ?",
+            "en": "5 + 1 = ?"
+          },
+          "answer": 6,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_20",
+          "type": "number",
+          "question": {
+            "zh": "12 - 8 = ?",
+            "en": "12 - 8 = ?"
+          },
+          "answer": 4,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_21",
+          "type": "number",
+          "question": {
+            "zh": "1 + 6 = ?",
+            "en": "1 + 6 = ?"
+          },
+          "answer": 7,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_22",
+          "type": "number",
+          "question": {
+            "zh": "10 - 4 = ?",
+            "en": "10 - 4 = ?"
+          },
+          "answer": 6,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_23",
+          "type": "number",
+          "question": {
+            "zh": "7 + 7 = ?",
+            "en": "7 + 7 = ?"
+          },
+          "answer": 14,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_24",
+          "type": "number",
+          "question": {
+            "zh": "10 - 6 = ?",
+            "en": "10 - 6 = ?"
+          },
+          "answer": 4,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_25",
+          "type": "number",
+          "question": {
+            "zh": "3 + 2 = ?",
+            "en": "3 + 2 = ?"
+          },
+          "answer": 5,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_26",
+          "type": "number",
+          "question": {
+            "zh": "14 - 6 = ?",
+            "en": "14 - 6 = ?"
+          },
+          "answer": 8,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_27",
+          "type": "number",
+          "question": {
+            "zh": "9 + 10 = ?",
+            "en": "9 + 10 = ?"
+          },
+          "answer": 19,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_28",
+          "type": "number",
+          "question": {
+            "zh": "10 - 2 = ?",
+            "en": "10 - 2 = ?"
+          },
+          "answer": 8,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_29",
+          "type": "number",
+          "question": {
+            "zh": "5 + 6 = ?",
+            "en": "5 + 6 = ?"
+          },
+          "answer": 11,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_30",
+          "type": "number",
+          "question": {
+            "zh": "8 - 2 = ?",
+            "en": "8 - 2 = ?"
+          },
+          "answer": 6,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_31",
+          "type": "number",
+          "question": {
+            "zh": "1 + 18 = ?",
+            "en": "1 + 18 = ?"
+          },
+          "answer": 19,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_32",
+          "type": "number",
+          "question": {
+            "zh": "12 - 4 = ?",
+            "en": "12 - 4 = ?"
+          },
+          "answer": 8,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_33",
+          "type": "number",
+          "question": {
+            "zh": "7 + 5 = ?",
+            "en": "7 + 5 = ?"
+          },
+          "answer": 12,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m1_34",
+          "type": "number",
+          "question": {
+            "zh": "10 - 6 = ?",
+            "en": "10 - 6 = ?"
+          },
+          "answer": 4,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m1_35",
+          "type": "number",
+          "question": {
+            "zh": "3 + 1 = ?",
+            "en": "3 + 1 = ?"
+          },
+          "answer": 4,
+          "knowledge": "addition"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": {
+        "zh": "二年级",
+        "en": "Grade 2"
+      },
+      "questions": [
+        {
+          "id": "m2_01",
+          "type": "number",
+          "question": {
+            "zh": "2 × 2 = ?",
+            "en": "2 × 2 = ?"
+          },
+          "answer": 4,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_02",
+          "type": "number",
+          "question": {
+            "zh": "19 + 12 = ?",
+            "en": "19 + 12 = ?"
+          },
+          "answer": 31,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_03",
+          "type": "number",
+          "question": {
+            "zh": "26 - 21 = ?",
+            "en": "26 - 21 = ?"
+          },
+          "answer": 5,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_04",
+          "type": "number",
+          "question": {
+            "zh": "5 × 5 = ?",
+            "en": "5 × 5 = ?"
+          },
+          "answer": 25,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_05",
+          "type": "number",
+          "question": {
+            "zh": "40 + 19 = ?",
+            "en": "40 + 19 = ?"
+          },
+          "answer": 59,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_06",
+          "type": "number",
+          "question": {
+            "zh": "47 - 8 = ?",
+            "en": "47 - 8 = ?"
+          },
+          "answer": 39,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_07",
+          "type": "number",
+          "question": {
+            "zh": "8 × 3 = ?",
+            "en": "8 × 3 = ?"
+          },
+          "answer": 24,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_08",
+          "type": "number",
+          "question": {
+            "zh": "61 + 6 = ?",
+            "en": "61 + 6 = ?"
+          },
+          "answer": 67,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_09",
+          "type": "number",
+          "question": {
+            "zh": "68 - 15 = ?",
+            "en": "68 - 15 = ?"
+          },
+          "answer": 53,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_10",
+          "type": "number",
+          "question": {
+            "zh": "3 × 6 = ?",
+            "en": "3 × 6 = ?"
+          },
+          "answer": 18,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_11",
+          "type": "number",
+          "question": {
+            "zh": "12 + 13 = ?",
+            "en": "12 + 13 = ?"
+          },
+          "answer": 25,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_12",
+          "type": "number",
+          "question": {
+            "zh": "19 - 22 = ?",
+            "en": "19 - 22 = ?"
+          },
+          "answer": -3,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_13",
+          "type": "number",
+          "question": {
+            "zh": "6 × 4 = ?",
+            "en": "6 × 4 = ?"
+          },
+          "answer": 24,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_14",
+          "type": "number",
+          "question": {
+            "zh": "33 + 20 = ?",
+            "en": "33 + 20 = ?"
+          },
+          "answer": 53,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_15",
+          "type": "number",
+          "question": {
+            "zh": "40 - 9 = ?",
+            "en": "40 - 9 = ?"
+          },
+          "answer": 31,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_16",
+          "type": "number",
+          "question": {
+            "zh": "9 × 2 = ?",
+            "en": "9 × 2 = ?"
+          },
+          "answer": 18,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_17",
+          "type": "number",
+          "question": {
+            "zh": "54 + 7 = ?",
+            "en": "54 + 7 = ?"
+          },
+          "answer": 61,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_18",
+          "type": "number",
+          "question": {
+            "zh": "61 - 16 = ?",
+            "en": "61 - 16 = ?"
+          },
+          "answer": 45,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_19",
+          "type": "number",
+          "question": {
+            "zh": "4 × 5 = ?",
+            "en": "4 × 5 = ?"
+          },
+          "answer": 20,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_20",
+          "type": "number",
+          "question": {
+            "zh": "75 + 14 = ?",
+            "en": "75 + 14 = ?"
+          },
+          "answer": 89,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_21",
+          "type": "number",
+          "question": {
+            "zh": "12 - 3 = ?",
+            "en": "12 - 3 = ?"
+          },
+          "answer": 9,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_22",
+          "type": "number",
+          "question": {
+            "zh": "7 × 3 = ?",
+            "en": "7 × 3 = ?"
+          },
+          "answer": 21,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_23",
+          "type": "number",
+          "question": {
+            "zh": "26 + 21 = ?",
+            "en": "26 + 21 = ?"
+          },
+          "answer": 47,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_24",
+          "type": "number",
+          "question": {
+            "zh": "33 - 10 = ?",
+            "en": "33 - 10 = ?"
+          },
+          "answer": 23,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_25",
+          "type": "number",
+          "question": {
+            "zh": "2 × 6 = ?",
+            "en": "2 × 6 = ?"
+          },
+          "answer": 12,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_26",
+          "type": "number",
+          "question": {
+            "zh": "47 + 8 = ?",
+            "en": "47 + 8 = ?"
+          },
+          "answer": 55,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_27",
+          "type": "number",
+          "question": {
+            "zh": "54 - 17 = ?",
+            "en": "54 - 17 = ?"
+          },
+          "answer": 37,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_28",
+          "type": "number",
+          "question": {
+            "zh": "5 × 4 = ?",
+            "en": "5 × 4 = ?"
+          },
+          "answer": 20,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_29",
+          "type": "number",
+          "question": {
+            "zh": "68 + 15 = ?",
+            "en": "68 + 15 = ?"
+          },
+          "answer": 83,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_30",
+          "type": "number",
+          "question": {
+            "zh": "75 - 4 = ?",
+            "en": "75 - 4 = ?"
+          },
+          "answer": 71,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_31",
+          "type": "number",
+          "question": {
+            "zh": "8 × 2 = ?",
+            "en": "8 × 2 = ?"
+          },
+          "answer": 16,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_32",
+          "type": "number",
+          "question": {
+            "zh": "19 + 22 = ?",
+            "en": "19 + 22 = ?"
+          },
+          "answer": 41,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m2_33",
+          "type": "number",
+          "question": {
+            "zh": "26 - 11 = ?",
+            "en": "26 - 11 = ?"
+          },
+          "answer": 15,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m2_34",
+          "type": "number",
+          "question": {
+            "zh": "3 × 5 = ?",
+            "en": "3 × 5 = ?"
+          },
+          "answer": 15,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m2_35",
+          "type": "number",
+          "question": {
+            "zh": "40 + 9 = ?",
+            "en": "40 + 9 = ?"
+          },
+          "answer": 49,
+          "knowledge": "addition"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": {
+        "zh": "三年级",
+        "en": "Grade 3"
+      },
+      "questions": [
+        {
+          "id": "m3_01",
+          "type": "number",
+          "question": {
+            "zh": "120 + 35 = ?",
+            "en": "120 + 35 = ?"
+          },
+          "answer": 155,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_02",
+          "type": "number",
+          "question": {
+            "zh": "133 - 52 = ?",
+            "en": "133 - 52 = ?"
+          },
+          "answer": 81,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_03",
+          "type": "number",
+          "question": {
+            "zh": "14 × 5 = ?",
+            "en": "14 × 5 = ?"
+          },
+          "answer": 70,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_04",
+          "type": "number",
+          "question": {
+            "zh": "159 + 86 = ?",
+            "en": "159 + 86 = ?"
+          },
+          "answer": 245,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_05",
+          "type": "number",
+          "question": {
+            "zh": "172 - 103 = ?",
+            "en": "172 - 103 = ?"
+          },
+          "answer": 69,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_06",
+          "type": "number",
+          "question": {
+            "zh": "17 × 8 = ?",
+            "en": "17 × 8 = ?"
+          },
+          "answer": 136,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_07",
+          "type": "number",
+          "question": {
+            "zh": "198 + 47 = ?",
+            "en": "198 + 47 = ?"
+          },
+          "answer": 245,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_08",
+          "type": "number",
+          "question": {
+            "zh": "211 - 64 = ?",
+            "en": "211 - 64 = ?"
+          },
+          "answer": 147,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_09",
+          "type": "number",
+          "question": {
+            "zh": "20 × 5 = ?",
+            "en": "20 × 5 = ?"
+          },
+          "answer": 100,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_10",
+          "type": "number",
+          "question": {
+            "zh": "237 + 98 = ?",
+            "en": "237 + 98 = ?"
+          },
+          "answer": 335,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_11",
+          "type": "number",
+          "question": {
+            "zh": "250 - 115 = ?",
+            "en": "250 - 115 = ?"
+          },
+          "answer": 135,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_12",
+          "type": "number",
+          "question": {
+            "zh": "23 × 8 = ?",
+            "en": "23 × 8 = ?"
+          },
+          "answer": 184,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_13",
+          "type": "number",
+          "question": {
+            "zh": "276 + 59 = ?",
+            "en": "276 + 59 = ?"
+          },
+          "answer": 335,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_14",
+          "type": "number",
+          "question": {
+            "zh": "289 - 76 = ?",
+            "en": "289 - 76 = ?"
+          },
+          "answer": 213,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_15",
+          "type": "number",
+          "question": {
+            "zh": "26 × 5 = ?",
+            "en": "26 × 5 = ?"
+          },
+          "answer": 130,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_16",
+          "type": "number",
+          "question": {
+            "zh": "315 + 110 = ?",
+            "en": "315 + 110 = ?"
+          },
+          "answer": 425,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_17",
+          "type": "number",
+          "question": {
+            "zh": "328 - 37 = ?",
+            "en": "328 - 37 = ?"
+          },
+          "answer": 291,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_18",
+          "type": "number",
+          "question": {
+            "zh": "29 × 8 = ?",
+            "en": "29 × 8 = ?"
+          },
+          "answer": 232,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_19",
+          "type": "number",
+          "question": {
+            "zh": "354 + 71 = ?",
+            "en": "354 + 71 = ?"
+          },
+          "answer": 425,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_20",
+          "type": "number",
+          "question": {
+            "zh": "367 - 88 = ?",
+            "en": "367 - 88 = ?"
+          },
+          "answer": 279,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_21",
+          "type": "number",
+          "question": {
+            "zh": "32 × 5 = ?",
+            "en": "32 × 5 = ?"
+          },
+          "answer": 160,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_22",
+          "type": "number",
+          "question": {
+            "zh": "393 + 122 = ?",
+            "en": "393 + 122 = ?"
+          },
+          "answer": 515,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_23",
+          "type": "number",
+          "question": {
+            "zh": "406 - 49 = ?",
+            "en": "406 - 49 = ?"
+          },
+          "answer": 357,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_24",
+          "type": "number",
+          "question": {
+            "zh": "35 × 8 = ?",
+            "en": "35 × 8 = ?"
+          },
+          "answer": 280,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_25",
+          "type": "number",
+          "question": {
+            "zh": "432 + 83 = ?",
+            "en": "432 + 83 = ?"
+          },
+          "answer": 515,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_26",
+          "type": "number",
+          "question": {
+            "zh": "445 - 100 = ?",
+            "en": "445 - 100 = ?"
+          },
+          "answer": 345,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_27",
+          "type": "number",
+          "question": {
+            "zh": "38 × 5 = ?",
+            "en": "38 × 5 = ?"
+          },
+          "answer": 190,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_28",
+          "type": "number",
+          "question": {
+            "zh": "471 + 44 = ?",
+            "en": "471 + 44 = ?"
+          },
+          "answer": 515,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_29",
+          "type": "number",
+          "question": {
+            "zh": "484 - 61 = ?",
+            "en": "484 - 61 = ?"
+          },
+          "answer": 423,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_30",
+          "type": "number",
+          "question": {
+            "zh": "41 × 8 = ?",
+            "en": "41 × 8 = ?"
+          },
+          "answer": 328,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_31",
+          "type": "number",
+          "question": {
+            "zh": "510 + 95 = ?",
+            "en": "510 + 95 = ?"
+          },
+          "answer": 605,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_32",
+          "type": "number",
+          "question": {
+            "zh": "523 - 112 = ?",
+            "en": "523 - 112 = ?"
+          },
+          "answer": 411,
+          "knowledge": "subtraction"
+        },
+        {
+          "id": "m3_33",
+          "type": "number",
+          "question": {
+            "zh": "44 × 5 = ?",
+            "en": "44 × 5 = ?"
+          },
+          "answer": 220,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m3_34",
+          "type": "number",
+          "question": {
+            "zh": "549 + 56 = ?",
+            "en": "549 + 56 = ?"
+          },
+          "answer": 605,
+          "knowledge": "addition"
+        },
+        {
+          "id": "m3_35",
+          "type": "number",
+          "question": {
+            "zh": "562 - 73 = ?",
+            "en": "562 - 73 = ?"
+          },
+          "answer": 489,
+          "knowledge": "subtraction"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": {
+        "zh": "四年级",
+        "en": "Grade 4"
+      },
+      "questions": [
+        {
+          "id": "m4_01",
+          "type": "number",
+          "question": {
+            "zh": "2.1 + 1.2 = ?",
+            "en": "2.1 + 1.2 = ?"
+          },
+          "answer": 3.3,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_02",
+          "type": "number",
+          "question": {
+            "zh": "19 × 12 = ?",
+            "en": "19 × 12 = ?"
+          },
+          "answer": 228,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_03",
+          "type": "number",
+          "question": {
+            "zh": "50 ÷ 5 = ?",
+            "en": "50 ÷ 5 = ?"
+          },
+          "answer": 10,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_04",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 7 cm，周长是多少 cm？",
+            "en": "A square has side length 7 cm. What is its perimeter in cm?"
+          },
+          "answer": 28,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_05",
+          "type": "number",
+          "question": {
+            "zh": "2.5 + 1.6 = ?",
+            "en": "2.5 + 1.6 = ?"
+          },
+          "answer": 4.1,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_06",
+          "type": "number",
+          "question": {
+            "zh": "23 × 16 = ?",
+            "en": "23 × 16 = ?"
+          },
+          "answer": 368,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_07",
+          "type": "number",
+          "question": {
+            "zh": "126 ÷ 9 = ?",
+            "en": "126 ÷ 9 = ?"
+          },
+          "answer": 14,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_08",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 11 cm，周长是多少 cm？",
+            "en": "A square has side length 11 cm. What is its perimeter in cm?"
+          },
+          "answer": 44,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_09",
+          "type": "number",
+          "question": {
+            "zh": "2.1 + 1.5 = ?",
+            "en": "2.1 + 1.5 = ?"
+          },
+          "answer": 3.6,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_10",
+          "type": "number",
+          "question": {
+            "zh": "27 × 12 = ?",
+            "en": "27 × 12 = ?"
+          },
+          "answer": 324,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_11",
+          "type": "number",
+          "question": {
+            "zh": "72 ÷ 4 = ?",
+            "en": "72 ÷ 4 = ?"
+          },
+          "answer": 18,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_12",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 5 cm，周长是多少 cm？",
+            "en": "A square has side length 5 cm. What is its perimeter in cm?"
+          },
+          "answer": 20,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_13",
+          "type": "number",
+          "question": {
+            "zh": "2.5 + 1.4 = ?",
+            "en": "2.5 + 1.4 = ?"
+          },
+          "answer": 3.9,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_14",
+          "type": "number",
+          "question": {
+            "zh": "31 × 16 = ?",
+            "en": "31 × 16 = ?"
+          },
+          "answer": 496,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_15",
+          "type": "number",
+          "question": {
+            "zh": "176 ÷ 8 = ?",
+            "en": "176 ÷ 8 = ?"
+          },
+          "answer": 22,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_16",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 9 cm，周长是多少 cm？",
+            "en": "A square has side length 9 cm. What is its perimeter in cm?"
+          },
+          "answer": 36,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_17",
+          "type": "number",
+          "question": {
+            "zh": "2.1 + 1.3 = ?",
+            "en": "2.1 + 1.3 = ?"
+          },
+          "answer": 3.4,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_18",
+          "type": "number",
+          "question": {
+            "zh": "35 × 12 = ?",
+            "en": "35 × 12 = ?"
+          },
+          "answer": 420,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_19",
+          "type": "number",
+          "question": {
+            "zh": "78 ÷ 3 = ?",
+            "en": "78 ÷ 3 = ?"
+          },
+          "answer": 26,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_20",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 13 cm，周长是多少 cm？",
+            "en": "A square has side length 13 cm. What is its perimeter in cm?"
+          },
+          "answer": 52,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_21",
+          "type": "number",
+          "question": {
+            "zh": "2.5 + 1.2 = ?",
+            "en": "2.5 + 1.2 = ?"
+          },
+          "answer": 3.7,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_22",
+          "type": "number",
+          "question": {
+            "zh": "39 × 16 = ?",
+            "en": "39 × 16 = ?"
+          },
+          "answer": 624,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_23",
+          "type": "number",
+          "question": {
+            "zh": "210 ÷ 7 = ?",
+            "en": "210 ÷ 7 = ?"
+          },
+          "answer": 30,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_24",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 7 cm，周长是多少 cm？",
+            "en": "A square has side length 7 cm. What is its perimeter in cm?"
+          },
+          "answer": 28,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_25",
+          "type": "number",
+          "question": {
+            "zh": "2.1 + 1.6 = ?",
+            "en": "2.1 + 1.6 = ?"
+          },
+          "answer": 3.7,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_26",
+          "type": "number",
+          "question": {
+            "zh": "43 × 12 = ?",
+            "en": "43 × 12 = ?"
+          },
+          "answer": 516,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_27",
+          "type": "number",
+          "question": {
+            "zh": "374 ÷ 11 = ?",
+            "en": "374 ÷ 11 = ?"
+          },
+          "answer": 34,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_28",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 11 cm，周长是多少 cm？",
+            "en": "A square has side length 11 cm. What is its perimeter in cm?"
+          },
+          "answer": 44,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_29",
+          "type": "number",
+          "question": {
+            "zh": "2.5 + 1.5 = ?",
+            "en": "2.5 + 1.5 = ?"
+          },
+          "answer": 4,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_30",
+          "type": "number",
+          "question": {
+            "zh": "47 × 16 = ?",
+            "en": "47 × 16 = ?"
+          },
+          "answer": 752,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_31",
+          "type": "number",
+          "question": {
+            "zh": "228 ÷ 6 = ?",
+            "en": "228 ÷ 6 = ?"
+          },
+          "answer": 38,
+          "knowledge": "division"
+        },
+        {
+          "id": "m4_32",
+          "type": "number",
+          "question": {
+            "zh": "正方形的边长是 5 cm，周长是多少 cm？",
+            "en": "A square has side length 5 cm. What is its perimeter in cm?"
+          },
+          "answer": 20,
+          "knowledge": "perimeter"
+        },
+        {
+          "id": "m4_33",
+          "type": "number",
+          "question": {
+            "zh": "2.1 + 1.4 = ?",
+            "en": "2.1 + 1.4 = ?"
+          },
+          "answer": 3.5,
+          "knowledge": "decimals"
+        },
+        {
+          "id": "m4_34",
+          "type": "number",
+          "question": {
+            "zh": "51 × 12 = ?",
+            "en": "51 × 12 = ?"
+          },
+          "answer": 612,
+          "knowledge": "multiplication"
+        },
+        {
+          "id": "m4_35",
+          "type": "number",
+          "question": {
+            "zh": "420 ÷ 10 = ?",
+            "en": "420 ÷ 10 = ?"
+          },
+          "answer": 42,
+          "knowledge": "division"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": {
+        "zh": "五年级",
+        "en": "Grade 5"
+      },
+      "questions": [
+        {
+          "id": "m5_01",
+          "type": "number",
+          "question": {
+            "zh": "10 的 20% 是多少？",
+            "en": "What is 20% of 10?"
+          },
+          "answer": 2,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m5_02",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 3，宽 4，面积是多少？",
+            "en": "A rectangle is 3 by 4. What is its area?"
+          },
+          "answer": 12,
+          "knowledge": "area"
+        },
+        {
+          "id": "m5_03",
+          "type": "number",
+          "question": {
+            "zh": "解方程：4x = 24，x = ?",
+            "en": "Solve: 4x = 24. x = ?"
+          },
+          "answer": 6,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m5_04",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 4、宽 5、高 2，体积是多少？",
+            "en": "A rectangular prism is 4 by 5 by 2. What is its volume?"
+          },
+          "answer": 40,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m5_05",
+          "type": "number",
+          "question": {
+            "zh": "7 ÷ 9 = ?（保留三位小数）",
+            "en": "7 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 0.778,
+          "knowledge": "division"
+        },
+        {
+          "id": "m5_06",
+          "type": "number",
+          "question": {
+            "zh": "15 的 20% 是多少？",
+            "en": "What is 20% of 15?"
+          },
+          "answer": 3,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m5_07",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 8，宽 3，面积是多少？",
+            "en": "A rectangle is 8 by 3. What is its area?"
+          },
+          "answer": 24,
+          "knowledge": "area"
+        },
+        {
+          "id": "m5_08",
+          "type": "number",
+          "question": {
+            "zh": "解方程：2x = 22，x = ?",
+            "en": "Solve: 2x = 22. x = ?"
+          },
+          "answer": 11,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m5_09",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 1、宽 3、高 2，体积是多少？",
+            "en": "A rectangular prism is 1 by 3 by 2. What is its volume?"
+          },
+          "answer": 6,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m5_10",
+          "type": "number",
+          "question": {
+            "zh": "4 ÷ 14 = ?（保留三位小数）",
+            "en": "4 ÷ 14 = ? (round to three decimals)"
+          },
+          "answer": 0.286,
+          "knowledge": "division"
+        },
+        {
+          "id": "m5_11",
+          "type": "number",
+          "question": {
+            "zh": "20 的 20% 是多少？",
+            "en": "What is 20% of 20?"
+          },
+          "answer": 4,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m5_12",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 5，宽 8，面积是多少？",
+            "en": "A rectangle is 5 by 8. What is its area?"
+          },
+          "answer": 40,
+          "knowledge": "area"
+        },
+        {
+          "id": "m5_13",
+          "type": "number",
+          "question": {
+            "zh": "解方程：7x = 112，x = ?",
+            "en": "Solve: 7x = 112. x = ?"
+          },
+          "answer": 16,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m5_14",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 6、宽 8、高 2，体积是多少？",
+            "en": "A rectangular prism is 6 by 8 by 2. What is its volume?"
+          },
+          "answer": 96,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m5_15",
+          "type": "number",
+          "question": {
+            "zh": "9 ÷ 9 = ?（保留三位小数）",
+            "en": "9 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 1,
+          "knowledge": "division"
+        },
+        {
+          "id": "m5_16",
+          "type": "number",
+          "question": {
+            "zh": "25 的 20% 是多少？",
+            "en": "What is 20% of 25?"
+          },
+          "answer": 5,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m5_17",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 2，宽 7，面积是多少？",
+            "en": "A rectangle is 2 by 7. What is its area?"
+          },
+          "answer": 14,
+          "knowledge": "area"
+        },
+        {
+          "id": "m5_18",
+          "type": "number",
+          "question": {
+            "zh": "解方程：5x = 105，x = ?",
+            "en": "Solve: 5x = 105. x = ?"
+          },
+          "answer": 21,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m5_19",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 3、宽 6、高 2，体积是多少？",
+            "en": "A rectangular prism is 3 by 6 by 2. What is its volume?"
+          },
+          "answer": 36,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m5_20",
+          "type": "number",
+          "question": {
+            "zh": "6 ÷ 14 = ?（保留三位小数）",
+            "en": "6 ÷ 14 = ? (round to three decimals)"
+          },
+          "answer": 0.429,
+          "knowledge": "division"
+        },
+        {
+          "id": "m5_21",
+          "type": "number",
+          "question": {
+            "zh": "30 的 20% 是多少？",
+            "en": "What is 20% of 30?"
+          },
+          "answer": 6,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m5_22",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 7，宽 6，面积是多少？",
+            "en": "A rectangle is 7 by 6. What is its area?"
+          },
+          "answer": 42,
+          "knowledge": "area"
+        },
+        {
+          "id": "m5_23",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x = 18，x = ?",
+            "en": "Solve: 3x = 18. x = ?"
+          },
+          "answer": 6,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m5_24",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 8、宽 4、高 2，体积是多少？",
+            "en": "A rectangular prism is 8 by 4 by 2. What is its volume?"
+          },
+          "answer": 64,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m5_25",
+          "type": "number",
+          "question": {
+            "zh": "3 ÷ 9 = ?（保留三位小数）",
+            "en": "3 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 0.333,
+          "knowledge": "division"
+        },
+        {
+          "id": "m5_26",
+          "type": "number",
+          "question": {
+            "zh": "35 的 20% 是多少？",
+            "en": "What is 20% of 35?"
+          },
+          "answer": 7,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m5_27",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 4，宽 5，面积是多少？",
+            "en": "A rectangle is 4 by 5. What is its area?"
+          },
+          "answer": 20,
+          "knowledge": "area"
+        },
+        {
+          "id": "m5_28",
+          "type": "number",
+          "question": {
+            "zh": "解方程：8x = 88，x = ?",
+            "en": "Solve: 8x = 88. x = ?"
+          },
+          "answer": 11,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m5_29",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 5、宽 2、高 2，体积是多少？",
+            "en": "A rectangular prism is 5 by 2 by 2. What is its volume?"
+          },
+          "answer": 20,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m5_30",
+          "type": "number",
+          "question": {
+            "zh": "8 ÷ 14 = ?（保留三位小数）",
+            "en": "8 ÷ 14 = ? (round to three decimals)"
+          },
+          "answer": 0.571,
+          "knowledge": "division"
+        },
+        {
+          "id": "m5_31",
+          "type": "number",
+          "question": {
+            "zh": "40 的 20% 是多少？",
+            "en": "What is 20% of 40?"
+          },
+          "answer": 8,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m5_32",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 9，宽 4，面积是多少？",
+            "en": "A rectangle is 9 by 4. What is its area?"
+          },
+          "answer": 36,
+          "knowledge": "area"
+        },
+        {
+          "id": "m5_33",
+          "type": "number",
+          "question": {
+            "zh": "解方程：6x = 96，x = ?",
+            "en": "Solve: 6x = 96. x = ?"
+          },
+          "answer": 16,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m5_34",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 2、宽 7、高 2，体积是多少？",
+            "en": "A rectangular prism is 2 by 7 by 2. What is its volume?"
+          },
+          "answer": 28,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m5_35",
+          "type": "number",
+          "question": {
+            "zh": "5 ÷ 9 = ?（保留三位小数）",
+            "en": "5 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 0.556,
+          "knowledge": "division"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": {
+        "zh": "六年级",
+        "en": "Grade 6"
+      },
+      "questions": [
+        {
+          "id": "m6_01",
+          "type": "number",
+          "question": {
+            "zh": "10 的 20% 是多少？",
+            "en": "What is 20% of 10?"
+          },
+          "answer": 2,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m6_02",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 3，宽 4，面积是多少？",
+            "en": "A rectangle is 3 by 4. What is its area?"
+          },
+          "answer": 12,
+          "knowledge": "area"
+        },
+        {
+          "id": "m6_03",
+          "type": "number",
+          "question": {
+            "zh": "解方程：4x = 24，x = ?",
+            "en": "Solve: 4x = 24. x = ?"
+          },
+          "answer": 6,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m6_04",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 4、宽 5、高 2，体积是多少？",
+            "en": "A rectangular prism is 4 by 5 by 2. What is its volume?"
+          },
+          "answer": 40,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m6_05",
+          "type": "number",
+          "question": {
+            "zh": "7 ÷ 9 = ?（保留三位小数）",
+            "en": "7 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 0.778,
+          "knowledge": "division"
+        },
+        {
+          "id": "m6_06",
+          "type": "number",
+          "question": {
+            "zh": "15 的 20% 是多少？",
+            "en": "What is 20% of 15?"
+          },
+          "answer": 3,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m6_07",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 8，宽 3，面积是多少？",
+            "en": "A rectangle is 8 by 3. What is its area?"
+          },
+          "answer": 24,
+          "knowledge": "area"
+        },
+        {
+          "id": "m6_08",
+          "type": "number",
+          "question": {
+            "zh": "解方程：2x = 22，x = ?",
+            "en": "Solve: 2x = 22. x = ?"
+          },
+          "answer": 11,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m6_09",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 1、宽 3、高 2，体积是多少？",
+            "en": "A rectangular prism is 1 by 3 by 2. What is its volume?"
+          },
+          "answer": 6,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m6_10",
+          "type": "number",
+          "question": {
+            "zh": "4 ÷ 14 = ?（保留三位小数）",
+            "en": "4 ÷ 14 = ? (round to three decimals)"
+          },
+          "answer": 0.286,
+          "knowledge": "division"
+        },
+        {
+          "id": "m6_11",
+          "type": "number",
+          "question": {
+            "zh": "20 的 20% 是多少？",
+            "en": "What is 20% of 20?"
+          },
+          "answer": 4,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m6_12",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 5，宽 8，面积是多少？",
+            "en": "A rectangle is 5 by 8. What is its area?"
+          },
+          "answer": 40,
+          "knowledge": "area"
+        },
+        {
+          "id": "m6_13",
+          "type": "number",
+          "question": {
+            "zh": "解方程：7x = 112，x = ?",
+            "en": "Solve: 7x = 112. x = ?"
+          },
+          "answer": 16,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m6_14",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 6、宽 8、高 2，体积是多少？",
+            "en": "A rectangular prism is 6 by 8 by 2. What is its volume?"
+          },
+          "answer": 96,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m6_15",
+          "type": "number",
+          "question": {
+            "zh": "9 ÷ 9 = ?（保留三位小数）",
+            "en": "9 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 1,
+          "knowledge": "division"
+        },
+        {
+          "id": "m6_16",
+          "type": "number",
+          "question": {
+            "zh": "25 的 20% 是多少？",
+            "en": "What is 20% of 25?"
+          },
+          "answer": 5,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m6_17",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 2，宽 7，面积是多少？",
+            "en": "A rectangle is 2 by 7. What is its area?"
+          },
+          "answer": 14,
+          "knowledge": "area"
+        },
+        {
+          "id": "m6_18",
+          "type": "number",
+          "question": {
+            "zh": "解方程：5x = 105，x = ?",
+            "en": "Solve: 5x = 105. x = ?"
+          },
+          "answer": 21,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m6_19",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 3、宽 6、高 2，体积是多少？",
+            "en": "A rectangular prism is 3 by 6 by 2. What is its volume?"
+          },
+          "answer": 36,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m6_20",
+          "type": "number",
+          "question": {
+            "zh": "6 ÷ 14 = ?（保留三位小数）",
+            "en": "6 ÷ 14 = ? (round to three decimals)"
+          },
+          "answer": 0.429,
+          "knowledge": "division"
+        },
+        {
+          "id": "m6_21",
+          "type": "number",
+          "question": {
+            "zh": "30 的 20% 是多少？",
+            "en": "What is 20% of 30?"
+          },
+          "answer": 6,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m6_22",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 7，宽 6，面积是多少？",
+            "en": "A rectangle is 7 by 6. What is its area?"
+          },
+          "answer": 42,
+          "knowledge": "area"
+        },
+        {
+          "id": "m6_23",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x = 18，x = ?",
+            "en": "Solve: 3x = 18. x = ?"
+          },
+          "answer": 6,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m6_24",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 8、宽 4、高 2，体积是多少？",
+            "en": "A rectangular prism is 8 by 4 by 2. What is its volume?"
+          },
+          "answer": 64,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m6_25",
+          "type": "number",
+          "question": {
+            "zh": "3 ÷ 9 = ?（保留三位小数）",
+            "en": "3 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 0.333,
+          "knowledge": "division"
+        },
+        {
+          "id": "m6_26",
+          "type": "number",
+          "question": {
+            "zh": "35 的 20% 是多少？",
+            "en": "What is 20% of 35?"
+          },
+          "answer": 7,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m6_27",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 4，宽 5，面积是多少？",
+            "en": "A rectangle is 4 by 5. What is its area?"
+          },
+          "answer": 20,
+          "knowledge": "area"
+        },
+        {
+          "id": "m6_28",
+          "type": "number",
+          "question": {
+            "zh": "解方程：8x = 88，x = ?",
+            "en": "Solve: 8x = 88. x = ?"
+          },
+          "answer": 11,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m6_29",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 5、宽 2、高 2，体积是多少？",
+            "en": "A rectangular prism is 5 by 2 by 2. What is its volume?"
+          },
+          "answer": 20,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m6_30",
+          "type": "number",
+          "question": {
+            "zh": "8 ÷ 14 = ?（保留三位小数）",
+            "en": "8 ÷ 14 = ? (round to three decimals)"
+          },
+          "answer": 0.571,
+          "knowledge": "division"
+        },
+        {
+          "id": "m6_31",
+          "type": "number",
+          "question": {
+            "zh": "40 的 20% 是多少？",
+            "en": "What is 20% of 40?"
+          },
+          "answer": 8,
+          "knowledge": "percentage"
+        },
+        {
+          "id": "m6_32",
+          "type": "number",
+          "question": {
+            "zh": "长方形长 9，宽 4，面积是多少？",
+            "en": "A rectangle is 9 by 4. What is its area?"
+          },
+          "answer": 36,
+          "knowledge": "area"
+        },
+        {
+          "id": "m6_33",
+          "type": "number",
+          "question": {
+            "zh": "解方程：6x = 96，x = ?",
+            "en": "Solve: 6x = 96. x = ?"
+          },
+          "answer": 16,
+          "knowledge": "equation"
+        },
+        {
+          "id": "m6_34",
+          "type": "number",
+          "question": {
+            "zh": "长方体长 2、宽 7、高 2，体积是多少？",
+            "en": "A rectangular prism is 2 by 7 by 2. What is its volume?"
+          },
+          "answer": 28,
+          "knowledge": "volume"
+        },
+        {
+          "id": "m6_35",
+          "type": "number",
+          "question": {
+            "zh": "5 ÷ 9 = ?（保留三位小数）",
+            "en": "5 ÷ 9 = ? (round to three decimals)"
+          },
+          "answer": 0.556,
+          "knowledge": "division"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": {
+        "zh": "七年级",
+        "en": "Grade 7"
+      },
+      "questions": [
+        {
+          "id": "m7_01",
+          "type": "number",
+          "question": {
+            "zh": "2² = ?",
+            "en": "2² = ?"
+          },
+          "answer": 4,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m7_02",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x + 1 = 11，x = ?",
+            "en": "Solve: 3x + 1 = 11. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m7_03",
+          "type": "number",
+          "question": {
+            "zh": "√25 = ?",
+            "en": "√25 = ?"
+          },
+          "answer": 25,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m7_04",
+          "type": "number",
+          "question": {
+            "zh": "-7 + (2) = ?",
+            "en": "-7 + (2) = ?"
+          },
+          "answer": -5,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m7_05",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 18 和 20 时，若按 18:20 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 18 and 20. What is its area?"
+          },
+          "answer": 180,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m7_06",
+          "type": "number",
+          "question": {
+            "zh": "7² = ?",
+            "en": "7² = ?"
+          },
+          "answer": 49,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m7_07",
+          "type": "number",
+          "question": {
+            "zh": "解方程：2x + 6 = 12，x = ?",
+            "en": "Solve: 2x + 6 = 12. x = ?"
+          },
+          "answer": 9,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m7_08",
+          "type": "number",
+          "question": {
+            "zh": "√100 = ?",
+            "en": "√100 = ?"
+          },
+          "answer": 100,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m7_09",
+          "type": "number",
+          "question": {
+            "zh": "-2 + (2) = ?",
+            "en": "-2 + (2) = ?"
+          },
+          "answer": 0,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m7_10",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 9 和 12 时，若按 9:12 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 9 and 12. What is its area?"
+          },
+          "answer": 54,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m7_11",
+          "type": "number",
+          "question": {
+            "zh": "3² = ?",
+            "en": "3² = ?"
+          },
+          "answer": 9,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m7_12",
+          "type": "number",
+          "question": {
+            "zh": "解方程：7x + 2 = 96，x = ?",
+            "en": "Solve: 7x + 2 = 96. x = ?"
+          },
+          "answer": 14,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m7_13",
+          "type": "number",
+          "question": {
+            "zh": "√49 = ?",
+            "en": "√49 = ?"
+          },
+          "answer": 49,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m7_14",
+          "type": "number",
+          "question": {
+            "zh": "3 + (2) = ?",
+            "en": "3 + (2) = ?"
+          },
+          "answer": 5,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m7_15",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 24 和 4 时，若按 24:4 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 24 and 4. What is its area?"
+          },
+          "answer": 48,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m7_16",
+          "type": "number",
+          "question": {
+            "zh": "8² = ?",
+            "en": "8² = ?"
+          },
+          "answer": 64,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m7_17",
+          "type": "number",
+          "question": {
+            "zh": "解方程：6x + 7 = 17，x = ?",
+            "en": "Solve: 6x + 7 = 17. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m7_18",
+          "type": "number",
+          "question": {
+            "zh": "√16 = ?",
+            "en": "√16 = ?"
+          },
+          "answer": 16,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m7_19",
+          "type": "number",
+          "question": {
+            "zh": "-8 + (2) = ?",
+            "en": "-8 + (2) = ?"
+          },
+          "answer": -6,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m7_20",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 15 和 24 时，若按 15:24 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 15 and 24. What is its area?"
+          },
+          "answer": 180,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m7_21",
+          "type": "number",
+          "question": {
+            "zh": "4² = ?",
+            "en": "4² = ?"
+          },
+          "answer": 16,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m7_22",
+          "type": "number",
+          "question": {
+            "zh": "解方程：5x + 3 = 42，x = ?",
+            "en": "Solve: 5x + 3 = 42. x = ?"
+          },
+          "answer": 9,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m7_23",
+          "type": "number",
+          "question": {
+            "zh": "√81 = ?",
+            "en": "√81 = ?"
+          },
+          "answer": 81,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m7_24",
+          "type": "number",
+          "question": {
+            "zh": "-3 + (2) = ?",
+            "en": "-3 + (2) = ?"
+          },
+          "answer": -1,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m7_25",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 6 和 16 时，若按 6:16 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 6 and 16. What is its area?"
+          },
+          "answer": 48,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m7_26",
+          "type": "number",
+          "question": {
+            "zh": "9² = ?",
+            "en": "9² = ?"
+          },
+          "answer": 81,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m7_27",
+          "type": "number",
+          "question": {
+            "zh": "解方程：4x + 8 = 48，x = ?",
+            "en": "Solve: 4x + 8 = 48. x = ?"
+          },
+          "answer": 14,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m7_28",
+          "type": "number",
+          "question": {
+            "zh": "√36 = ?",
+            "en": "√36 = ?"
+          },
+          "answer": 36,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m7_29",
+          "type": "number",
+          "question": {
+            "zh": "2 + (2) = ?",
+            "en": "2 + (2) = ?"
+          },
+          "answer": 4,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m7_30",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 21 和 8 时，若按 21:8 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 21 and 8. What is its area?"
+          },
+          "answer": 84,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m7_31",
+          "type": "number",
+          "question": {
+            "zh": "5² = ?",
+            "en": "5² = ?"
+          },
+          "answer": 25,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m7_32",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x + 4 = 8，x = ?",
+            "en": "Solve: 3x + 4 = 8. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m7_33",
+          "type": "number",
+          "question": {
+            "zh": "√9 = ?",
+            "en": "√9 = ?"
+          },
+          "answer": 9,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m7_34",
+          "type": "number",
+          "question": {
+            "zh": "-9 + (2) = ?",
+            "en": "-9 + (2) = ?"
+          },
+          "answer": -7,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m7_35",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 12 和 28 时，若按 12:28 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 12 and 28. What is its area?"
+          },
+          "answer": 168,
+          "knowledge": "geometry"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": {
+        "zh": "八年级",
+        "en": "Grade 8"
+      },
+      "questions": [
+        {
+          "id": "m8_01",
+          "type": "number",
+          "question": {
+            "zh": "2² = ?",
+            "en": "2² = ?"
+          },
+          "answer": 4,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m8_02",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x + 1 = 11，x = ?",
+            "en": "Solve: 3x + 1 = 11. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m8_03",
+          "type": "number",
+          "question": {
+            "zh": "√25 = ?",
+            "en": "√25 = ?"
+          },
+          "answer": 25,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m8_04",
+          "type": "number",
+          "question": {
+            "zh": "-7 + (2) = ?",
+            "en": "-7 + (2) = ?"
+          },
+          "answer": -5,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m8_05",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 18 和 20 时，若按 18:20 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 18 and 20. What is its area?"
+          },
+          "answer": 180,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m8_06",
+          "type": "number",
+          "question": {
+            "zh": "7² = ?",
+            "en": "7² = ?"
+          },
+          "answer": 49,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m8_07",
+          "type": "number",
+          "question": {
+            "zh": "解方程：2x + 6 = 12，x = ?",
+            "en": "Solve: 2x + 6 = 12. x = ?"
+          },
+          "answer": 9,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m8_08",
+          "type": "number",
+          "question": {
+            "zh": "√100 = ?",
+            "en": "√100 = ?"
+          },
+          "answer": 100,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m8_09",
+          "type": "number",
+          "question": {
+            "zh": "-2 + (2) = ?",
+            "en": "-2 + (2) = ?"
+          },
+          "answer": 0,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m8_10",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 9 和 12 时，若按 9:12 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 9 and 12. What is its area?"
+          },
+          "answer": 54,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m8_11",
+          "type": "number",
+          "question": {
+            "zh": "3² = ?",
+            "en": "3² = ?"
+          },
+          "answer": 9,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m8_12",
+          "type": "number",
+          "question": {
+            "zh": "解方程：7x + 2 = 96，x = ?",
+            "en": "Solve: 7x + 2 = 96. x = ?"
+          },
+          "answer": 14,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m8_13",
+          "type": "number",
+          "question": {
+            "zh": "√49 = ?",
+            "en": "√49 = ?"
+          },
+          "answer": 49,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m8_14",
+          "type": "number",
+          "question": {
+            "zh": "3 + (2) = ?",
+            "en": "3 + (2) = ?"
+          },
+          "answer": 5,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m8_15",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 24 和 4 时，若按 24:4 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 24 and 4. What is its area?"
+          },
+          "answer": 48,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m8_16",
+          "type": "number",
+          "question": {
+            "zh": "8² = ?",
+            "en": "8² = ?"
+          },
+          "answer": 64,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m8_17",
+          "type": "number",
+          "question": {
+            "zh": "解方程：6x + 7 = 17，x = ?",
+            "en": "Solve: 6x + 7 = 17. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m8_18",
+          "type": "number",
+          "question": {
+            "zh": "√16 = ?",
+            "en": "√16 = ?"
+          },
+          "answer": 16,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m8_19",
+          "type": "number",
+          "question": {
+            "zh": "-8 + (2) = ?",
+            "en": "-8 + (2) = ?"
+          },
+          "answer": -6,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m8_20",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 15 和 24 时，若按 15:24 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 15 and 24. What is its area?"
+          },
+          "answer": 180,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m8_21",
+          "type": "number",
+          "question": {
+            "zh": "4² = ?",
+            "en": "4² = ?"
+          },
+          "answer": 16,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m8_22",
+          "type": "number",
+          "question": {
+            "zh": "解方程：5x + 3 = 42，x = ?",
+            "en": "Solve: 5x + 3 = 42. x = ?"
+          },
+          "answer": 9,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m8_23",
+          "type": "number",
+          "question": {
+            "zh": "√81 = ?",
+            "en": "√81 = ?"
+          },
+          "answer": 81,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m8_24",
+          "type": "number",
+          "question": {
+            "zh": "-3 + (2) = ?",
+            "en": "-3 + (2) = ?"
+          },
+          "answer": -1,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m8_25",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 6 和 16 时，若按 6:16 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 6 and 16. What is its area?"
+          },
+          "answer": 48,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m8_26",
+          "type": "number",
+          "question": {
+            "zh": "9² = ?",
+            "en": "9² = ?"
+          },
+          "answer": 81,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m8_27",
+          "type": "number",
+          "question": {
+            "zh": "解方程：4x + 8 = 48，x = ?",
+            "en": "Solve: 4x + 8 = 48. x = ?"
+          },
+          "answer": 14,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m8_28",
+          "type": "number",
+          "question": {
+            "zh": "√36 = ?",
+            "en": "√36 = ?"
+          },
+          "answer": 36,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m8_29",
+          "type": "number",
+          "question": {
+            "zh": "2 + (2) = ?",
+            "en": "2 + (2) = ?"
+          },
+          "answer": 4,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m8_30",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 21 和 8 时，若按 21:8 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 21 and 8. What is its area?"
+          },
+          "answer": 84,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m8_31",
+          "type": "number",
+          "question": {
+            "zh": "5² = ?",
+            "en": "5² = ?"
+          },
+          "answer": 25,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m8_32",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x + 4 = 8，x = ?",
+            "en": "Solve: 3x + 4 = 8. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m8_33",
+          "type": "number",
+          "question": {
+            "zh": "√9 = ?",
+            "en": "√9 = ?"
+          },
+          "answer": 9,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m8_34",
+          "type": "number",
+          "question": {
+            "zh": "-9 + (2) = ?",
+            "en": "-9 + (2) = ?"
+          },
+          "answer": -7,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m8_35",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 12 和 28 时，若按 12:28 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 12 and 28. What is its area?"
+          },
+          "answer": 168,
+          "knowledge": "geometry"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": {
+        "zh": "九年级",
+        "en": "Grade 9"
+      },
+      "questions": [
+        {
+          "id": "m9_01",
+          "type": "number",
+          "question": {
+            "zh": "2² = ?",
+            "en": "2² = ?"
+          },
+          "answer": 4,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m9_02",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x + 1 = 11，x = ?",
+            "en": "Solve: 3x + 1 = 11. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m9_03",
+          "type": "number",
+          "question": {
+            "zh": "√25 = ?",
+            "en": "√25 = ?"
+          },
+          "answer": 25,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m9_04",
+          "type": "number",
+          "question": {
+            "zh": "-7 + (2) = ?",
+            "en": "-7 + (2) = ?"
+          },
+          "answer": -5,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m9_05",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 18 和 20 时，若按 18:20 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 18 and 20. What is its area?"
+          },
+          "answer": 180,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m9_06",
+          "type": "number",
+          "question": {
+            "zh": "7² = ?",
+            "en": "7² = ?"
+          },
+          "answer": 49,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m9_07",
+          "type": "number",
+          "question": {
+            "zh": "解方程：2x + 6 = 12，x = ?",
+            "en": "Solve: 2x + 6 = 12. x = ?"
+          },
+          "answer": 9,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m9_08",
+          "type": "number",
+          "question": {
+            "zh": "√100 = ?",
+            "en": "√100 = ?"
+          },
+          "answer": 100,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m9_09",
+          "type": "number",
+          "question": {
+            "zh": "-2 + (2) = ?",
+            "en": "-2 + (2) = ?"
+          },
+          "answer": 0,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m9_10",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 9 和 12 时，若按 9:12 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 9 and 12. What is its area?"
+          },
+          "answer": 54,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m9_11",
+          "type": "number",
+          "question": {
+            "zh": "3² = ?",
+            "en": "3² = ?"
+          },
+          "answer": 9,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m9_12",
+          "type": "number",
+          "question": {
+            "zh": "解方程：7x + 2 = 96，x = ?",
+            "en": "Solve: 7x + 2 = 96. x = ?"
+          },
+          "answer": 14,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m9_13",
+          "type": "number",
+          "question": {
+            "zh": "√49 = ?",
+            "en": "√49 = ?"
+          },
+          "answer": 49,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m9_14",
+          "type": "number",
+          "question": {
+            "zh": "3 + (2) = ?",
+            "en": "3 + (2) = ?"
+          },
+          "answer": 5,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m9_15",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 24 和 4 时，若按 24:4 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 24 and 4. What is its area?"
+          },
+          "answer": 48,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m9_16",
+          "type": "number",
+          "question": {
+            "zh": "8² = ?",
+            "en": "8² = ?"
+          },
+          "answer": 64,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m9_17",
+          "type": "number",
+          "question": {
+            "zh": "解方程：6x + 7 = 17，x = ?",
+            "en": "Solve: 6x + 7 = 17. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m9_18",
+          "type": "number",
+          "question": {
+            "zh": "√16 = ?",
+            "en": "√16 = ?"
+          },
+          "answer": 16,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m9_19",
+          "type": "number",
+          "question": {
+            "zh": "-8 + (2) = ?",
+            "en": "-8 + (2) = ?"
+          },
+          "answer": -6,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m9_20",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 15 和 24 时，若按 15:24 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 15 and 24. What is its area?"
+          },
+          "answer": 180,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m9_21",
+          "type": "number",
+          "question": {
+            "zh": "4² = ?",
+            "en": "4² = ?"
+          },
+          "answer": 16,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m9_22",
+          "type": "number",
+          "question": {
+            "zh": "解方程：5x + 3 = 42，x = ?",
+            "en": "Solve: 5x + 3 = 42. x = ?"
+          },
+          "answer": 9,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m9_23",
+          "type": "number",
+          "question": {
+            "zh": "√81 = ?",
+            "en": "√81 = ?"
+          },
+          "answer": 81,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m9_24",
+          "type": "number",
+          "question": {
+            "zh": "-3 + (2) = ?",
+            "en": "-3 + (2) = ?"
+          },
+          "answer": -1,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m9_25",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 6 和 16 时，若按 6:16 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 6 and 16. What is its area?"
+          },
+          "answer": 48,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m9_26",
+          "type": "number",
+          "question": {
+            "zh": "9² = ?",
+            "en": "9² = ?"
+          },
+          "answer": 81,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m9_27",
+          "type": "number",
+          "question": {
+            "zh": "解方程：4x + 8 = 48，x = ?",
+            "en": "Solve: 4x + 8 = 48. x = ?"
+          },
+          "answer": 14,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m9_28",
+          "type": "number",
+          "question": {
+            "zh": "√36 = ?",
+            "en": "√36 = ?"
+          },
+          "answer": 36,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m9_29",
+          "type": "number",
+          "question": {
+            "zh": "2 + (2) = ?",
+            "en": "2 + (2) = ?"
+          },
+          "answer": 4,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m9_30",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 21 和 8 时，若按 21:8 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 21 and 8. What is its area?"
+          },
+          "answer": 84,
+          "knowledge": "geometry"
+        },
+        {
+          "id": "m9_31",
+          "type": "number",
+          "question": {
+            "zh": "5² = ?",
+            "en": "5² = ?"
+          },
+          "answer": 25,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m9_32",
+          "type": "number",
+          "question": {
+            "zh": "解方程：3x + 4 = 8，x = ?",
+            "en": "Solve: 3x + 4 = 8. x = ?"
+          },
+          "answer": 4,
+          "knowledge": "linear equation"
+        },
+        {
+          "id": "m9_33",
+          "type": "number",
+          "question": {
+            "zh": "√9 = ?",
+            "en": "√9 = ?"
+          },
+          "answer": 9,
+          "knowledge": "square root"
+        },
+        {
+          "id": "m9_34",
+          "type": "number",
+          "question": {
+            "zh": "-9 + (2) = ?",
+            "en": "-9 + (2) = ?"
+          },
+          "answer": -7,
+          "knowledge": "integers"
+        },
+        {
+          "id": "m9_35",
+          "type": "number",
+          "question": {
+            "zh": "直角三角形两直角边为 12 和 28 时，若按 12:28 的比例缩小，面积是多少？",
+            "en": "A right triangle has legs 12 and 28. What is its area?"
+          },
+          "answer": 168,
+          "knowledge": "geometry"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": {
+        "zh": "高一",
+        "en": "Grade 10"
+      },
+      "questions": [
+        {
+          "id": "m10_01",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=2 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=2?"
+          },
+          "answer": 12,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m10_02",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 4 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 4?"
+          },
+          "answer": 15,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m10_03",
+          "type": "number",
+          "question": {
+            "zh": "4 的 4 次方是多少？",
+            "en": "4 to the power of 4 equals?"
+          },
+          "answer": 256,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m10_04",
+          "type": "number",
+          "question": {
+            "zh": "∫0到5 2x dx = ?",
+            "en": "What is ∫ from 0 to 5 of 2x dx?"
+          },
+          "answer": 25,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m10_05",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,7],[5,6]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,7],[5,6]]?"
+          },
+          "answer": 1,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m10_06",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m10_07",
+          "type": "number",
+          "question": {
+            "zh": "log₂(256) = ?",
+            "en": "log₂(256) = ?"
+          },
+          "answer": 8,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m10_08",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=3 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=3?"
+          },
+          "answer": 27,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m10_09",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 6 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 6?"
+          },
+          "answer": 23,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m10_10",
+          "type": "number",
+          "question": {
+            "zh": "6 的 3 次方是多少？",
+            "en": "6 to the power of 3 equals?"
+          },
+          "answer": 216,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m10_11",
+          "type": "number",
+          "question": {
+            "zh": "∫0到4 2x dx = ?",
+            "en": "What is ∫ from 0 to 4 of 2x dx?"
+          },
+          "answer": 16,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m10_12",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,8],[5,7]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,8],[5,7]]?"
+          },
+          "answer": 2,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m10_13",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m10_14",
+          "type": "number",
+          "question": {
+            "zh": "log₂(128) = ?",
+            "en": "log₂(128) = ?"
+          },
+          "answer": 7,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m10_15",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=4 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=4?"
+          },
+          "answer": 48,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m10_16",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 3 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 3?"
+          },
+          "answer": 11,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m10_17",
+          "type": "number",
+          "question": {
+            "zh": "3 的 2 次方是多少？",
+            "en": "3 to the power of 2 equals?"
+          },
+          "answer": 9,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m10_18",
+          "type": "number",
+          "question": {
+            "zh": "∫0到3 2x dx = ?",
+            "en": "What is ∫ from 0 to 3 of 2x dx?"
+          },
+          "answer": 9,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m10_19",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,3],[5,2]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,3],[5,2]]?"
+          },
+          "answer": -3,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m10_20",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m10_21",
+          "type": "number",
+          "question": {
+            "zh": "log₂(64) = ?",
+            "en": "log₂(64) = ?"
+          },
+          "answer": 6,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m10_22",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=5 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=5?"
+          },
+          "answer": 75,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m10_23",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 5 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 5?"
+          },
+          "answer": 19,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m10_24",
+          "type": "number",
+          "question": {
+            "zh": "5 的 5 次方是多少？",
+            "en": "5 to the power of 5 equals?"
+          },
+          "answer": 3125,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m10_25",
+          "type": "number",
+          "question": {
+            "zh": "∫0到2 2x dx = ?",
+            "en": "What is ∫ from 0 to 2 of 2x dx?"
+          },
+          "answer": 4,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m10_26",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,4],[5,3]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,4],[5,3]]?"
+          },
+          "answer": -2,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m10_27",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m10_28",
+          "type": "number",
+          "question": {
+            "zh": "log₂(32) = ?",
+            "en": "log₂(32) = ?"
+          },
+          "answer": 5,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m10_29",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=6 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=6?"
+          },
+          "answer": 108,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m10_30",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 7 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 7?"
+          },
+          "answer": 27,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m10_31",
+          "type": "number",
+          "question": {
+            "zh": "2 的 4 次方是多少？",
+            "en": "2 to the power of 4 equals?"
+          },
+          "answer": 16,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m10_32",
+          "type": "number",
+          "question": {
+            "zh": "∫0到9 2x dx = ?",
+            "en": "What is ∫ from 0 to 9 of 2x dx?"
+          },
+          "answer": 81,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m10_33",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,5],[5,4]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,5],[5,4]]?"
+          },
+          "answer": -1,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m10_34",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m10_35",
+          "type": "number",
+          "question": {
+            "zh": "log₂(16) = ?",
+            "en": "log₂(16) = ?"
+          },
+          "answer": 4,
+          "knowledge": "logarithm"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": {
+        "zh": "高二",
+        "en": "Grade 11"
+      },
+      "questions": [
+        {
+          "id": "m11_01",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=2 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=2?"
+          },
+          "answer": 12,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m11_02",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 4 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 4?"
+          },
+          "answer": 15,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m11_03",
+          "type": "number",
+          "question": {
+            "zh": "4 的 4 次方是多少？",
+            "en": "4 to the power of 4 equals?"
+          },
+          "answer": 256,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m11_04",
+          "type": "number",
+          "question": {
+            "zh": "∫0到5 2x dx = ?",
+            "en": "What is ∫ from 0 to 5 of 2x dx?"
+          },
+          "answer": 25,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m11_05",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,7],[5,6]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,7],[5,6]]?"
+          },
+          "answer": 1,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m11_06",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m11_07",
+          "type": "number",
+          "question": {
+            "zh": "log₂(256) = ?",
+            "en": "log₂(256) = ?"
+          },
+          "answer": 8,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m11_08",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=3 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=3?"
+          },
+          "answer": 27,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m11_09",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 6 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 6?"
+          },
+          "answer": 23,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m11_10",
+          "type": "number",
+          "question": {
+            "zh": "6 的 3 次方是多少？",
+            "en": "6 to the power of 3 equals?"
+          },
+          "answer": 216,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m11_11",
+          "type": "number",
+          "question": {
+            "zh": "∫0到4 2x dx = ?",
+            "en": "What is ∫ from 0 to 4 of 2x dx?"
+          },
+          "answer": 16,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m11_12",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,8],[5,7]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,8],[5,7]]?"
+          },
+          "answer": 2,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m11_13",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m11_14",
+          "type": "number",
+          "question": {
+            "zh": "log₂(128) = ?",
+            "en": "log₂(128) = ?"
+          },
+          "answer": 7,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m11_15",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=4 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=4?"
+          },
+          "answer": 48,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m11_16",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 3 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 3?"
+          },
+          "answer": 11,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m11_17",
+          "type": "number",
+          "question": {
+            "zh": "3 的 2 次方是多少？",
+            "en": "3 to the power of 2 equals?"
+          },
+          "answer": 9,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m11_18",
+          "type": "number",
+          "question": {
+            "zh": "∫0到3 2x dx = ?",
+            "en": "What is ∫ from 0 to 3 of 2x dx?"
+          },
+          "answer": 9,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m11_19",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,3],[5,2]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,3],[5,2]]?"
+          },
+          "answer": -3,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m11_20",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m11_21",
+          "type": "number",
+          "question": {
+            "zh": "log₂(64) = ?",
+            "en": "log₂(64) = ?"
+          },
+          "answer": 6,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m11_22",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=5 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=5?"
+          },
+          "answer": 75,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m11_23",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 5 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 5?"
+          },
+          "answer": 19,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m11_24",
+          "type": "number",
+          "question": {
+            "zh": "5 的 5 次方是多少？",
+            "en": "5 to the power of 5 equals?"
+          },
+          "answer": 3125,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m11_25",
+          "type": "number",
+          "question": {
+            "zh": "∫0到2 2x dx = ?",
+            "en": "What is ∫ from 0 to 2 of 2x dx?"
+          },
+          "answer": 4,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m11_26",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,4],[5,3]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,4],[5,3]]?"
+          },
+          "answer": -2,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m11_27",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m11_28",
+          "type": "number",
+          "question": {
+            "zh": "log₂(32) = ?",
+            "en": "log₂(32) = ?"
+          },
+          "answer": 5,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m11_29",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=6 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=6?"
+          },
+          "answer": 108,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m11_30",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 7 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 7?"
+          },
+          "answer": 27,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m11_31",
+          "type": "number",
+          "question": {
+            "zh": "2 的 4 次方是多少？",
+            "en": "2 to the power of 4 equals?"
+          },
+          "answer": 16,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m11_32",
+          "type": "number",
+          "question": {
+            "zh": "∫0到9 2x dx = ?",
+            "en": "What is ∫ from 0 to 9 of 2x dx?"
+          },
+          "answer": 81,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m11_33",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,5],[5,4]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,5],[5,4]]?"
+          },
+          "answer": -1,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m11_34",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m11_35",
+          "type": "number",
+          "question": {
+            "zh": "log₂(16) = ?",
+            "en": "log₂(16) = ?"
+          },
+          "answer": 4,
+          "knowledge": "logarithm"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "name": {
+        "zh": "高三",
+        "en": "Grade 12"
+      },
+      "questions": [
+        {
+          "id": "m12_01",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=2 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=2?"
+          },
+          "answer": 12,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m12_02",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 4 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 4?"
+          },
+          "answer": 15,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m12_03",
+          "type": "number",
+          "question": {
+            "zh": "4 的 4 次方是多少？",
+            "en": "4 to the power of 4 equals?"
+          },
+          "answer": 256,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m12_04",
+          "type": "number",
+          "question": {
+            "zh": "∫0到5 2x dx = ?",
+            "en": "What is ∫ from 0 to 5 of 2x dx?"
+          },
+          "answer": 25,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m12_05",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,7],[5,6]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,7],[5,6]]?"
+          },
+          "answer": 1,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m12_06",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m12_07",
+          "type": "number",
+          "question": {
+            "zh": "log₂(256) = ?",
+            "en": "log₂(256) = ?"
+          },
+          "answer": 8,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m12_08",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=3 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=3?"
+          },
+          "answer": 27,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m12_09",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 6 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 6?"
+          },
+          "answer": 23,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m12_10",
+          "type": "number",
+          "question": {
+            "zh": "6 的 3 次方是多少？",
+            "en": "6 to the power of 3 equals?"
+          },
+          "answer": 216,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m12_11",
+          "type": "number",
+          "question": {
+            "zh": "∫0到4 2x dx = ?",
+            "en": "What is ∫ from 0 to 4 of 2x dx?"
+          },
+          "answer": 16,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m12_12",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,8],[5,7]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,8],[5,7]]?"
+          },
+          "answer": 2,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m12_13",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m12_14",
+          "type": "number",
+          "question": {
+            "zh": "log₂(128) = ?",
+            "en": "log₂(128) = ?"
+          },
+          "answer": 7,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m12_15",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=4 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=4?"
+          },
+          "answer": 48,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m12_16",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 3 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 3?"
+          },
+          "answer": 11,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m12_17",
+          "type": "number",
+          "question": {
+            "zh": "3 的 2 次方是多少？",
+            "en": "3 to the power of 2 equals?"
+          },
+          "answer": 9,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m12_18",
+          "type": "number",
+          "question": {
+            "zh": "∫0到3 2x dx = ?",
+            "en": "What is ∫ from 0 to 3 of 2x dx?"
+          },
+          "answer": 9,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m12_19",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,3],[5,2]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,3],[5,2]]?"
+          },
+          "answer": -3,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m12_20",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m12_21",
+          "type": "number",
+          "question": {
+            "zh": "log₂(64) = ?",
+            "en": "log₂(64) = ?"
+          },
+          "answer": 6,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m12_22",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=5 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=5?"
+          },
+          "answer": 75,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m12_23",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 5 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 5?"
+          },
+          "answer": 19,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m12_24",
+          "type": "number",
+          "question": {
+            "zh": "5 的 5 次方是多少？",
+            "en": "5 to the power of 5 equals?"
+          },
+          "answer": 3125,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m12_25",
+          "type": "number",
+          "question": {
+            "zh": "∫0到2 2x dx = ?",
+            "en": "What is ∫ from 0 to 2 of 2x dx?"
+          },
+          "answer": 4,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m12_26",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,4],[5,3]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,4],[5,3]]?"
+          },
+          "answer": -2,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m12_27",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m12_28",
+          "type": "number",
+          "question": {
+            "zh": "log₂(32) = ?",
+            "en": "log₂(32) = ?"
+          },
+          "answer": 5,
+          "knowledge": "logarithm"
+        },
+        {
+          "id": "m12_29",
+          "type": "number",
+          "question": {
+            "zh": "函数 f(x)=x³ 的导数在 x=6 处是多少？",
+            "en": "For f(x)=x³, what is the derivative at x=6?"
+          },
+          "answer": 108,
+          "knowledge": "derivative"
+        },
+        {
+          "id": "m12_30",
+          "type": "number",
+          "question": {
+            "zh": "等差数列首项 3，公差 4，第 7 项是多少？",
+            "en": "An arithmetic sequence has first term 3, difference 4. What is term 7?"
+          },
+          "answer": 27,
+          "knowledge": "sequence"
+        },
+        {
+          "id": "m12_31",
+          "type": "number",
+          "question": {
+            "zh": "2 的 4 次方是多少？",
+            "en": "2 to the power of 4 equals?"
+          },
+          "answer": 16,
+          "knowledge": "exponents"
+        },
+        {
+          "id": "m12_32",
+          "type": "number",
+          "question": {
+            "zh": "∫0到9 2x dx = ?",
+            "en": "What is ∫ from 0 to 9 of 2x dx?"
+          },
+          "answer": 81,
+          "knowledge": "integral"
+        },
+        {
+          "id": "m12_33",
+          "type": "number",
+          "question": {
+            "zh": "矩阵 [[6,5],[5,4]] 的行列式是多少？",
+            "en": "What is the determinant of [[6,5],[5,4]]?"
+          },
+          "answer": -1,
+          "knowledge": "matrix"
+        },
+        {
+          "id": "m12_34",
+          "type": "number",
+          "question": {
+            "zh": "1 到 7 的整数和是多少？",
+            "en": "What is the sum of integers from 1 to 7?"
+          },
+          "answer": 28,
+          "knowledge": "series"
+        },
+        {
+          "id": "m12_35",
+          "type": "number",
+          "question": {
+            "zh": "log₂(16) = ?",
+            "en": "log₂(16) = ?"
+          },
+          "answer": 4,
+          "knowledge": "logarithm"
+        }
+      ]
+    }
   ]
 }
