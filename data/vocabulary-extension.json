@@ -1,11 +1,6 @@
 {
   "subject": "english-vocabulary",
-  "source": {
-    "title": "Northstar Learning",
-    "url": "https://northstar-learning-58.junyang-wang123.chatgpt.site/",
-    "sourceFile": "app/content.ts",
-    "extractedOn": "2026-07-22"
-  },
+  "bankType": "extension",
   "grades": [
     {
       "grade": 5,
