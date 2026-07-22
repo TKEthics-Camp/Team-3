@@ -149,7 +149,9 @@ const ACHIEVEMENTS=[
 let wushuang=false; let user={totalSolved:0,totalCorrect:0,todaySolved:0,lastDate:'',streak:0,mastery:{math:0,english:0,science:0},wrongBook:[],quizCount:0,perfectQuizzes:0,unlockedAchievements:[],equippedTitle:''};
 const tx=x=>typeof x==='object'?(x[lang]||x.zh||x.en||''):String(x??''); const clone=x=>JSON.parse(JSON.stringify(x)); const shuffle=a=>[...a].sort(()=>Math.random()-.5);
 function error(message=''){const e=document.querySelector('#error');e.textContent=message;e.style.display=message?'block':'none'}
-async function loadBank(file){const response=await fetch(`./data/${file}`);if(!response.ok)throw Error(`${file}: ${response.status}`);return response.json()}
+const REMOTE_DATA_ROOT='https://raw.githubusercontent.com/TKEthics-Camp/Team-3/main/data';
+function bankUrl(file){return location.protocol==='file:'?`${REMOTE_DATA_ROOT}/${file}`:`./data/${file}`}
+async function loadBank(file){const response=await fetch(bankUrl(file),{cache:'no-store'});if(!response.ok)throw Error(`${file}: ${response.status}`);return response.json()}
 function bi(zh,en=zh){return{zh,en}}
 function integrateNorthstar(){
   const mathLevels=northstar.math.grades.map(entry=>({
@@ -178,19 +180,23 @@ function integrateNorthstar(){
 }
 function updateBankCounts(){
   for(const key of ['math','english','science']){
-    const count=banks[key].levels.reduce((sum,level)=>sum+level.questions.length,0);
-    document.querySelector(`#${key}Count`).textContent=`${count} ${lang==='zh'?'道题':'questions'}`
+    const bank=banks[key],count=bank?.levels?.reduce((sum,level)=>sum+(level.questions?.length||0),0);
+    document.querySelector(`#${key}Count`).textContent=Number.isFinite(count)?`${count} ${lang==='zh'?'道题':'questions'}`:'—'
   }
-  scienceLevels.textContent=`${banks.science.levels.length} Levels`
+  scienceLevels.textContent=banks.science?.levels?`${banks.science.levels.length} Levels`:'—'
 }
 async function init(){
-  try{
-    [banks.math,banks.english,banks.science,northstar.math,northstar.vocabulary]=await Promise.all([
-      loadBank('math.json'),loadBank('english.json'),loadBank('science.json'),loadBank('northstar-math.json'),loadBank('northstar-vocabulary.json')
-    ]);
-    integrateNorthstar();updateBankCounts()
-  }catch(e){error('题库加载失败。请确认 data 文件夹中的五个 JSON 文件均存在，并通过本地服务器打开本页。');document.querySelector('#start').disabled=true;console.error(e)}
-  loadUser();setLang('zh')
+  loadUser();setLang('zh');
+  const coreNames=['math','english','science'],coreFiles=coreNames.map(name=>`${name}.json`);
+  const coreResults=await Promise.allSettled(coreFiles.map(loadBank)),failedCore=[];
+  coreResults.forEach((result,index)=>{if(result.status==='fulfilled')banks[coreNames[index]]=result.value;else{failedCore.push(coreNames[index]);console.error(result.reason)}});
+  const northstarResults=await Promise.allSettled([loadBank('northstar-math.json'),loadBank('northstar-vocabulary.json')]);
+  if(northstarResults[0].status==='fulfilled')northstar.math=northstarResults[0].value;else console.warn(northstarResults[0].reason);
+  if(northstarResults[1].status==='fulfilled')northstar.vocabulary=northstarResults[1].value;else console.warn(northstarResults[1].reason);
+  if(banks.math&&banks.english&&northstar.math&&northstar.vocabulary)integrateNorthstar();
+  updateBankCounts();
+  if(failedCore.length)error(`${lang==='zh'?'以下原题库暂时无法加载':'Core banks unavailable'}：${failedCore.join(', ')}。${lang==='zh'?'其余科目仍可正常使用。':'Other subjects remain available.'}`);
+  else if(!northstar.math||!northstar.vocabulary)error(lang==='zh'?'Northstar 暂时无法加载，原数学、英语和科学题库仍可正常使用。':'Northstar is unavailable; all core banks remain usable.');
 }
 function loadUser(){try{const s=localStorage.getItem('gongxing_academy_data');if(s){const saved=JSON.parse(s);user={...user,...saved,mastery:{...user.mastery,...(saved.mastery||{})},wrongBook:saved.wrongBook||[],unlockedAchievements:saved.unlockedAchievements||[]}}}catch{}const todayDate=new Date().toLocaleDateString(),y=new Date();y.setDate(y.getDate()-1);if(user.lastDate!==todayDate){if(user.lastDate&&user.lastDate!==y.toLocaleDateString())user.streak=0;user.todaySolved=0}updateDash()}
 function saveUser(){localStorage.setItem('gongxing_academy_data',JSON.stringify(user))}
@@ -207,7 +213,7 @@ function setLang(l){
   heroEyebrow.textContent=l==='zh'?'Northstar 学习路径':'Northstar Learning Path';heroTitle.innerHTML=l==='zh'?'每一道题，都让学习<span>更进一步。</span>':'Every question moves learning <span>forward.</span>';heroText.textContent=l==='zh'?'从基础题库到 Northstar 5–8 年级课程，用短小、专注的练习建立真实可见的学习进步。':'Move from core practice to Northstar grades 5–8 with short, focused sessions that make progress visible.';heroSprint.textContent=l==='zh'?'每轮 5 题':'5-question sprints';heroSubjects.textContent=l==='zh'?'数学 · 英语 · 科学':'Math · English · Science';
   mathDesc.textContent=l==='zh'?'数感、代数、几何与 5–8 年级 Northstar 单元。':'Number sense, algebra, geometry, and Northstar grades 5–8.';englishDesc.textContent=l==='zh'?'词义、语法、阅读与 Northstar 主题词汇。':'Meaning, grammar, reading, and themed Northstar vocabulary.';scienceDesc.textContent=l==='zh'?'从生命科学到物理、生化的分级练习。':'Graded practice from life science to physics and biochemistry.';backHome.textContent=l==='zh'?'返回学习路径':'Back to learning paths';levelLabel.textContent=l==='zh'?'选择课程等级':'Choose a course level';setupIntro.textContent=l==='zh'?'选择适合你的等级，开始一次专注练习。':'Choose your level and begin a focused practice sprint.';
   quizSubtitle.textContent=l==='zh'?'5 题专注练习':'5-question learning sprint';if(typeof wushuangText!=='undefined')wushuangText.textContent=wushuang?(l==='zh'?'无双 · ON':'HARD · ON'):(l==='zh'?'无双':'HARD');
-  if(banks.math)updateBankCounts();if(subject!=='none'){const selected=levels.value;crumb.textContent='› '+T[l][subject];updateSetupCopy();populate(selected)}if(questions.length)render();renderAchievements()
+  if(Object.values(banks).some(Boolean))updateBankCounts();if(subject!=='none'){const selected=levels.value;crumb.textContent='› '+T[l][subject];updateSetupCopy();populate(selected)}if(questions.length)render();renderAchievements()
 }
 
 function toggleWushuang(){wushuang=!wushuang;document.body.classList.toggle('wushuang',wushuang);wushuangToggle.classList.toggle('is-on',wushuang);wushuangToggle.setAttribute('aria-pressed',String(wushuang));wushuangText.textContent=wushuang?(lang==='zh'?'无双 · ON':'HARD · ON'):(lang==='zh'?'无双':'HARD');setupNote.textContent=wushuang?(lang==='zh'?'无双模式：竞赛难度 · 5 题 · 红色警戒':'HARD mode: contest difficulty · 5 questions · red alert'):T[lang].note}
