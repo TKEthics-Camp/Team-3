@@ -1,21 +1,114 @@
-# PRD — The Signal: a newsreader for young students
+# PRD — FocusPlay: A Study-First App with Earned Game Breaks
 
-**Status:** Clickable demo (v2) · **Owner:** TKEthics · **Last updated:** July 2026
+**Status:** Concept stage · **Owner:** [Your Name] · **Last updated:** July 2026
+
+---
 
 ## 1. Problem
 
-Nowadays, the problem is that young students (middle and high school) are constantly surrounded by an overwhelming influx of digital content but rarely truly engage with real-world news. Adult news platforms are too dense, jargon-heavy, and dry, while alternative social feeds are highly algorithmic, fragmented, and dangerously unsourced. Most critically, nothing connects major current events back to the students' daily lives, personal interests, or classroom discussions. Consequently, students are graduating news-illiterate — unable to name credible sources, spot media bias, or articulate why a global or local event actually matters to them. Nowadays, the 
+Students today face a relentless tug-of-war between studying and gaming. On one side, traditional flashcard and quiz apps feel like chores — dry, repetitive, and disconnected from any real motivation. On the other side, mobile games are designed to be *too* engaging, pulling students into endless sessions that eat into study time. There is no middle ground: no tool that makes studying genuinely rewarding while keeping gaming in its proper place as a controlled break. Students either burn out on boring drills or procrastinate endlessly. Meanwhile, parents and students themselves want a healthy balance — but no product currently enforces it with a fair, transparent exchange.
+
 ## 2. Goals
 
-Help students understand what's happening in the real world on a daily basis.
-Connect events to their lives by ensuring every story explicitly answers "why does this matter to me?"
-Expose different perspectives to actively teach source and bias awareness.
-Get students to question their own assumptions by prioritizing reason before results.
-Let them share what's worth sharing directly within their close class community.
-Support bilingual reading (EN/中文) and lightweight, contextual vocabulary learning.
-Non-goals: breaking news speed; comprehensive or exhaustive news coverage; building an open social network (the community is strictly limited to the student's own classroom); traditional gamification points, leaderboards, or addictive streaks.
+Make studying feel *earned* and *valued* by tying it directly to a reward students actually want.
+
+Keep gaming time bounded and proportional to effort — never free, never infinite.
+
+Build a sustainable study habit through short, focused sessions rather than marathon cramming.
+
+Offer genuinely fun, replayable mini-games that feel like a real break, not a cheap afterthought.
+
+Give students a sense of ownership over their time: they decide *when* to study and *when* to play, but the exchange rate is fixed and fair.
+
+Non-goals: social competition or leaderboards (the focus is personal progress, not comparison); open-ended game library (curated, high-quality mini-games only); parent-control lockdown mode (the app trusts the student with transparent rules); monetization through ads or pay-to-win mechanics.
 
 ## 3. Audience
 
-Primary: Students aged 11–16, primarily reading on mobile phones within short attention windows.
-Secondary: Teachers who use the day's stories, polls, and metrics to seed meaningful classroom discussions.
+**Primary:** Students aged 12–18, studying independently on mobile phones during commutes, lunch breaks, or short windows at home. They already play mobile games but feel guilty about time lost to them.
+
+**Secondary:** Parents who want their child to self-regulate screen time without constant nagging; teachers who might recommend the app for self-paced review.
+
+## 4. Product Shape
+
+A single mobile app with two distinct modes — **Study** and **Play** — locked behind a transparent, student-controlled exchange system.
+
+### 4.1 The Exchange System (Core Mechanic)
+
+- **Study Points (SP)** are earned by completing practice questions. The rate is fixed and visible:
+  - 1 SP = 1 minute of game time
+  - 10 quiz questions answered correctly = 1 SP
+  - A "perfect set" (10/10 in one session) = bonus 2 SP
+- **SP Balance** is displayed prominently on the home screen as the primary number the student tracks.
+- **Game time is deducted in real time** while playing. The student sees a countdown timer overlaid on every game screen. When SP hits zero, the game pauses and the screen flips back to Study mode.
+- **Daily SP cap:** Earn up to 60 SP per day (1 hour of game time). Prevents binge-studying-for-binge-gaming. Resets at midnight local time.
+- **SP does not expire** and carries over day-to-day, so a student can save up for a longer weekend session.
+
+### 4.2 Study Mode
+
+The study engine is a **topic-based quiz system** with three question types:
+
+| Type | Description | SP Reward |
+|---|---|---|
+| **Flashcard** | Term on front, tap to reveal definition. Self-marked correct/incorrect. | 0.1 SP per card |
+| **Multiple Choice** | 4 options, instant feedback. | 0.1 SP per correct answer |
+| **Fill-in-the-Blank** | Typed answer, fuzzy-matched. | 0.15 SP per correct answer |
+
+- **Question Bank:** Organized by subject (Math, Science, History, Language, Custom). Each subject has pre-loaded question sets aligned to common curricula; students can also create custom sets.
+- **Session Structure:** A "Study Round" is 10 questions, user-selected type and topic. After each round, the student sees: accuracy %, SP earned, and a "Play Break?" prompt.
+- **Spaced Repetition:** Questions answered incorrectly are automatically re-surfaced in future rounds with higher frequency. A "Review Queue" badge shows how many overdue items await.
+- **Progress Tracking:** Per-subject accuracy over time, streak of days with at least one completed round, and total lifetime SP earned.
+
+### 4.3 Play Mode
+
+A curated library of **5–7 lightweight, offline-capable mini-games**. Each game is designed for 3–10 minute sessions — perfect for a short earned break.
+
+**Initial game roster:**
+
+| Game | Genre | Session Length | Why It Works |
+|---|---|---|---|
+| **Orbit Dodge** | Arcade / reflex | 2–5 min | One-thumb play, instant restart, no progression system |
+| **Word Ladder** | Puzzle / word | 3–7 min | Feeds back into language learning subtly |
+| **Hexa Merge** | Strategy / numbers | 5–10 min | Satisfying without being hypnotic |
+| **Gravity Golf** | Physics / casual | 2–4 min | Short levels, clear endpoints |
+| **Pattern Lock** | Memory / pattern | 2–3 min | Brain-training adjacent, feels productive |
+
+- **No in-game currency, no upgrades, no ads.** The only "currency" is SP from Study mode. This keeps games pure and prevents the app from becoming another skinner box.
+- **Session timer overlay:** A thin bar at the top of the screen counts down remaining SP in real time. Turns red when under 2 minutes remain. Pauses the game at zero.
+- **Graceful exit:** When SP runs out, the game state is saved. The student can resume exactly where they left off *after* earning more SP.
+
+### 4.4 Home Screen & Navigation
+
+- **Central Dashboard:** Large SP balance front and center. Below it: quick-start buttons for "Study Round" and "Play Break."
+- **Today's Summary:** A card showing study rounds completed, accuracy, SP earned, and SP spent.
+- **Subject Quick Picks:** Last 3 studied subjects for one-tap resume.
+- **Bottom Nav:** Study · Play · Progress · Settings
+
+### 4.5 Progress & Reflection
+
+- **Weekly Report:** Every Sunday, a summary card shows: total study time, total play time, accuracy trends by subject, and a "balance score" (study minutes : play minutes). The ideal target is 2:1 or better.
+- **Milestone Badges:** Earned for study consistency (7-day streak, 30-day streak), subject mastery (90%+ accuracy in a topic), and balanced habits (maintained 2:1 ratio for a week). These are purely cosmetic — no SP bonuses, to avoid perverse incentives.
+- **Study Log:** A scrollable history of every round completed, with timestamps and accuracy. Useful for pre-exam review.
+
+## 5. Tone & Design Principles
+
+- **Study mode is clean and focused:** muted palette, minimal animation, no celebratory fanfare for correct answers — just a quiet checkmark and SP tick-up. The reward is the *number growing*, not a dopamine burst.
+- **Play mode is warm and playful:** richer colors, satisfying sound design, smooth animations. A clear visual shift signals "you are now in break mode."
+- **The SP balance is the hero:** it should feel like a wallet the student is proud to fill and deliberate about spending.
+- **No guilt, no shame:** If a student hasn't studied today, the app simply shows "0 SP" and a friendly "Start a round?" prompt. No red warnings, no parental tone.
+- **Transparency above all:** The exchange rate, the timer, the cap — everything is visible and fixed. No hidden mechanics.
+
+## 6. Technical Notes (MVP)
+
+- **Platform:** iOS and Android, React Native or Flutter.
+- **Offline-first:** Question banks and games cache locally. SP syncs when connection resumes.
+- **Local storage:** SP balance, progress, and game states stored on-device. Cloud backup optional.
+- **Question content:** Initial MVP ships with 500+ questions per core subject (Math, Science, History, English). Custom question creation is a v2 feature.
+- **Games:** Built in-engine (Unity or natively) for consistent performance and offline play.
+
+## 7. Decisions & Next Steps
+
+- **Exchange rate calibration (needs validation):** Pilot test whether 10 questions = 1 minute feels fair. Adjust if students feel the grind is too steep or too easy.
+- **Game roster (decided):** Start with 5 games. Add new ones only if engagement data shows the current set growing stale — quality over quantity.
+- **Custom question sets (v2):** Allow students to create and share question sets with classmates. Opens the door to peer-generated content.
+- **Parent dashboard (v2, optional):** A read-only weekly summary email for parents who want visibility — never real-time surveillance.
+- **Monetization model (decided):** Free with limited subjects; one-time unlock for full question banks. No subscriptions, no ads, no pay-for-SP. The integrity of the exchange is the product's core promise.
