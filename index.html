@@ -156,11 +156,17 @@ const ACHIEVEMENTS=[
 {id:'streak_30',icon:'🏆',zh:'月度传奇',en:'Monthly Legend',zhDesc:'连续学习 30 天',enDesc:'Maintain a 30-day streak',test:u=>u.streak>=30}
 ];
 let wushuang=false; let user={totalSolved:0,totalCorrect:0,todaySolved:0,lastDate:'',streak:0,mastery:{math:0,english:0,science:0},wrongBook:[],quizCount:0,perfectQuizzes:0,unlockedAchievements:[],equippedTitle:'',points:0};
-const tx=x=>typeof x==='object'?(x[lang]||x.zh||x.en||''):String(x??''); const clone=x=>JSON.parse(JSON.stringify(x)); const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+const tx=x=>typeof x==='object'?(x[lang]||x.zh||x.en||''):String(x??''); const clone=x=>JSON.parse(JSON.stringify(x));
+function randomIndex(upperBound){
+  if(!Number.isInteger(upperBound)||upperBound<1)throw new RangeError('upperBound must be a positive integer');
+  if(globalThis.crypto?.getRandomValues){const range=0x100000000,limit=range-range%upperBound,value=new Uint32Array(1);do globalThis.crypto.getRandomValues(value);while(value[0]>=limit);return value[0]%upperBound}
+  return Math.floor(Math.random()*upperBound)
+}
+function shuffle(values){const result=[...values];for(let i=result.length-1;i>0;i--){const j=randomIndex(i+1);[result[i],result[j]]=[result[j],result[i]]}return result}
 function error(message=''){const e=document.querySelector('#error');e.textContent=message;e.style.display=message?'block':'none'}
 const REMOTE_DATA_ROOTS=['https://raw.githubusercontent.com/TKEthics-Camp/Team-3/main/data','https://cdn.jsdelivr.net/gh/TKEthics-Camp/Team-3@main/data'];
-function bankUrls(file){const remote=REMOTE_DATA_ROOTS.map(root=>`${root}/${file}`);return location.protocol==='file:'?remote:[`./data/${file}`,...remote]}
-async function loadBank(file){if(Object.prototype.hasOwnProperty.call(embeddedBanks,file))return clone(embeddedBanks[file]);const failures=[];for(const url of bankUrls(file)){try{const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw Error(String(response.status));return await response.json()}catch(e){failures.push(`${url}: ${e.message}`)}}throw Error(`${file} 加载失败\n${failures.join('\n')}`)}
+function bankUrls(file){const remote=REMOTE_DATA_ROOTS.map(root=>`${root}/${file}`);return location.protocol==='file:'?[]:[`./data/${file}`,...remote]}
+async function loadBank(file){const failures=[];for(const url of bankUrls(file)){try{const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw Error(String(response.status));return await response.json()}catch(e){failures.push(`${url}: ${e.message}`)}}if(Object.prototype.hasOwnProperty.call(embeddedBanks,file))return clone(embeddedBanks[file]);throw Error(`${file} 加载失败\n${failures.join('\n')}`)}
 function bi(zh,en=zh){return{zh,en}}
 function integrateSupplemental(){
   const mathLevels=supplemental.math.grades.map(entry=>({
@@ -247,8 +253,10 @@ function updateLevelPreview(){
   previewSource.textContent=level.source==='Extension'?(lang==='zh'?'拓展题库':'EXTENSION BANK'):(lang==='zh'?'基础题库':'CORE QUESTION BANK');previewTitle.textContent=tx(level.name);previewDescription.textContent=level.description?tx(level.description):(lang==='zh'?'分级题库练习，系统会平衡题型与知识点。':'Graded practice balanced across question types and topics.');previewQuestions.textContent=`${level.questions.length} ${lang==='zh'?'道题':'questions'}`;previewUnits.textContent=level.units?`${level.units.length} ${lang==='zh'?'个单元':'units'}`:(lang==='zh'?'智能均衡抽题':'Balanced selection');previewExtension.hidden=level.source!=='Extension';start.style.background=level.source==='Extension'?'var(--mint)':'var(--coral)'
 }
 function questionKey(q){return JSON.stringify([q.type,q.question,q.passage,q.options]);}
+function loadQuizHistory(key,liveKeys){try{const saved=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(saved)?saved.filter(item=>typeof item==='string'&&liveKeys.has(item)):[]}catch{return[]}}
+function saveQuizHistory(key,previous,selected,poolSize,count){const limit=Math.min(count*3,Math.max(0,poolSize-count)),combined=[...previous,...selected.map(questionKey)],seen=new Set(),newest=[];for(let i=combined.length-1;i>=0;i--)if(!seen.has(combined[i])){seen.add(combined[i]);newest.push(combined[i])}try{if(limit)localStorage.setItem(key,JSON.stringify(newest.reverse().slice(-limit)));else localStorage.removeItem(key)}catch{}}
 function selectBalanced(pool,count,previous){
-  const fresh=shuffle(pool.filter(q=>!previous.has(q.id))), seen=shuffle(pool.filter(q=>previous.has(q.id)));
+  const fresh=shuffle(pool.filter(q=>!previous.has(questionKey(q)))), seen=shuffle(pool.filter(q=>previous.has(questionKey(q))));
   const source=[...fresh,...seen], chosen=[], used=new Set(), usedTopics=new Set(), usedTypes=new Set();
   for(const prefer of ['type','knowledge','any']) for(const q of source){
     if(chosen.length>=count||used.has(questionKey(q)))continue;
@@ -261,7 +269,7 @@ function selectBalanced(pool,count,previous){
 }
 function startQuiz(){
   const level=banks[subject].levels.find(item=>String(item.id)===levels.value);if(!level?.questions?.length)return error(lang==='zh'?'当前等级没有题目。':'No questions found for this level.');
-  if(wushuang){questions=wushuangQuestions(level)}else{const pool=[...new Map(level.questions.map(q=>[questionKey(q),q])).values()],count=Math.min(TOTAL,pool.length),key='gongxing_last_quiz:'+subject+':'+level.id;let previous=[];try{previous=JSON.parse(sessionStorage.getItem(key)||'[]')}catch{}questions=selectBalanced(pool,count,new Set(previous))}
+  if(wushuang){questions=wushuangQuestions(level)}else{const pool=[...new Map(level.questions.map(q=>[questionKey(q),q])).values()],count=Math.min(TOTAL,pool.length),key='gongxing_quiz_history_v2:'+subject+':'+level.id,liveKeys=new Set(pool.map(questionKey)),previous=loadQuizHistory(key,liveKeys);questions=selectBalanced(pool,count,new Set(previous));saveQuizHistory(key,previous,questions,pool.length,count)}
   questions=questions.map(source=>{const q=clone(source);q.levelId=level.id;if(Array.isArray(q.options)){const shuffled=shuffle(q.options.map((option,index)=>({option,correct:index===q.answer})));q.options=shuffled.map(item=>item.option);q.answer=shuffled.findIndex(item=>item.correct)}return q});answers=Array(questions.length).fill(null);current=0;graded=false;setup.hidden=true;quizView.hidden=false;score.style.display='none';quizTitle.textContent=tx(level.name);quizSubtitle.textContent=level.source==='Extension'?(lang==='zh'?'拓展题库 · 5 题专注练习':'Extension bank · 5-question sprint'):(lang==='zh'?'智能均衡练习':'Balanced practice');dots.innerHTML=questions.map((_,i)=>'<i class=\"dot\" onclick=\"jump('+i+')\"></i>').join('');render()
 }
 function render(){
