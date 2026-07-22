@@ -243,15 +243,19 @@ function wushuangQuestions(level){
 function goHome(){home.hidden=false;setup.hidden=true;quizView.hidden=true;subject='none';questions=[];crumb.textContent='';wushuang=false;document.body.className='';wushuangToggle.style.display='none';wushuangToggle.classList.remove('is-on');wushuangToggle.setAttribute('aria-pressed','false');wushuangText.textContent=lang==='zh'?'无双':'HARD';updateDash()}
 function exitQuiz(){quizView.hidden=true;setup.hidden=false;questions=[];graded=false;updateLevelPreview()}
 function updateSetupCopy(){const map={math:['∑','COURSE LIBRARY'],english:['Aa','VOCABULARY STUDIO'],science:['⌬','SCIENCE LAB']};setupIcon.textContent=map[subject][0];setupEyebrow.textContent=map[subject][1];setupTitle.textContent=T[lang][subject]}
+const LEVEL_PREFERENCE_PREFIX='gongxing_last_level_v1:';
+function savedLevel(subjectName){try{return localStorage.getItem(LEVEL_PREFERENCE_PREFIX+subjectName)||''}catch{return''}}
+function rememberLevel(subjectName,levelId){try{localStorage.setItem(LEVEL_PREFERENCE_PREFIX+subjectName,String(levelId))}catch{}}
 function selectSubject(s){if(!banks[s])return error(lang==='zh'?'题库尚未加载完成，请检查页面顶部提示。':'Question bank is still loading; check the notice above.');error('');subject=s;wushuang=false;document.body.classList.remove('wushuang');wushuangToggle.style.display='flex';home.hidden=true;setup.hidden=false;quizView.hidden=true;crumb.textContent='› '+T[lang][s];updateSetupCopy();populate()}
 function populate(preferred=''){
   setupNote.textContent=wushuang?(lang==='zh'?'无双题库突袭：跨越当前及更高等级 · 10 题 · 双倍积分':'HARD bank raid: current and higher levels · 10 questions · double points'):T[lang].note;levels.innerHTML='';
   const core=document.createElement('optgroup'),extension=document.createElement('optgroup');core.label=lang==='zh'?'基础题库':'Core bank';extension.label=lang==='zh'?'拓展题库 · 5–8 年级':'Extension bank · Grades 5–8';
   banks[subject].levels.forEach(level=>{const option=document.createElement('option');option.value=level.id;option.textContent=tx(level.name);(level.source==='Extension'?extension:core).append(option)});
-  levels.append(core);if(extension.children.length)levels.append(extension);if(preferred&&[...levels.options].some(option=>option.value===preferred))levels.value=preferred;updateLevelPreview()
+  levels.append(core);if(extension.children.length)levels.append(extension);const target=preferred||savedLevel(subject);if(target&&[...levels.options].some(option=>option.value===target))levels.value=target;updateLevelPreview()
 }
 function updateLevelPreview(){
   if(subject==='none'||!banks[subject])return;const level=banks[subject].levels.find(item=>String(item.id)===levels.value);if(!level)return;
+  rememberLevel(subject,levels.value);
   previewSource.textContent=wushuang?(lang==='zh'?'无双真实题库':'HARD QUESTION BANK'):level.source==='Extension'?(lang==='zh'?'拓展题库':'EXTENSION BANK'):(lang==='zh'?'基础题库':'CORE QUESTION BANK');previewTitle.textContent=tx(level.name);previewDescription.textContent=wushuang?(lang==='zh'?'从当前等级和后续两个更高等级的真实题库中抽取，近期做过的题会优先避开。':'Draws from the real banks for this and the next two levels, prioritizing unseen questions.'):level.description?tx(level.description):(lang==='zh'?'分级题库练习，系统会平衡题型与知识点。':'Graded practice balanced across question types and topics.');previewQuestions.textContent=wushuang?`${WUSHUANG_TOTAL} ${lang==='zh'?'题 / 局':'questions / raid'}`:`${level.questions.length} ${lang==='zh'?'道题':'questions'}`;previewUnits.textContent=wushuang?(lang==='zh'?'跨级挑战 · 双倍积分':'Cross-level · 2× points'):level.units?`${level.units.length} ${lang==='zh'?'个单元':'units'}`:(lang==='zh'?'智能均衡抽题':'Balanced selection');previewExtension.hidden=wushuang||level.source!=='Extension';start.textContent=wushuang?(lang==='zh'?'开始无双挑战 →':'Start HARD raid →'):T[lang].start;start.style.background=wushuang?'var(--error)':level.source==='Extension'?'var(--mint)':'var(--coral)'
 }
 function questionKey(q){return JSON.stringify([q.type,q.question,q.passage,q.options]);}
