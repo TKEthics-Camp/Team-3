@@ -13699,7 +13699,7 @@
               "en": "The observation is only coincidence and permits no testable explanation"
             },
             {
-              "zh": "理想简谐振动回复力与位移成反比方向相反，能量在动能势能间转换",
+              "zh": "理想简谐振动回复力与位移成正比、方向相反，能量在动能和势能间转换",
               "en": "In ideal SHM, restoring force is proportional and opposite to displacement; energy swaps between kinetic and potential"
             },
             {
@@ -13750,7 +13750,7 @@
           "id": "hs9_06_3",
           "type": "mc",
           "question": {
-            "zh": "哪项证据最直接支持这一结论：理想简谐振动回复力与位移成反比方向相反，能量在动能势能间转换？",
+            "zh": "哪项证据最直接支持这一结论：理想简谐振动回复力与位移成正比、方向相反，能量在动能和势能间转换？",
             "en": "Which evidence most directly supports this conclusion: In ideal SHM, restoring force is proportional and opposite to displacement; energy swaps between kinetic and potential?"
           },
           "options": [

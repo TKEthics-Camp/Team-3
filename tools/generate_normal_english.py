@@ -125,10 +125,9 @@ def vocab_questions(level, topic_en, topic_zh, adjective):
             "options": opts, "answer": ans, "knowledge": "vocabulary-in-context"
         })
 
-        syn_term = f"{adjective} {synonym}"
-        distractor_syns = [concepts[(i + j) % 20][2] for j in (4, 8, 12)]
+        synonym_entries = [concepts[i]] + [concepts[(i + j) % 20] for j in (4, 8, 12)]
         syn_opts, syn_ans = rotate(
-            [loc(syn_term, f"{topic_zh}{synonym}")] + [loc(f"{adjective} {x}", f"{topic_zh}{x}") for x in distractor_syns],
+            [loc(f"{adjective} {entry[2]}", f"{topic_zh}{entry[1]}") for entry in synonym_entries],
             0, level * 2000 + i)
         result.append({
             "type": "synonym",

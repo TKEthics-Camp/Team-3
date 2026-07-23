@@ -3,6 +3,8 @@ const path = require('path');
 
 const levels = [];
 const round = (n) => Number(n.toFixed(6));
+const signedTerm = (value) => value >= 0 ? `+${value}` : `-${-value}`;
+const shiftedVariable = (variable, value) => value >= 0 ? `${variable}-${value}` : `${variable}+${-value}`;
 
 function makeLevel(grade, zhName, enName) {
   const questions = [];
@@ -114,7 +116,7 @@ function makeLevel(grade, zhName, enName) {
 {
   const { add, finish } = makeLevel(9, '九年级 · 无双', 'Grade 9 · Hard');
   for(let i=0;i<10;i++){const r1=2+i,r2=-(3+(i%5)),b=-(r1+r2),c=r1*r2;add('quadratic equation',`方程 x² ${b>=0?'+ '+b:'- '+(-b)}x ${c>=0?'+ '+c:'- '+(-c)} = 0 的较大根是多少？`,`What is the larger root of x² ${b>=0?'+ '+b:'- '+(-b)}x ${c>=0?'+ '+c:'- '+(-c)} = 0?`,Math.max(r1,r2));}
-  for(let i=0;i<10;i++){const a=3+i,h=-2+(i%5),k=7+i,x=h+2;add('quadratic function',`函数 y=${a}(x-${h})²+${k}，当 x=${x} 时 y=?`,`For y=${a}(x-${h})²+${k}, find y when x=${x}.`,a*(x-h)**2+k);}
+  for(let i=0;i<10;i++){const a=3+i,h=-2+(i%5),k=7+i,x=h+2;const shifted=shiftedVariable('x',h);add('quadratic function',`函数 y=${a}(${shifted})²+${k}，当 x=${x} 时 y=?`,`For y=${a}(${shifted})²+${k}, find y when x=${x}.`,a*(x-h)**2+k);}
   for(let i=0;i<10;i++){const hyp=10+i*2,ratio=[0.5,Math.sqrt(2)/2,Math.sqrt(3)/2][i%3];const angle=[30,45,60][i%3];add('trigonometry',`直角三角形斜边为 ${hyp}，一个锐角为 ${angle}°，该角对边长是多少？`,`A right triangle has hypotenuse ${hyp} and an acute angle ${angle}°. Find the opposite side.`,hyp*ratio);}
   for(let i=0;i<10;i++){const r=5+i,d=6+(i%5);add('circle geometry',`圆半径为 ${r}，圆心到一条弦的距离为 ${d<r?d:r-1}，弦长是多少？`,`A circle has radius ${r}; the distance from center to a chord is ${d<r?d:r-1}. Find the chord length.`,2*Math.sqrt(r*r-(d<r?d:r-1)**2));}
   for(let i=0;i<10;i++){const n=7+i,k=2+(i%3);let comb=1;for(let j=1;j<=k;j++)comb=comb*(n-j+1)/j;add('combinatorics',`从 ${n} 个不同元素中选 ${k} 个，共有多少种组合？`,`How many ways can ${k} elements be chosen from ${n} distinct elements?`,comb);}
@@ -124,7 +126,7 @@ function makeLevel(grade, zhName, enName) {
 // Grade 10
 {
   const { add, finish } = makeLevel(10, '高一 · 无双', 'Grade 10 · Hard');
-  for(let i=0;i<10;i++){const x=2+i,a=2+(i%4),b=5-i,c=3+(i%3);add('composite function',`f(x)=${a}x+${b}，g(x)=x²-${c}，求 g(f(${x}))。`,`Let f(x)=${a}x+${b} and g(x)=x²-${c}. Find g(f(${x})).`,(a*x+b)**2-c);}
+  for(let i=0;i<10;i++){const x=2+i,a=2+(i%4),b=5-i,c=3+(i%3);const linear=`${a}x${signedTerm(b)}`;add('composite function',`f(x)=${linear}，g(x)=x²-${c}，求 g(f(${x}))。`,`Let f(x)=${linear} and g(x)=x²-${c}. Find g(f(${x})).`,(a*x+b)**2-c);}
   for(let i=0;i<10;i++){const base=2+(i%4),p=5+i,q=2+(i%3);add('exponents and logarithms',`log_${base}(${base**p}) - ${q} = ?`,`log base ${base} of ${base**p}, minus ${q}, equals?`,p-q);}
   for(let i=0;i<10;i++){const first=5+i,d=3+(i%5),n=12+(i%4);add('arithmetic sequence',`等差数列首项 ${first}、公差 ${d}，前 ${n} 项和是多少？`,`An arithmetic sequence has first term ${first}, difference ${d}. Find the sum of first ${n} terms.`,n*(2*first+(n-1)*d)/2);}
   for(let i=0;i<10;i++){const x1=-5+i,y1=3+i,x2=x1+4+(i%3),y2=y1+6+(i%4);add('analytic geometry',`点 A(${x1},${y1})、B(${x2},${y2})，线段 AB 中点的横纵坐标之和是多少？`,`For A(${x1},${y1}) and B(${x2},${y2}), what is the sum of the midpoint's coordinates?`,(x1+x2+y1+y2)/2);}
@@ -135,11 +137,11 @@ function makeLevel(grade, zhName, enName) {
 // Grade 11
 {
   const { add, finish } = makeLevel(11, '高二 · 无双', 'Grade 11 · Hard');
-  for(let i=0;i<10;i++){const x=2+i,a=2+(i%4),b=3+(i%5),c=7-i;add('derivative',`f(x)=${a}x³-${b}x²+${c}，求 f'(${x})。`,`For f(x)=${a}x³-${b}x²+${c}, find f'(${x}).`,3*a*x*x-2*b*x);}
+  for(let i=0;i<10;i++){const x=2+i,a=2+(i%4),b=3+(i%5),c=7-i;const polynomial=`${a}x³-${b}x²${signedTerm(c)}`;add('derivative',`f(x)=${polynomial}，求 f'(${x})。`,`For f(x)=${polynomial}, find f'(${x}).`,3*a*x*x-2*b*x);}
   for(let i=0;i<10;i++){const a=2+i,b=3+(i%5),c=-4+(i%4),d=5+i;add('vectors',`向量 u=(${a},${b})，v=(${c},${d})，内积 u·v 是多少？`,`For u=(${a},${b}) and v=(${c},${d}), find u·v.`,a*c+b*d);}
   for(let i=0;i<10;i++){const n=10+i,k=2+(i%3);let comb=1;for(let j=1;j<=k;j++)comb=comb*(n-j+1)/j;add('binomial probability',`公平硬币抛 ${n} 次，恰好 ${k} 次正面的概率乘以 2^${n} 等于多少？`,`A fair coin is tossed ${n} times. The probability of exactly ${k} heads multiplied by 2^${n} equals what?`,comb);}
   for(let i=0;i<10;i++){const first=3+i,r=2+(i%3),n=6+(i%4);add('geometric sequence',`等比数列首项 ${first}、公比 ${r}，前 ${n} 项和是多少？`,`A geometric sequence has first term ${first}, ratio ${r}. Find the sum of first ${n} terms.`,first*(r**n-1)/(r-1));}
-  for(let i=0;i<10;i++){const h=-3+i,k=4-i,r=5+(i%6);const x=h+3;add('circle equation',`圆 (x-${h})²+(y-${k})²=${r*r} 上横坐标为 ${x} 的点，其纵坐标较大值是多少？`,`On (x-${h})²+(y-${k})²=${r*r}, a point has x=${x}. Find the larger y-coordinate.`,k+Math.sqrt(r*r-9));}
+  for(let i=0;i<10;i++){const h=-3+i,k=4-i,r=5+(i%6);const x=h+3;const shiftedX=shiftedVariable('x',h),shiftedY=shiftedVariable('y',k);add('circle equation',`圆 (${shiftedX})²+(${shiftedY})²=${r*r} 上横坐标为 ${x} 的点，其纵坐标较大值是多少？`,`On (${shiftedX})²+(${shiftedY})²=${r*r}, a point has x=${x}. Find the larger y-coordinate.`,k+Math.sqrt(r*r-9));}
   finish();
 }
 

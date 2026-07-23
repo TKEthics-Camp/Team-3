@@ -4595,8 +4595,8 @@
           "id": "hm9_11",
           "type": "number",
           "question": {
-            "zh": "函数 y=3(x--2)²+7，当 x=0 时 y=?",
-            "en": "For y=3(x--2)²+7, find y when x=0."
+            "zh": "函数 y=3(x+2)²+7，当 x=0 时 y=?",
+            "en": "For y=3(x+2)²+7, find y when x=0."
           },
           "answer": 19,
           "knowledge": "quadratic function",
@@ -4606,8 +4606,8 @@
           "id": "hm9_12",
           "type": "number",
           "question": {
-            "zh": "函数 y=4(x--1)²+8，当 x=1 时 y=?",
-            "en": "For y=4(x--1)²+8, find y when x=1."
+            "zh": "函数 y=4(x+1)²+8，当 x=1 时 y=?",
+            "en": "For y=4(x+1)²+8, find y when x=1."
           },
           "answer": 24,
           "knowledge": "quadratic function",
@@ -4650,8 +4650,8 @@
           "id": "hm9_16",
           "type": "number",
           "question": {
-            "zh": "函数 y=8(x--2)²+12，当 x=0 时 y=?",
-            "en": "For y=8(x--2)²+12, find y when x=0."
+            "zh": "函数 y=8(x+2)²+12，当 x=0 时 y=?",
+            "en": "For y=8(x+2)²+12, find y when x=0."
           },
           "answer": 44,
           "knowledge": "quadratic function",
@@ -4661,8 +4661,8 @@
           "id": "hm9_17",
           "type": "number",
           "question": {
-            "zh": "函数 y=9(x--1)²+13，当 x=1 时 y=?",
-            "en": "For y=9(x--1)²+13, find y when x=1."
+            "zh": "函数 y=9(x+1)²+13，当 x=1 时 y=?",
+            "en": "For y=9(x+1)²+13, find y when x=1."
           },
           "answer": 49,
           "knowledge": "quadratic function",
@@ -5110,8 +5110,8 @@
           "id": "hm10_07",
           "type": "number",
           "question": {
-            "zh": "f(x)=4x+-1，g(x)=x²-3，求 g(f(8))。",
-            "en": "Let f(x)=4x+-1 and g(x)=x²-3. Find g(f(8))."
+            "zh": "f(x)=4x-1，g(x)=x²-3，求 g(f(8))。",
+            "en": "Let f(x)=4x-1 and g(x)=x²-3. Find g(f(8))."
           },
           "answer": 958,
           "knowledge": "composite function",
@@ -5121,8 +5121,8 @@
           "id": "hm10_08",
           "type": "number",
           "question": {
-            "zh": "f(x)=5x+-2，g(x)=x²-4，求 g(f(9))。",
-            "en": "Let f(x)=5x+-2 and g(x)=x²-4. Find g(f(9))."
+            "zh": "f(x)=5x-2，g(x)=x²-4，求 g(f(9))。",
+            "en": "Let f(x)=5x-2 and g(x)=x²-4. Find g(f(9))."
           },
           "answer": 1845,
           "knowledge": "composite function",
@@ -5132,8 +5132,8 @@
           "id": "hm10_09",
           "type": "number",
           "question": {
-            "zh": "f(x)=2x+-3，g(x)=x²-5，求 g(f(10))。",
-            "en": "Let f(x)=2x+-3 and g(x)=x²-5. Find g(f(10))."
+            "zh": "f(x)=2x-3，g(x)=x²-5，求 g(f(10))。",
+            "en": "Let f(x)=2x-3 and g(x)=x²-5. Find g(f(10))."
           },
           "answer": 284,
           "knowledge": "composite function",
@@ -5143,8 +5143,8 @@
           "id": "hm10_10",
           "type": "number",
           "question": {
-            "zh": "f(x)=3x+-4，g(x)=x²-3，求 g(f(11))。",
-            "en": "Let f(x)=3x+-4 and g(x)=x²-3. Find g(f(11))."
+            "zh": "f(x)=3x-4，g(x)=x²-3，求 g(f(11))。",
+            "en": "Let f(x)=3x-4 and g(x)=x²-3. Find g(f(11))."
           },
           "answer": 838,
           "knowledge": "composite function",
@@ -5691,8 +5691,8 @@
           "id": "hm11_09",
           "type": "number",
           "question": {
-            "zh": "f(x)=2x³-6x²+-1，求 f'(10)。",
-            "en": "For f(x)=2x³-6x²+-1, find f'(10)."
+            "zh": "f(x)=2x³-6x²-1，求 f'(10)。",
+            "en": "For f(x)=2x³-6x²-1, find f'(10)."
           },
           "answer": 480,
           "knowledge": "derivative",
@@ -5702,8 +5702,8 @@
           "id": "hm11_10",
           "type": "number",
           "question": {
-            "zh": "f(x)=3x³-7x²+-2，求 f'(11)。",
-            "en": "For f(x)=3x³-7x²+-2, find f'(11)."
+            "zh": "f(x)=3x³-7x²-2，求 f'(11)。",
+            "en": "For f(x)=3x³-7x²-2, find f'(11)."
           },
           "answer": 935,
           "knowledge": "derivative",
@@ -6043,8 +6043,8 @@
           "id": "hm11_41",
           "type": "number",
           "question": {
-            "zh": "圆 (x--3)²+(y-4)²=25 上横坐标为 0 的点，其纵坐标较大值是多少？",
-            "en": "On (x--3)²+(y-4)²=25, a point has x=0. Find the larger y-coordinate."
+            "zh": "圆 (x+3)²+(y-4)²=25 上横坐标为 0 的点，其纵坐标较大值是多少？",
+            "en": "On (x+3)²+(y-4)²=25, a point has x=0. Find the larger y-coordinate."
           },
           "answer": 8,
           "knowledge": "circle equation",
@@ -6054,8 +6054,8 @@
           "id": "hm11_42",
           "type": "number",
           "question": {
-            "zh": "圆 (x--2)²+(y-3)²=36 上横坐标为 1 的点，其纵坐标较大值是多少？",
-            "en": "On (x--2)²+(y-3)²=36, a point has x=1. Find the larger y-coordinate."
+            "zh": "圆 (x+2)²+(y-3)²=36 上横坐标为 1 的点，其纵坐标较大值是多少？",
+            "en": "On (x+2)²+(y-3)²=36, a point has x=1. Find the larger y-coordinate."
           },
           "answer": 8.196152,
           "knowledge": "circle equation",
@@ -6065,8 +6065,8 @@
           "id": "hm11_43",
           "type": "number",
           "question": {
-            "zh": "圆 (x--1)²+(y-2)²=49 上横坐标为 2 的点，其纵坐标较大值是多少？",
-            "en": "On (x--1)²+(y-2)²=49, a point has x=2. Find the larger y-coordinate."
+            "zh": "圆 (x+1)²+(y-2)²=49 上横坐标为 2 的点，其纵坐标较大值是多少？",
+            "en": "On (x+1)²+(y-2)²=49, a point has x=2. Find the larger y-coordinate."
           },
           "answer": 8.324555,
           "knowledge": "circle equation",
@@ -6098,8 +6098,8 @@
           "id": "hm11_46",
           "type": "number",
           "question": {
-            "zh": "圆 (x-2)²+(y--1)²=100 上横坐标为 5 的点，其纵坐标较大值是多少？",
-            "en": "On (x-2)²+(y--1)²=100, a point has x=5. Find the larger y-coordinate."
+            "zh": "圆 (x-2)²+(y+1)²=100 上横坐标为 5 的点，其纵坐标较大值是多少？",
+            "en": "On (x-2)²+(y+1)²=100, a point has x=5. Find the larger y-coordinate."
           },
           "answer": 8.539392,
           "knowledge": "circle equation",
@@ -6109,8 +6109,8 @@
           "id": "hm11_47",
           "type": "number",
           "question": {
-            "zh": "圆 (x-3)²+(y--2)²=25 上横坐标为 6 的点，其纵坐标较大值是多少？",
-            "en": "On (x-3)²+(y--2)²=25, a point has x=6. Find the larger y-coordinate."
+            "zh": "圆 (x-3)²+(y+2)²=25 上横坐标为 6 的点，其纵坐标较大值是多少？",
+            "en": "On (x-3)²+(y+2)²=25, a point has x=6. Find the larger y-coordinate."
           },
           "answer": 2,
           "knowledge": "circle equation",
@@ -6120,8 +6120,8 @@
           "id": "hm11_48",
           "type": "number",
           "question": {
-            "zh": "圆 (x-4)²+(y--3)²=36 上横坐标为 7 的点，其纵坐标较大值是多少？",
-            "en": "On (x-4)²+(y--3)²=36, a point has x=7. Find the larger y-coordinate."
+            "zh": "圆 (x-4)²+(y+3)²=36 上横坐标为 7 的点，其纵坐标较大值是多少？",
+            "en": "On (x-4)²+(y+3)²=36, a point has x=7. Find the larger y-coordinate."
           },
           "answer": 2.196152,
           "knowledge": "circle equation",
@@ -6131,8 +6131,8 @@
           "id": "hm11_49",
           "type": "number",
           "question": {
-            "zh": "圆 (x-5)²+(y--4)²=49 上横坐标为 8 的点，其纵坐标较大值是多少？",
-            "en": "On (x-5)²+(y--4)²=49, a point has x=8. Find the larger y-coordinate."
+            "zh": "圆 (x-5)²+(y+4)²=49 上横坐标为 8 的点，其纵坐标较大值是多少？",
+            "en": "On (x-5)²+(y+4)²=49, a point has x=8. Find the larger y-coordinate."
           },
           "answer": 2.324555,
           "knowledge": "circle equation",
@@ -6142,8 +6142,8 @@
           "id": "hm11_50",
           "type": "number",
           "question": {
-            "zh": "圆 (x-6)²+(y--5)²=64 上横坐标为 9 的点，其纵坐标较大值是多少？",
-            "en": "On (x-6)²+(y--5)²=64, a point has x=9. Find the larger y-coordinate."
+            "zh": "圆 (x-6)²+(y+5)²=64 上横坐标为 9 的点，其纵坐标较大值是多少？",
+            "en": "On (x-6)²+(y+5)²=64, a point has x=9. Find the larger y-coordinate."
           },
           "answer": 2.416198,
           "knowledge": "circle equation",
