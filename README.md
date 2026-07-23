@@ -41,14 +41,57 @@ The server has no third-party package dependencies and stores passwords as salte
 node server/index.js
 ```
 
-It listens on `127.0.0.1:8787` by default. Set `HOST`, `PORT`, and `DATA_FILE` in the deployment environment as needed, then set `window.REMOTE_SERVER_URL` in `src/config/remote.js` to the public HTTPS origin. The checked-in address is intentionally blank.
+It listens on port `8787` on all network interfaces by default. `src/config/remote.js` uses the current page hostname when one exists and falls back to `localhost` when `index.html` is opened directly. A page opened at `http://192.168.1.20:8000`, for example, connects to `http://192.168.1.20:8787`; direct desktop opening connects to `http://localhost:8787`.
+
+### Change the remote address
+
+Edit the deployment values near the top of `src/config/remote.js`:
+
+```js
+window.REMOTE_SERVER_HOST = location.hostname || 'localhost';
+window.REMOTE_SERVER_PORT = 8787;
+window.REMOTE_SERVER_PROTOCOL = 'http:';
+```
+
+- For a LAN demo, keep the hostname expression and change only the port if required.
+- For a fixed remote host, replace the first value with a hostname such as `'api.example.com'`.
+- For production HTTPS, set the protocol to `'https:'` and normally set the port to `443`.
+- `REMOTE_SERVER_URL` is assembled from those three values below them; it can instead be replaced with a complete API origin when a reverse proxy uses a non-standard path or topology.
+
+The backend `HOST` environment variable controls which network interfaces accept connections; it is not the public hostname. Set backend `HOST`, `PORT`, and `DATA_FILE` in the deployment environment as needed.
+
+### Demo commands
+
+For a desktop demonstration that opens `index.html` directly, start the account service from the repository root:
+
+```sh
+node server/index.js
+```
+
+Keep that terminal open, then double-click `index.html`. The page connects to `http://localhost:8787`.
+
+For a phone or tablet demonstration, keep the account service running in terminal 1:
+
+```sh
+# Terminal 1
+node server/index.js
+```
+
+Start the static site in a second terminal:
+
+```sh
+# Terminal 2
+python3 -m http.server 8000 --bind 0.0.0.0
+```
+
+Then visit `http://<computer-lan-address>:8000/` from the mobile device. The browser automatically uses that same LAN address for the account server. Keep both terminals open during the demonstration. Ports `8000` and `8787` must be allowed through the host firewall. The account dialog, friend form, leaderboard tabs, and all arcade controls include narrow-screen layouts.
 
 Server data is written under `server/data/` by default and is ignored by Git. Back up that directory in production. The built-in server is a deployable prototype; a public deployment should add TLS at a reverse proxy, origin restrictions, rate limiting, monitoring, and managed durable storage.
 
 Run the API smoke test against a running server with:
 
 ```sh
-SERVER_URL=http://127.0.0.1:8787 node server/smoke-test.js
+SERVER_URL=http://your-demo-host:8787 node server/smoke-test.js
 ```
 
 ## Repository layout

@@ -3,6 +3,8 @@ const T={zh:{brand:'知途学苑',logo:'知',pageTitle:'知途学苑 - 智能学
 T.zh.note='每次最多随机抽取 5 道不重复题目；题量不足时按实际题数测试。';T.en.note='Each quiz selects up to 5 unique questions. Smaller banks use their available question count.';
 Object.assign(T.zh,{brand:'无名学苑',logo:'无',pageTitle:'无名学苑 - 智能学习系统',backToSetup:'← 返回难度',backHome:'← 返回主页面'});
 Object.assign(T.en,{brand:'Nameless Academy',logo:'N',pageTitle:'Nameless Academy - Smart Learning System',backToSetup:'← Back to levels',backHome:'← Back to home'});
+Object.assign(T.zh,{heroEm:'更进一步',heroCopy:'从小学到高中，用短小、专注的分级练习建立真实可见的学习进步',sub:'数学、英语与科学分级题库均已接入',mathDesc:'数感、代数、几何与分级拓展题',englishDesc:'词义、语法、阅读与主题词汇拓展',scienceDesc:'从生命科学到物理、化学的探索'});
+Object.assign(T.en,{heroEm:'one step forward',heroCopy:'From elementary school to high school, focused level-based practice makes progress clear and visible',sub:'Graded Math, English, and Science question banks are ready',mathDesc:'Number sense, algebra, geometry, and leveled extension problems',englishDesc:'Word meanings, grammar, reading, and themed vocabulary growth',scienceDesc:'Explore life science, physics, chemistry, and scientific reasoning'});
 Object.assign(T.zh,{gameSub:'七款独立小游戏 · 兑换时间后畅玩',usageTitle:'查看使用记录',usageSub:'今日与本周 · 学习时长、游玩时长和答题等级'});
 Object.assign(T.en,{gameSub:'Seven independent games · Redeem time to play',usageTitle:'View usage records',usageSub:'Today and this week · learning, play, and question levels'});
 const ACHIEVEMENTS=[

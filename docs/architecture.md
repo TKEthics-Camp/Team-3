@@ -6,7 +6,7 @@
 
 When a student exchanges points for game time, the learning application writes a versioned session object to browser storage and navigates to `games.html`. The arcade validates that session before rendering. Direct `file://` navigation also carries a short-lived, bidirectional session handoff because browsers may isolate storage by local file; both pages import the latest remaining time and immediately clear the handoff. Shared arcade infrastructure controls timing, scoring, language, lifecycle, canvas mounting, and pointer-safe touch controls; each game lives in a separate source file.
 
-The optional service in `server/index.js` provides JSON APIs for registration, login, revisioned save synchronization, mutual friendships, time-windowed leaderboards, matchmaking, and match event relay. Browser clients use ordinary HTTP requests and Server-Sent Events. An empty `window.REMOTE_SERVER_URL` disables all remote entry points without changing the local learning or arcade paths.
+The optional service in `server/index.js` provides JSON APIs for registration, login, revisioned save synchronization, mutual friendships, time-windowed leaderboards, matchmaking, and match event relay. Browser clients use ordinary HTTP requests and Server-Sent Events. The demo configuration uses the current page hostname, falling back to `localhost` for direct file opening, and connects on port `8787`. Host, port, and protocol are independently configurable in `src/config/remote.js`.
 
 Point leaderboards use deduplicated earning events created when quiz points are actually credited. Existing points from before this feature are not retroactively counted. On a synchronization revision conflict, server data wins for the spendable balance so that a stale device cannot restore points already spent elsewhere.
 
@@ -32,6 +32,8 @@ Existing storage keys are retained for compatibility:
 - `wuming_admin_settings_v1`
 - `wuming_usage_log_v1`
 - `wuming_remote_auth_v1`
+- `wuming_guest_data_v1`
+- `wuming_account_data_v1:<username>`
 
 Changing these keys or their object shapes requires an explicit migration.
 

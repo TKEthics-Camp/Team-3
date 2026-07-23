@@ -5,7 +5,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 
 const PORT=Number(process.env.PORT)||8787;
-const HOST=process.env.HOST||'127.0.0.1';
+const HOST=process.env.HOST||'0.0.0.0';
 const DATA_FILE=process.env.DATA_FILE||path.join(__dirname,'data','store.json');
 const TOKEN_TTL=30*24*60*60*1000;
 const clients=new Map();

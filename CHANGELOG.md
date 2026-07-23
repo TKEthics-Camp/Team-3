@@ -13,6 +13,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 - Added username-based friends and daily, weekly, and monthly friend point leaderboards.
 - Added server-mediated online matchmaking and play for Gomoku, Chess, Battleship, and Stick Fighter.
 - Added a dependency-free Node.js account server and end-to-end API smoke test.
+- Added configurable demo-server host, port, and protocol values, with current-host discovery for LAN pages and a `localhost` fallback for direct desktop opening.
+- Added narrow-screen layouts for account access, friend management, and period leaderboard controls.
+- Added a generated open-book and learning-path brand mark to replace the text-only academy badge.
 - Added point-based game-time top-ups while an existing paid session still has time remaining.
 - Added responsive, non-overlapping touch control decks for every arcade game.
 - Added swipe steering and a conventional directional pad for Pac-Man.
@@ -26,6 +29,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 - Save conflicts merge monotonic learning progress and earning history while preserving the server's spendable point balance.
 - Direct-file arcade handoff now carries the active remote identity without exposing the token to the HTTP request path.
 - Multiplayer-capable games now expose online matchmaking only when a remote server is configured and the student is signed in.
+- Account access now opens with separate login and registration choices before navigating to a single focused form.
+- Signed-in learning data is cached per account and synchronized in the background; signing out restores the separate guest profile.
+- Friends and leaderboards now use independent signed-in-only header entries placed before manual refresh.
+- Removed terminal punctuation from large homepage headlines, subtitles, and subject-card display copy.
 - Added bidirectional `file://` session handoff so elapsed arcade time remains deducted when leaving and later resuming a game.
 - Added explicit expired-session invalidation and consistent background pause/resume handling.
 - Moved the product requirements document to `docs/PRD.md` and aligned it with the current static web application.
@@ -41,6 +48,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 
 ### Fixed
 
+- Kept the leaderboard layout stable while switching between daily, weekly, and monthly views, and ignored stale asynchronous responses to prevent visual ghosting.
 - Fixed administrator-mode navigation incorrectly returning students from the arcade to the home page.
 - Fixed unused arcade time not being deducted consistently across page exits, backgrounding, and later resumes.
 - Fixed expired sessions so they are invalidated and forced back to the learning page.
@@ -50,7 +58,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 
 - Remote passwords are stored as per-account salted `scrypt` hashes rather than plaintext.
 - Session tokens are stored as hashes on the server and expire after 30 days.
-- Remote deployment remains opt-in through an intentionally blank server URL; public deployments are documented as requiring HTTPS, rate limiting, origin restrictions, monitoring, and durable backups.
+- Public remote deployment remains configurable and is documented as requiring HTTPS, rate limiting, origin restrictions, monitoring, and durable backups.
 
 ### Removed
 
