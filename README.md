@@ -1,6 +1,6 @@
 # Nameless Academy
 
-Nameless Academy is an offline-friendly study and game-break web application. Students complete short, level-based quizzes in mathematics, English, and science, earn learning points, and exchange those points for bounded sessions in a seven-game arcade.
+Nameless Academy is an offline-friendly study and game-break web application. Students complete short, level-based quizzes in mathematics, English, and science, earn learning points, and exchange those points for bounded sessions in a seven-game arcade. An optional Node.js service adds accounts, manual cloud synchronization, friends, friend leaderboards, and online matches.
 
 The application is intentionally framework-free. It runs as static HTML, CSS, JavaScript, JSON, and image assets.
 
@@ -11,10 +11,13 @@ The application is intentionally framework-free. It runs as static HTML, CSS, Ja
 - Local progress, achievements, streaks, and usage history
 - Point-based arcade access with configurable session limits
 - Seven browser games with local high scores
+- Responsive arcade layouts with touch controls for phones, tablets, and desktops
 - Chinese and English interfaces
 - Device-local administrator settings
+- Optional accounts, cross-device save synchronization, friends, and daily/weekly/monthly friend leaderboards
+- Server-mediated online play for Gomoku, Chess, Battleship, and Stick Fighter
 
-All user state is stored in the browser. Administrator mode is a local convenience feature, not a server-backed security boundary.
+Without a configured remote server, all user state remains in the browser and every offline feature continues to work. Administrator mode is a local convenience feature, not a server-backed security boundary.
 
 ## Open locally
 
@@ -30,6 +33,24 @@ Then open <http://localhost:8000/>.
 
 No install or build step is currently required.
 
+## Optional account server
+
+The server has no third-party package dependencies and stores passwords as salted `scrypt` hashes. Start it with:
+
+```sh
+node server/index.js
+```
+
+It listens on `127.0.0.1:8787` by default. Set `HOST`, `PORT`, and `DATA_FILE` in the deployment environment as needed, then set `window.REMOTE_SERVER_URL` in `src/config/remote.js` to the public HTTPS origin. The checked-in address is intentionally blank.
+
+Server data is written under `server/data/` by default and is ignored by Git. Back up that directory in production. The built-in server is a deployable prototype; a public deployment should add TLS at a reverse proxy, origin restrictions, rate limiting, monitoring, and managed durable storage.
+
+Run the API smoke test against a running server with:
+
+```sh
+SERVER_URL=http://127.0.0.1:8787 node server/smoke-test.js
+```
+
 ## Repository layout
 
 ```text
@@ -43,6 +64,9 @@ scripts/      Question-bank generators
 src/app/      Learning application logic
 src/generated/ Generated standalone browser data
 src/games/    Shared arcade runtime and individual games
+src/config/   Deployment configuration
+src/shared/   Browser clients shared by both entry points
+server/       Optional account, social, sync, and match service
 src/games/experimental/ Dormant game prototypes not loaded at runtime
 styles/       Page styles
 tools/        Data and maintenance utilities

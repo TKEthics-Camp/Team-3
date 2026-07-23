@@ -6,12 +6,13 @@
   <meta name="theme-color" content="#080b12">
   <title>无名游艺馆</title>
   <link rel="stylesheet" href="styles/games.css">
+  <link rel="stylesheet" href="styles/touch-controls.css">
   <script src="src/games/access-gate.js"></script>
 </head>
 <body>
   <main class="shell">
     <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">◇</span> <span data-t="brand">无名游艺馆</span></a><div class="top-actions"><div class="session-chip">⏳ <span data-t="timeLeft">剩余时间</span> <strong id="playTimeTop">--:--</strong></div><div class="lang-switch"><button id="arcadeEn">英文</button><button id="arcadeZh" class="active">中文</button></div><a class="back" href="index.html" data-t="back">← 返回学苑</a></div></header>
-    <section class="hero"><span class="eyebrow" data-t="eyebrow">独立游戏中心</span><h1 data-t="headline">七种玩法，随时开局。</h1><p data-t="intro">动作、反应、节奏、棋类与策略。所有记录仅保存在当前设备，不影响学习成绩。</p><div class="hero-stats"><span class="pill" data-t="six">🎮 7 款完整游戏</span><span class="pill" data-t="modes">🤖 电脑对战 + 本地双人</span><span class="pill" data-t="localBest">🏆 本地最高分</span></div></section>
+    <section class="hero"><span class="eyebrow" data-t="eyebrow">独立游戏中心</span><h1 data-t="headline">七种玩法，随时开局。</h1><p data-t="intro">动作、反应、节奏、棋类与策略。最高分保存在本机；登录云端账号后可使用在线对战。</p><div class="hero-stats"><span class="pill" data-t="six">🎮 7 款完整游戏</span><span class="pill" data-t="modes">🤖 电脑 + 本地 + 在线对战</span><span class="pill" data-t="localBest">🏆 本地最高分</span></div></section>
     <section class="games" aria-label="游戏列表">
       <button class="game-card featured" data-game="stick" style="--accent:#ff5b7f"><span class="popular-badge" id="popularBadge">🔥 人气超高！</span><span class="game-icon">⚔️⚡</span><h2 data-game-title="stick">火柴人格斗 · 雷霆对决</h2><p data-game-desc="stick">全屏挑战三档 AI 或本地双人；跳跃后按拳发动飞踢，扫堂接拳发动雷葬·草薙。</p><div class="game-meta"><span data-game-kind="stick">格斗 · AI / 本地双人</span><span data-high="stick">最高 0</span></div></button>
       <button class="game-card" data-game="reaction" style="--accent:#35e884"><span class="game-icon">⚡👆</span><h2 data-game-title="reaction">反应力测试</h2><p data-game-desc="reaction">保持专注，等整个界面变绿后立刻点击，以毫秒测出你的真实反应速度。</p><div class="game-meta"><span data-game-kind="reaction">反应 · 单人</span><span data-high="reaction">最佳 —</span></div></button>
@@ -29,6 +30,9 @@
       <footer class="arena-foot"><div class="help" id="helpText"></div><div class="touch-controls" id="touchControls"></div><button class="restart" id="restartGame" data-t="restart">重新开始</button></footer>
     </div>
   </section>
+  <script src="src/config/remote.js"></script>
+  <script src="src/shared/remote-client.js"></script>
+  <script src="src/games/online.js"></script>
   <script src="src/games/core.js"></script>
   <script src="src/games/gomoku.js"></script>
   <script src="src/games/rhythm.js"></script>

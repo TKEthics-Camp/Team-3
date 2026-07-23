@@ -1,14 +1,14 @@
 # Product Requirements — Nameless Academy
 
 **Status:** Working web prototype
-**Platform:** Static browser application
+**Platform:** Static browser application with an optional Node.js service
 **Last updated:** July 2026
 
 ## 1. Product summary
 
 Nameless Academy is a bilingual study application for students who benefit from short, focused practice and bounded game breaks. Students complete level-based quizzes, earn learning points, and exchange those points for time in a browser arcade.
 
-The current product is a framework-free static web application. It runs in modern desktop and mobile browsers, stores state on the current device, and can be hosted by any static HTTP server.
+The current product is a framework-free web application. It runs in modern desktop and mobile browsers and remains fully usable with device-local storage. An optional remote service adds accounts, synchronization, friends, leaderboards, and online matches.
 
 ## 2. Goals
 
@@ -16,14 +16,14 @@ The current product is a framework-free static web application. It runs in moder
 - Make progress visible through accuracy, streaks, achievements, and learning points.
 - Keep game access explicit, time-limited, and proportional to earned points.
 - Support a broad range of levels in mathematics, English, and science.
-- Work without accounts, a backend, advertising, or in-app purchases.
+- Work without requiring an account or backend for learning and offline play.
+- Offer optional account-backed synchronization and social play when a server is configured.
 - Keep Chinese and English interfaces available throughout the experience.
 
 ## 3. Non-goals for the current prototype
 
-- Cloud accounts, cross-device synchronization, or remote backup
 - Server-enforced parent, teacher, or administrator permissions
-- Social feeds, leaderboards, chat, or shared question sets
+- Social feeds, chat, or shared question sets
 - Payment, advertising, subscriptions, or purchasable points
 - Native iOS or Android packaging
 - Guaranteed protection against a user modifying browser-local state
@@ -58,6 +58,7 @@ The browser loads six runtime JSON banks from `data/`. Reference and extension d
 - Points persist in browser storage and are displayed on the dashboard.
 - A local point cap can be configured.
 - Points can be exchanged for arcade time at the current fixed rate of five points per minute.
+- Students can add purchased time to an existing paid arcade session without discarding its remaining time.
 
 ## 6. Current arcade experience
 
@@ -73,6 +74,8 @@ The arcade contains seven games:
 
 Game access is controlled by a local timed session. The remaining time is visible while playing, pauses when the page is inactive, and returns the user to the learning page when exhausted. Scores remain on the current device.
 
+Arcade layouts scale across phone, tablet, and desktop viewports. Every game has a touch path that stays outside the game content: action games use dedicated control decks, Pac-Man also supports swipe steering, and board or reaction games use their game surface directly.
+
 ## 7. Local administration
 
 Administrator mode can configure:
@@ -87,13 +90,13 @@ This feature is implemented entirely with browser storage and client-side code. 
 
 ## 8. Usage history and privacy
 
-The application records recent learning time, arcade time, and completed quiz-level summaries in browser storage. It does not currently transmit this information to a server.
+The application records recent learning time, arcade time, and completed quiz-level summaries in browser storage. When a student creates or logs into an optional account, registration, login, and explicit manual refresh synchronize the learning save. Passwords are stored by the server as salted hashes. Usage-time records and administrator settings are not part of the current cloud payload.
 
 The product should continue to:
 
 - Collect only information required for visible local features.
-- Explain when data exists only on the current device.
-- Avoid presenting local metrics as durable cloud records.
+- Explain whether remote service configuration and login are active.
+- Keep offline-only metrics visually distinct from synchronized records.
 - Avoid storing sensitive personal information in the question or usage data.
 
 ## 9. Technical architecture
@@ -106,23 +109,35 @@ The product should continue to:
 - Question-bank contract: `data/schema/question-bank.schema.json`
 - Generated data sources: `scripts/` and `tools/`
 - Persistence: `localStorage` and `sessionStorage`
-- Deployment: direct local opening or static HTTP hosting
+- Optional service: dependency-free Node.js HTTP/SSE server under `server/`
+- Deployment: direct local opening or static HTTP hosting; HTTPS service required for public account use
 
-The application has no runtime package dependencies. A generated JavaScript bundle mirrors the six runtime JSON banks so `index.html` can be opened directly from the filesystem. HTTP development and deployment continue to load the canonical JSON files.
+The application and optional service have no third-party runtime package dependencies. A generated JavaScript bundle mirrors the six runtime JSON banks so `index.html` can be opened directly from the filesystem. HTTP development and deployment continue to load the canonical JSON files.
 
-## 10. Product and engineering constraints
+## 10. Accounts and social play
+
+- Registration uploads the current local learning save; login downloads the server save.
+- Manual refresh synchronizes the current save using a server revision number.
+- A username can add another existing username as a mutual friend.
+- Friend leaderboards compare points credited during the current local calendar day, Monday-based week, or month.
+- Gomoku, Chess, Battleship, and Stick Fighter offer online matchmaking when the service is configured and the student is signed in.
+- Turn-based games relay discrete actions. Stick Fighter relays realtime input and is explicitly a best-effort prototype under network latency.
+
+## 11. Product and engineering constraints
 
 - Runtime question banks must conform to the shared schema.
 - Normal and hard banks must use the same top-level contract.
 - Each arcade game should remain isolated in its own source file.
+- Touch controls must remain outside game content and preserve at least a 44-pixel target size.
 - User-visible behavior should remain functional without an internet connection after static assets have been delivered.
 - Changes to point exchange, session timing, or local data keys require migration consideration.
 - Generated banks must be reproducible from their checked-in generators.
+- Remote deployment must use HTTPS and durable backups; public production use also requires origin restrictions, abuse controls, and monitoring.
 
-## 11. Near-term priorities
+## 12. Near-term priorities
 
 1. Add a unified local command layer for serving, formatting, validation, and tests.
 2. Add automated tests for question-bank integrity, point exchange, and session timing.
 3. Add browser smoke tests for the learning and arcade entry points.
 4. Decide whether extension datasets should be integrated, archived, or removed.
-5. Decide whether the product remains a static local application or moves toward authenticated cloud features.
+5. Replace prototype JSON persistence and input relay with managed storage and authoritative match state before a high-traffic public launch.

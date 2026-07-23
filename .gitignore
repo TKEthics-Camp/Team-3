@@ -26,3 +26,6 @@ coverage/
 dist/
 .cache/
 *.log
+
+# Local account server data
+server/data/

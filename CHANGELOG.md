@@ -8,12 +8,26 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 
 ### Added
 
+- Added optional remote account registration and login with salted password hashing.
+- Added login/register/manual save synchronization with server revision conflict handling.
+- Added username-based friends and daily, weekly, and monthly friend point leaderboards.
+- Added server-mediated online matchmaking and play for Gomoku, Chess, Battleship, and Stick Fighter.
+- Added a dependency-free Node.js account server and end-to-end API smoke test.
+- Added point-based game-time top-ups while an existing paid session still has time remaining.
+- Added responsive, non-overlapping touch control decks for every arcade game.
+- Added swipe steering and a conventional directional pad for Pac-Man.
 - Root project documentation and repository layout guidance.
 - Shared formatting configuration for editors and Prettier.
 - A common JSON Schema for runtime question banks.
 
 ### Changed
 
+- Learning-point awards now create deduplicated timestamped events for period-based rankings; historical balances from before this update are not counted retroactively.
+- Save conflicts merge monotonic learning progress and earning history while preserving the server's spendable point balance.
+- Direct-file arcade handoff now carries the active remote identity without exposing the token to the HTTP request path.
+- Multiplayer-capable games now expose online matchmaking only when a remote server is configured and the student is signed in.
+- Added bidirectional `file://` session handoff so elapsed arcade time remains deducted when leaving and later resuming a game.
+- Added explicit expired-session invalidation and consistent background pause/resume handling.
 - Moved the product requirements document to `docs/PRD.md` and aligned it with the current static web application.
 - Split inline page styles and scripts into dedicated application and arcade source files.
 - Split the arcade runtime into shared infrastructure and per-game modules.
@@ -24,6 +38,19 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 - Added question-bank cache busting and protocol-specific diagnostics to prevent stale pre-schema data from blocking startup.
 - Added a generated standalone question-bank bundle so `index.html` works when opened directly through `file://`.
 - Added direct home navigation to both the level-selection and quiz views.
+
+### Fixed
+
+- Fixed administrator-mode navigation incorrectly returning students from the arcade to the home page.
+- Fixed unused arcade time not being deducted consistently across page exits, backgrounding, and later resumes.
+- Fixed expired sessions so they are invalidated and forced back to the learning page.
+- Fixed the game-time exchange interface so students can add time while a paid session is still active.
+
+### Security
+
+- Remote passwords are stored as per-account salted `scrypt` hashes rather than plaintext.
+- Session tokens are stored as hashes on the server and expire after 30 days.
+- Remote deployment remains opt-in through an intentionally blank server URL; public deployments are documented as requiring HTTPS, rate limiting, origin restrictions, monitoring, and durable backups.
 
 ### Removed
 

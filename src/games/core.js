@@ -6,10 +6,22 @@ function gameRemainingMs(s,now=Date.now()){return s&&s.version===2&&Number.isFin
 function freeGamesEnabled(){try{return JSON.parse(localStorage.getItem(ADMIN_SETTINGS_KEY)||'{}').freeGames===true}catch{return false}}
 function validGameSession(s){const remaining=gameRemainingMs(s),validCost=s?.free===true?freeGamesEnabled()&&s.cost===0:s?.cost===s?.minutes*5;return !!(s&&s.version===2&&Number.isInteger(s.minutes)&&s.minutes>=1&&s.minutes<=60&&validCost&&Number.isFinite(s.activeSince)&&remaining>0&&remaining<=s.minutes*60000+1500)}
 function formatPlayTime(ms){const seconds=Math.max(0,Math.ceil(ms/1000)),minutes=Math.floor(seconds/60);return `${minutes}:${String(seconds%60).padStart(2,'0')}`}
-function expireGameAccess(){if(accessExpired)return;accessExpired=true;clearInterval(accessTimer);cancelAnimationFrame(raf);game?.destroy?.();localStorage.removeItem(GAME_SESSION_KEY);document.body.classList.add('access-expired');location.replace('index.html?gameExpired=1')}
+function expireGameAccess(){if(accessExpired)return;accessExpired=true;clearInterval(accessTimer);cancelAnimationFrame(raf);game?.destroy?.();localStorage.removeItem(GAME_SESSION_KEY);document.body.classList.add('access-expired');const payload={channel:'wuming-arcade-return',version:1,expired:true};if(location.protocol==='file:'){window.name=JSON.stringify(payload);location.replace(`index.html?gameExpired=1#arcadeReturn=${encodeURIComponent(JSON.stringify(payload))}`)}else{window.name='';location.replace('index.html?gameExpired=1')}}
 function updatePlayTimer(){if(sessionPaused)return;if(!validGameSession(gameSession))return expireGameAccess();const text=formatPlayTime(gameRemainingMs(gameSession));const top=$('#playTimeTop'),hud=$('#playTimeHud');if(top)top.textContent=text;if(hud)hud.textContent=text}
 function recheckGameAccess(){try{const latest=JSON.parse(localStorage.getItem(GAME_SESSION_KEY)||'null');if(validGameSession(latest)){gameSession=latest;updatePlayTimer()}else expireGameAccess()}catch{expireGameAccess()}}
 function pauseGameAccess(){if(accessExpired||sessionPaused||!gameSession)return;const remaining=gameRemainingMs(gameSession);if(remaining<=0)return expireGameAccess();gameSession={...gameSession,remainingMs:remaining,activeSince:null,expiresAt:null};localStorage.setItem(GAME_SESSION_KEY,JSON.stringify(gameSession));sessionPaused=true;clearInterval(accessTimer)}
+function prepareArcadeReturn(){
+  if(location.protocol!=='file:'||accessExpired)return null;
+  if(!sessionPaused)pauseGameAccess();
+  if(accessExpired||!gameSession||!Number.isFinite(gameSession.remainingMs)||gameSession.remainingMs<=0)return null;
+  const payload={channel:'wuming-arcade-return',version:1,session:{...gameSession,activeSince:null,expiresAt:null}};
+  window.name=JSON.stringify(payload);
+  return payload
+}
+function academyHref(){
+  const payload=prepareArcadeReturn();
+  return payload?`index.html#arcadeReturn=${encodeURIComponent(JSON.stringify(payload))}`:'index.html'
+}
 function resumeGameAccess(){if(accessExpired)return;try{const latest=JSON.parse(localStorage.getItem(GAME_SESSION_KEY)||'null'),now=Date.now(),remaining=latest?.version===2&&Number.isFinite(latest.remainingMs)?latest.remainingMs-(Number.isFinite(latest.activeSince)?Math.max(0,now-latest.activeSince):0):0,candidate={...latest,remainingMs:remaining,activeSince:now,expiresAt:now+remaining};if(!validGameSession(candidate))return expireGameAccess();gameSession=candidate;localStorage.setItem(GAME_SESSION_KEY,JSON.stringify(gameSession));sessionPaused=false;clearInterval(accessTimer);accessTimer=setInterval(updatePlayTimer,250);updatePlayTimer()}catch{expireGameAccess()}}
 function usageDay(date=new Date()){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
 function addPlayUsage(ms){if(!Number.isFinite(ms)||ms<=0)return;try{const log=JSON.parse(localStorage.getItem(USAGE_KEY)||'{}'),day=usageDay(),days=log.days&&typeof log.days==='object'?log.days:{},bucket=days[day]||{studyMs:0,playMs:0};bucket.playMs=(Number(bucket.playMs)||0)+Math.min(ms,15000);days[day]=bucket;const cutoff=new Date();cutoff.setDate(cutoff.getDate()-91);const minDay=usageDay(cutoff);localStorage.setItem(USAGE_KEY,JSON.stringify({days:Object.fromEntries(Object.entries(days).filter(([key])=>key>=minDay)),events:Array.isArray(log.events)?log.events.filter(event=>event.day>=minDay).slice(-800):[]}))}catch{}}
@@ -29,7 +41,7 @@ if(!localStorage.getItem('gongxing_forest_score_reset_v1')){
 }
 let arcadeLang=localStorage.getItem('gongxing_lang')==='en'?'en':'zh';
 const L=(zh,en)=>arcadeLang==='zh'?zh:en;
-const PAGE={zh:{brand:'无名游艺馆',back:'← 返回学苑',eyebrow:'独立游戏中心',headline:'七种玩法，随时开局。',intro:'动作、反应、节奏、棋类与策略。所有记录仅保存在当前设备，不影响学习成绩。',six:'🎮 7 款完整游戏',modes:'🤖 电脑对战 + 本地双人',localBest:'🏆 本地最高分',score:'得分',status:'状态',best:'最高',timeLeft:'剩余时间',ready:'准备就绪',playAgain:'再玩一次',restart:'重新开始'},en:{brand:'Nameless Arcade',back:'← Back to Academy',eyebrow:'INDEPENDENT GAME CENTER',headline:'Seven worlds. Play anytime.',intro:'Action, reflex, rhythm, board games, and strategy. All records stay on this device and never affect study results.',six:'🎮 7 complete games',modes:'🤖 AI + local multiplayer',localBest:'🏆 Local high scores',score:'SCORE',status:'STATUS',best:'BEST',timeLeft:'TIME LEFT',ready:'READY',playAgain:'Play again',restart:'Restart'}};
+const PAGE={zh:{brand:'无名游艺馆',back:'← 返回学苑',eyebrow:'独立游戏中心',headline:'七种玩法，随时开局。',intro:'动作、反应、节奏、棋类与策略。最高分保存在本机；登录云端账号后可使用在线对战。',six:'🎮 7 款完整游戏',modes:'🤖 电脑 + 本地 + 在线对战',localBest:'🏆 本地最高分',score:'得分',status:'状态',best:'最高',timeLeft:'剩余时间',ready:'准备就绪',playAgain:'再玩一次',restart:'重新开始'},en:{brand:'Nameless Arcade',back:'← Back to Academy',eyebrow:'INDEPENDENT GAME CENTER',headline:'Seven worlds. Play anytime.',intro:'Action, reflex, rhythm, board games, and strategy. High scores stay local; sign in to use online matches.',six:'🎮 7 complete games',modes:'🤖 AI + local + online play',localBest:'🏆 Local high scores',score:'SCORE',status:'STATUS',best:'BEST',timeLeft:'TIME LEFT',ready:'READY',playAgain:'Play again',restart:'Restart'}};
 const meta={
   gomoku:{zh:['曜石五子棋','点击棋盘交叉点落子；先连成横、竖或斜线五子者获胜。','传统 15×15 金木棋盘，支持三档电脑对手与本地黑白双人对弈。','棋类 · 电脑 / 双人'],en:['Obsidian Gomoku','Click an intersection to place a stone. Connect five horizontally, vertically, or diagonally to win.','A polished 15×15 wood board with three AI levels and local black-versus-white play.','Board · AI / PVP']},
   rhythm:{zh:['反应堆节拍','按下四个对应字母键，或点击四个轨道键。','音符抵达底部判定线时击中，连击会放大得分。','节奏 · 反应'],en:['Reactor Rhythm','Use D, F, J, K or tap the four lane controls.','Catch pulses at the judgment line and keep your combo alive.','Rhythm · Reflex']},
@@ -51,12 +63,86 @@ function syncScores(){document.querySelectorAll('[data-high]').forEach(e=>{if(e.
 function setScore(v){$('#scoreValue').textContent=Math.max(0,Math.round(v));if(game)game.score=v}
 function setStatus(v){$('#statusValue').textContent=arcadeLang==='en'?englishText(v):v}
 function finish(title=L('本局结束','Game over')){if(ended)return;ended=true;cancelAnimationFrame(raf);const score=Math.max(0,Math.round(game?.score||0));if(score>(scores[active]||0)){scores[active]=score;localStorage.setItem('gongxing_arcade_scores',JSON.stringify(scores));syncScores()}$('#bestValue').textContent=scores[active]||0;$('#resultTitle').textContent=arcadeLang==='en'?englishText(title):title;$('#resultText').textContent=L(`得分 ${score} · 最高 ${scores[active]||0}`,`Score ${score} · Best ${scores[active]||0}`);$('#result').hidden=false}
-function controls(items){const host=$('#touchControls');host.innerHTML='';items.forEach(([label,action])=>{const b=document.createElement('button');b.className='touch-btn';b.textContent=arcadeLang==='en'?englishText(label):label;b.onpointerdown=e=>{e.preventDefault();game?.action?.(action,true)};b.onpointerup=e=>{e.preventDefault();game?.action?.(action,false)};host.appendChild(b)})}
+function releaseTouchControls(){
+  document.querySelectorAll('#touchControls .is-pressed').forEach(button=>button._releaseTouch?.());
+}
+function controls(items=[],options={}){
+  releaseTouchControls();
+  const host=$('#touchControls');
+  const hasItems=items.length>0||options.groups?.some(group=>group.items.length);
+  host.replaceChildren();
+  host.className=`touch-controls touch-layout-${options.layout||'row'}${options.groups?' has-groups':''}`;
+  host.hidden=!hasItems;
+  host.setAttribute('aria-label',options.label||L('触屏操作台','Touch controls'));
+  const makeButton=raw=>{
+    const item=Array.isArray(raw)?{label:raw[0],action:raw[1]}:raw;
+    const button=document.createElement('button');
+    button.type='button';
+    button.className=`touch-btn${item.className?` ${item.className}`:''}`;
+    button.textContent=arcadeLang==='en'?englishText(item.label):item.label;
+    button.dataset.slot=item.slot||'';
+    button.setAttribute('aria-label',arcadeLang==='en'?englishText(item.ariaLabel||item.label):item.ariaLabel||item.label);
+    let pressed=false;
+    const release=event=>{
+      if(!pressed)return;
+      event?.preventDefault();
+      pressed=false;
+      button.classList.remove('is-pressed');
+      game?.action?.(item.action,false,item.player||1);
+    };
+    button._releaseTouch=release;
+    button.onpointerdown=event=>{
+      if(event.pointerType==='mouse'&&event.button!==0)return;
+      event.preventDefault();
+      if(pressed)return;
+      pressed=true;
+      button.classList.add('is-pressed');
+      try{button.setPointerCapture(event.pointerId)}catch{}
+      game?.action?.(item.action,true,item.player||1);
+    };
+    button.onpointerup=release;
+    button.onpointercancel=release;
+    button.onlostpointercapture=release;
+    button.oncontextmenu=event=>event.preventDefault();
+    return button;
+  };
+  if(options.groups){
+    host.classList.add('has-groups');
+    for(const group of options.groups){
+      const section=document.createElement('section');
+      section.className='touch-group';
+      const title=document.createElement('strong');
+      title.className='touch-group-title';
+      title.textContent=group.label;
+      const grid=document.createElement('div');
+      grid.className='touch-button-grid';
+      group.items.forEach(item=>grid.appendChild(makeButton({...item,player:group.player})));
+      section.append(title,grid);
+      host.appendChild(section);
+    }
+  }else{
+    const grid=document.createElement('div');
+    grid.className='touch-button-grid';
+    items.forEach(item=>grid.appendChild(makeButton(item)));
+    host.appendChild(grid);
+  }
+}
+function directControls(label){
+  releaseTouchControls();
+  const host=$('#touchControls');
+  host.replaceChildren();
+  host.className='touch-controls touch-layout-direct';
+  host.hidden=false;
+  const hint=document.createElement('div');
+  hint.className='touch-direct-hint';
+  hint.textContent=`👆 ${label}`;
+  host.appendChild(hint);
+}
 function openGame(id){if(!validGameSession(gameSession))return expireGameAccess();active=id;ended=false;arena.hidden=false;document.body.style.overflow='hidden';const m=meta[id][arcadeLang];$('#arenaTitle').textContent=m[0];$('#arenaDesc').textContent=m[2];$('#helpText').textContent=m[1];$('#bestValue').textContent=scores[id]||0;$('#result').hidden=true;startGame()}
-function mountGame(factory){cancelAnimationFrame(raf);game?.destroy?.();canvas.onpointerdown=canvas.onpointermove=canvas.onpointerup=null;canvas.className='';canvas.width=760;canvas.height=480;ended=false;$('#result').hidden=true;dom.hidden=true;canvas.hidden=false;dom.innerHTML='';ctx.clearRect(0,0,canvas.width,canvas.height);game=factory();setScore(game.score||0);last=performance.now();if(game.loop!==false)raf=requestAnimationFrame(loop)}
+function mountGame(factory){cancelAnimationFrame(raf);releaseTouchControls();game?.destroy?.();canvas.onpointerdown=canvas.onpointermove=canvas.onpointerup=canvas.onpointerleave=canvas.onpointercancel=null;canvas.className='';canvas.width=760;canvas.height=480;ended=false;$('#result').hidden=true;dom.hidden=true;canvas.hidden=false;dom.innerHTML='';ctx.clearRect(0,0,canvas.width,canvas.height);game=factory();setScore(game.score||0);last=performance.now();if(game.loop!==false)raf=requestAnimationFrame(loop)}
 function startGame(){if(!validGameSession(gameSession))return expireGameAccess();mountGame(({gomoku:initGomoku,rhythm:initRhythm,reaction:initReaction,pacman:initPacman,stick:initStickSetup,chess:initChess,battleship:initBattleship}[active]))}
 function launchStickMatch(){if(!validGameSession(gameSession))return expireGameAccess();mountGame(initStickPvp)}
-function closeGame(){cancelAnimationFrame(raf);game?.destroy?.();game=null;arena.hidden=true;document.body.style.overflow='';active='';if(document.fullscreenElement===arena)document.exitFullscreen?.().catch(()=>{})}
+function closeGame(){cancelAnimationFrame(raf);releaseTouchControls();game?.destroy?.();endOnlineMatch();game=null;arena.hidden=true;document.body.style.overflow='';active='';if(document.fullscreenElement===arena)document.exitFullscreen?.().catch(()=>{})}
 function loop(t){
   if(!game||ended)return;
   let remaining=Math.min(.033,Math.max(0,(t-last)/1000));last=t;
@@ -66,5 +152,8 @@ function loop(t){
   if(!ended)raf=requestAnimationFrame(loop)
 }
 document.querySelectorAll('[data-game]').forEach(b=>b.onclick=()=>openGame(b.dataset.game));$('#closeGame').onclick=closeGame;$('#fullscreenGame').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await arena.requestFullscreen()}catch{}};document.addEventListener('fullscreenchange',()=>{$('#fullscreenGame span').textContent=document.fullscreenElement?L('退出全屏','Exit fullscreen'):L('全屏','Fullscreen')});$('#restartGame').onclick=startGame;$('#resultRestart').onclick=startGame;$('#arcadeZh').onclick=()=>setArcadeLang('zh');$('#arcadeEn').onclick=()=>setArcadeLang('en');document.addEventListener('keydown',e=>{if(e.key==='Escape'&&active){if(game?.configOpen&&game?.closeConfig)game.closeConfig();else if(!document.fullscreenElement)closeGame();return}if(!active)return;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key))e.preventDefault();game?.key?.(e.key,true)});document.addEventListener('keyup',e=>game?.key?.(e.key,false));
+document.querySelectorAll('a[href="index.html"]').forEach(link=>link.addEventListener('click',event=>{if(location.protocol!=='file:')return;event.preventDefault();flushPlayUsage(true);location.href=academyHref()}));
+window.addEventListener('blur',releaseTouchControls);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)releaseTouchControls()});
 new MutationObserver(records=>records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===Node.ELEMENT_NODE)translateAdded(n);else if(n.nodeType===Node.TEXT_NODE&&arcadeLang==='en')n.nodeValue=englishText(n.nodeValue)}))).observe(dom,{childList:true,subtree:true});
 function glow(color,blur=18){ctx.shadowColor=color;ctx.shadowBlur=blur}function resetGlow(){ctx.shadowBlur=0}function bgGrid(){ctx.fillStyle='#070b13';ctx.fillRect(0,0,760,480);ctx.strokeStyle='#14213a';ctx.lineWidth=1;for(let x=0;x<760;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,480);ctx.stroke()}for(let y=0;y<480;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(760,y);ctx.stroke()}}

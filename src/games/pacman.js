@@ -1,6 +1,11 @@
 const pacMaze=['###################','#o.......#.......o#','#.###.##.#.##.###.#','#.................#','#.###.#.###.#.###.#','#.....#..#..#.....#','#####.##.#.##.#####','#.....#.....#.....#','#.###.#.###.#.###.#','#.....#     #.....#','#####.# ### #.#####','     .       .     ','#####.# ### #.#####','#.....#.....#.....#','#.###.#.###.#.###.#','#...#.........#...#','###.#.##.#.##.#.###','#.....#..#..#.....#','#.######.#.######.#','#o...............o#','###################'];
 function initPacman(){
-  canvas.width=760;canvas.height=560;canvas.className='pacman';controls([['←','left'],['↑','up'],['↓','down'],['→','right']]);
+  canvas.width=760;canvas.height=560;canvas.className='pacman';controls([
+    {label:'←',ariaLabel:L('向左','Move left'),action:'left',slot:'left'},
+    {label:'↑',ariaLabel:L('向上','Move up'),action:'up',slot:'up'},
+    {label:'↓',ariaLabel:L('向下','Move down'),action:'down',slot:'down'},
+    {label:'→',ariaLabel:L('向右','Move right'),action:'right',slot:'right'}
+  ],{layout:'dpad'});
   const dirs={left:{x:-1,y:0},right:{x:1,y:0},up:{x:0,y:-1},down:{x:0,y:1}},opposite={left:'right',right:'left',up:'down',down:'up'},W=19,H=21,tile=24,ox=(760-W*tile)/2,oy=28;
   const g={score:0,lives:3,level:1,pellets:new Set(),power:new Set(),fright:0,combo:0,ready:1.4,phase:0,phaseTime:7,flash:0,player:null,ghosts:[],fruit:null,fruitTimer:0,extraLife:false};
   const key=(r,c)=>r*W+c,cell=(r,c)=>r===11&&(c<0||c>=W)?' ':pacMaze[r]?.[c]||'#',open=(r,c)=>cell(r,c)!=='#';
@@ -16,6 +21,23 @@ function initPacman(){
   const eatAt=()=>{const r=Math.round(g.player.y),c=Math.round(g.player.x),k=key(r,c),before=g.pellets.size+g.power.size;if(g.pellets.delete(k))award(10);if(g.power.delete(k)){award(50);g.fright=7;g.combo=0;g.ghosts.forEach(gh=>gh.dir=opposite[gh.dir])}const left=g.pellets.size+g.power.size;if(left!==before&&(left===120||left===55)){g.fruit={x:9,y:15};g.fruitTimer=9}if(g.fruit&&Math.hypot(g.player.x-g.fruit.x,g.player.y-g.fruit.y)<.65){award(Math.min(500,100*g.level));g.fruit=null;g.fruitTimer=0}if(!left){g.level++;g.flash=1.1;g.fruit=null;g.fruitTimer=0;refill();resetActors()}};
   const loseLife=()=>{g.lives--;if(g.lives<=0)return finish(L('游戏结束','Game over'));resetActors()};
   g.action=(a,on)=>{if(on&&dirs[a])g.player.next=a};g.key=(k,on)=>{if(!on)return;const m={ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right',ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down'};if(m[k])g.player.next=m[k]};
+  let swipe=null;
+  const steerFromSwipe=event=>{
+    if(!swipe||event.pointerId!==swipe.pointerId)return;
+    const dx=event.clientX-swipe.x,dy=event.clientY-swipe.y;
+    if(Math.hypot(dx,dy)<18)return;
+    g.player.next=Math.abs(dx)>Math.abs(dy)?(dx<0?'left':'right'):(dy<0?'up':'down');
+    swipe={pointerId:event.pointerId,x:event.clientX,y:event.clientY};
+  };
+  canvas.onpointerdown=event=>{
+    if(event.pointerType==='mouse'&&event.button!==0)return;
+    event.preventDefault();
+    swipe={pointerId:event.pointerId,x:event.clientX,y:event.clientY};
+    try{canvas.setPointerCapture(event.pointerId)}catch{}
+  };
+  canvas.onpointermove=event=>{event.preventDefault();steerFromSwipe(event)};
+  canvas.onpointerup=event=>{steerFromSwipe(event);swipe=null};
+  canvas.onpointercancel=()=>swipe=null;
   g.update=dt=>{g.flash=Math.max(0,g.flash-dt);if(g.ready>0){g.ready-=dt;setStatus(L(`准备！生命 ${g.lives} · 第 ${g.level} 关`,`READY! Lives ${g.lives} · Level ${g.level}`));return}g.phaseTime-=dt;if(g.phaseTime<=0){g.phase=1-g.phase;g.phaseTime=g.phase?20:7;g.ghosts.forEach(gh=>gh.dir=opposite[gh.dir])}g.fright=Math.max(0,g.fright-dt);if(g.fruit){g.fruitTimer-=dt;if(g.fruitTimer<=0)g.fruit=null}move(g.player,6.25,dt);eatAt();for(const gh of g.ghosts){gh.home=Math.max(0,gh.home-dt);if(gh.home>0)continue;move(gh,(g.fright>0?3.7:4.75+g.level*.12),dt,ghostDir);if(Math.hypot(gh.x-g.player.x,gh.y-g.player.y)<.62){if(g.fright>0){g.combo++;award(200*2**(g.combo-1));gh.x=9;gh.y=9;gh.home=1.4;gh.dir='up'}else{return loseLife()}}}setStatus(L(`第 ${g.level} 关 · 生命 ${g.lives} · 剩余 ${g.pellets.size+g.power.size}`,`Level ${g.level} · Lives ${g.lives} · ${g.pellets.size+g.power.size} left`))};
   const roundRect=(x,y,w,h,r)=>{ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.stroke()};
   const ghost=(gh,i)=>{const x=ox+(gh.x+.5)*tile,y=oy+(gh.y+.5)*tile,r=tile*.43,fright=g.fright>0&&gh.home<=0,blink=fright&&g.fright<2&&Math.floor(performance.now()/160)%2;ctx.save();ctx.translate(x,y);glow(fright?'#2355ff':gh.color,13);ctx.fillStyle=blink?'#f5f5f5':fright?'#234cff':gh.color;ctx.beginPath();ctx.arc(0,-1,r,Math.PI,0);ctx.lineTo(r,r);for(let n=0;n<3;n++){ctx.lineTo(r-n*r*2/3-r/3,n%2?r*.55:r);ctx.lineTo(r-(n+1)*r*2/3,n%2?r:r*.55)}ctx.lineTo(-r,-1);ctx.fill();resetGlow();if(!fright){const look=dirs[gh.dir];for(const ex of [-r*.38,r*.38]){ctx.fillStyle='#fff';ctx.beginPath();ctx.ellipse(ex,-r*.12,r*.26,r*.32,0,0,7);ctx.fill();ctx.fillStyle='#173d9c';ctx.beginPath();ctx.arc(ex+look.x*r*.1,-r*.12+look.y*r*.1,r*.12,0,7);ctx.fill()}}else{ctx.fillStyle='#fff';for(const ex of [-r*.35,r*.35]){ctx.beginPath();ctx.arc(ex,-r*.08,r*.08,0,7);ctx.fill()}ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-r*.5,r*.35);ctx.lineTo(-r*.25,r*.2);ctx.lineTo(0,r*.35);ctx.lineTo(r*.25,r*.2);ctx.lineTo(r*.5,r*.35);ctx.stroke()}ctx.restore()};
