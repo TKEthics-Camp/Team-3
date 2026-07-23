@@ -1,0 +1,4 @@
+assets/
+data/*.json
+data/schema/
+src/generated/

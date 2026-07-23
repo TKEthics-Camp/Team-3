@@ -1,5 +1,7 @@
 {
+  "schemaVersion": 1,
   "subject": "english",
+  "mode": "normal",
   "levels": [
     {
       "id": "1",

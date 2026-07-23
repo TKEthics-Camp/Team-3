@@ -256,7 +256,13 @@ def generate():
             "name": loc(f"Lexile {level * 100}L", f"蓝思 {level * 100}L"),
             "questions": questions,
         })
-    OUT.write_text(json.dumps({"subject": "english", "levels": levels}, ensure_ascii=False, indent=2) + "\n")
+    payload = {
+        "schemaVersion": 1,
+        "subject": "english",
+        "mode": "normal",
+        "levels": levels,
+    }
+    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
 
 if __name__ == "__main__":
     generate()

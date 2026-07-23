@@ -1,6 +1,7 @@
 {
+  "schemaVersion": 1,
   "subject": "science",
-  "version": 3,
+  "mode": "normal",
   "levels": [
     {
       "id": "1",

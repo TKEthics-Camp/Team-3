@@ -161,7 +161,12 @@ def main():
             "questions": output_questions,
         })
 
-    payload = {"subject": "science", "version": 3, "levels": levels}
+    payload = {
+        "schemaVersion": 1,
+        "subject": "science",
+        "mode": "normal",
+        "levels": levels,
+    }
     OUTPUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 

@@ -156,7 +156,7 @@ function makeLevel(grade, zhName, enName) {
   finish();
 }
 
-const output = { subject: 'math', mode: 'hard', levels };
+const output = { schemaVersion: 1, subject: 'math', mode: 'hard', levels };
 const target = path.join(__dirname, '..', 'data', 'hard-math.json');
 fs.writeFileSync(target, JSON.stringify(output, null, 2) + '\n');
 console.log(`Wrote ${target}: ${levels.length} levels, ${levels.reduce((n,l)=>n+l.questions.length,0)} questions`);

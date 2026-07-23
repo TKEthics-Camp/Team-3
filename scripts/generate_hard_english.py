@@ -411,7 +411,12 @@ def main():
             if key not in seen:
                 seen.add(key)
                 unique_source.append(source_question)
-        base = [strengthen_base_question(q, level, i) for i, q in enumerate(unique_source, 1)]
+        # Keep 25 strengthened donor questions, then add 25 purpose-built
+        # vocabulary, grammar, and reading questions for a 50-question level.
+        base = [
+            strengthen_base_question(question, level, ordinal)
+            for ordinal, question in enumerate(unique_source[:25], 1)
+        ]
         theme_en, theme_zh = THEMES[level - 1]
         questions = base + lexical_questions(level, theme_en, theme_zh) + grammar_questions(level, theme_en, theme_zh) + reading_questions(level, theme_en, theme_zh)
         assert len(questions) == 50
@@ -421,9 +426,9 @@ def main():
             "questions": questions,
         })
     payload = {
+        "schemaVersion": 1,
         "subject": "english",
         "mode": "hard",
-        "version": 1,
         "levels": levels,
     }
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
