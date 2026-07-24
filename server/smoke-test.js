@@ -22,6 +22,12 @@ async function call(path,{token,method='GET',body}={}){
   const event=await call(`/api/matches/${matched.match.id}/events`,{token:a.token,method:'POST',body:{type:'move',payload:{index:112}}});assert.equal(event.event.seq,1);assert.equal(event.event.from,`alice_${suffix}`);
   assert.equal((await call(`/api/matches/${matched.match.id}`,{token:b.token})).match.events.length,1);
   await call(`/api/matches/${matched.match.id}/leave`,{token:a.token,method:'POST',body:{}});
+  assert.equal((await call('/api/matches/queue',{token:a.token,method:'POST',body:{game:'stick'}})).status,'waiting');
+  const stick=await call('/api/matches/queue',{token:b.token,method:'POST',body:{game:'stick'}});assert.equal(stick.status,'matched');
+  const snapshot=await call(`/api/matches/${stick.match.id}/events`,{token:a.token,method:'POST',body:{type:'stick-state',payload:{seq:1,state:{time:44.5,players:[]}}}});assert.equal(snapshot.event.seq,1);
+  const input=await call(`/api/matches/${stick.match.id}/events`,{token:b.token,method:'POST',body:{type:'input',payload:{action:'punch',on:true,seq:1}}});assert.equal(input.event.seq,2);
+  const stickState=(await call(`/api/matches/${stick.match.id}`,{token:b.token})).match;assert.equal(stickState.events.length,1);assert.equal(stickState.events[0].type,'input');
+  await call(`/api/matches/${stick.match.id}/leave`,{token:a.token,method:'POST',body:{}});
   assert.equal((await call('/api/matches/queue',{token:a.token,method:'POST',body:{game:'chess'}})).status,'waiting');
   assert.equal((await call('/api/matches/queue/leave',{token:a.token,method:'POST',body:{}})).ok,true);
   console.log('Account, sync, friends, leaderboard, and match API smoke test passed.');

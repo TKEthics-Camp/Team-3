@@ -99,7 +99,7 @@ async function route(req,res){
     for(const match of Object.values(store.matches))if(match.players.includes(user.username))return json(res,200,{status:'matched',match});
     const waiting=store.queues[game];
     if(waiting&&waiting!==user.username&&store.users[waiting]){
-      const match={id:id(),game,players:[waiting,user.username],createdAt:Date.now(),events:[],status:'active'};store.matches[match.id]=match;delete store.queues[game];persist();for(const player of match.players)send(player,{type:'match.found',match});return json(res,200,{status:'matched',match})
+      const match={id:id(),game,players:[waiting,user.username],createdAt:Date.now(),events:[],eventSeq:0,status:'active'};store.matches[match.id]=match;delete store.queues[game];persist();for(const player of match.players)send(player,{type:'match.found',match});return json(res,200,{status:'matched',match})
     }
     store.queues[game]=user.username;persist();return json(res,202,{status:'waiting',game})
   }
@@ -109,7 +109,7 @@ async function route(req,res){
   const matchEvent=url.pathname.match(/^\/api\/matches\/([^/]+)\/events$/);
   if(req.method==='POST'&&matchEvent){
     const match=store.matches[matchEvent[1]];if(!match||!match.players.includes(user.username))return fail(res,404,'MATCH_NOT_FOUND');
-    const body=await readBody(req),event={id:id(),seq:match.events.length+1,from:user.username,type:String(body.type||'event').slice(0,50),payload:body.payload,at:Date.now()};match.events.push(event);if(match.events.length>500)match.events.shift();persist();for(const player of match.players)if(player!==user.username)send(player,{type:'match.event',matchId:match.id,event});return json(res,201,{event})
+    const body=await readBody(req),type=String(body.type||'event').slice(0,50),volatile=match.game==='stick'&&type==='stick-state',event={id:id(),seq:match.eventSeq=(Number(match.eventSeq)||match.events.length)+1,from:user.username,type,payload:body.payload,at:Date.now()};if(!volatile){match.events.push(event);if(match.events.length>500)match.events.shift();persist()}for(const player of match.players)if(player!==user.username)send(player,{type:'match.event',matchId:match.id,event});return json(res,201,{event})
   }
   const leave=url.pathname.match(/^\/api\/matches\/([^/]+)\/leave$/);
   if(req.method==='POST'&&leave){const match=store.matches[leave[1]];if(match?.players.includes(user.username))cleanupMatch(match);for(const [game,name] of Object.entries(store.queues))if(name===user.username)delete store.queues[game];persist();return json(res,200,{ok:true})}

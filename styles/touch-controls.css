@@ -170,15 +170,86 @@ select {
 }
 
 .touch-layout-fighter .touch-button-grid {
+  width: min(100%, 430px);
+  margin-inline: auto;
+  grid-template: repeat(3, 44px) / repeat(3, 44px) minmax(10px, 1fr) repeat(3, 50px);
   grid-auto-flow: row;
-  grid-template-columns: repeat(3, minmax(44px, 1fr));
-  gap: 5px;
+  gap: 4px;
 }
 
 .touch-layout-fighter .touch-btn {
   min-width: 44px;
   min-height: 44px;
-  padding: 7px 5px;
+  padding: 0;
+}
+
+.touch-layout-fighter .fighter-direction {
+  border-radius: 14px;
+  background: linear-gradient(145deg, #26364d, #141d2b);
+  color: #d9e9ff;
+  font-size: 1.15rem;
+}
+
+.touch-layout-fighter [data-slot="up"] {
+  grid-area: 1 / 2;
+}
+
+.touch-layout-fighter [data-slot="left"] {
+  grid-area: 2 / 1;
+}
+
+.touch-layout-fighter [data-slot="down"] {
+  grid-area: 3 / 2;
+}
+
+.touch-layout-fighter [data-slot="right"] {
+  grid-area: 2 / 3;
+}
+
+.touch-layout-fighter .fighter-action {
+  align-self: center;
+  justify-self: center;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  border-width: 2px;
+  border-radius: 50%;
+  font-family: "STKaiti", "KaiTi", "Kaiti SC", "FangSong", cursive;
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 900;
+  text-shadow: 0 2px 6px #000b;
+}
+
+.touch-layout-fighter .fighter-action img {
+  display: block;
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px #000b);
+  pointer-events: none;
+}
+
+.touch-layout-fighter [data-slot="kick"] {
+  grid-area: 1 / 5;
+  border-color: #ffc85788;
+  background: radial-gradient(circle at 35% 28%, #745521, #342308 72%);
+  color: #fff0a8;
+}
+
+.touch-layout-fighter [data-slot="attack"] {
+  grid-area: 2 / 6;
+  border-color: #ff617d99;
+  background: radial-gradient(circle at 35% 28%, #7b2840, #37101d 72%);
+  color: #ffd7de;
+}
+
+.touch-layout-fighter [data-slot="block"] {
+  grid-area: 3 / 5;
+  border-color: #5ce8ff88;
+  background: radial-gradient(circle at 35% 28%, #215b72, #0b2b3a 72%);
+  color: #d8faff;
 }
 
 .touch-layout-fighter > .mini-btn {
@@ -303,6 +374,21 @@ select {
     gap: 5px;
   }
 
+  .touch-layout-fighter .touch-group {
+    flex: 1 1 100%;
+  }
+
+  .touch-layout-fighter .touch-button-grid {
+    grid-template: repeat(3, 40px) / repeat(3, 40px) minmax(8px, 1fr) repeat(3, 46px);
+  }
+
+  .touch-layout-fighter .fighter-action {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    min-height: 46px;
+  }
+
   .touch-layout-fighter > .mini-btn {
     max-width: 78px;
     overflow: hidden;
@@ -351,7 +437,11 @@ select {
   }
 
   .touch-layout-fighter .touch-btn {
-    font-size: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .touch-layout-fighter .fighter-action {
+    font-size: 1.3rem;
   }
 
   .touch-layout-fighter > .mini-btn {
@@ -426,7 +516,14 @@ select {
   }
 
   .touch-layout-fighter .touch-button-grid {
-    grid-template-columns: repeat(3, minmax(44px, 1fr));
+    grid-template: repeat(3, 38px) / repeat(3, 38px) minmax(6px, 1fr) repeat(3, 44px);
+  }
+
+  .touch-layout-fighter .fighter-action {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .touch-layout-lanes .touch-button-grid {

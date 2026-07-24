@@ -29,4 +29,39 @@ async function loadQuestionBank(source){
   if(!response.ok)throw Error(`${source.url}: ${response.status}`);
   return[source,validateQuestionBank(await response.json(),source)]
 }
-async function init(){importArcadeReturn();loadAdminSettings();applyAdminMode();let bankFailed=false;try{const loaded=await Promise.all(QUESTION_BANK_SOURCES.map(loadQuestionBank));loaded.forEach(([source,bank])=>(source.mode==='hard'?hardBanks:banks)[source.subject]=bank)}catch(e){console.error(e);bankFailed=true;const detail=e instanceof Error?e.message:String(e);error(`题库加载或格式验证失败：${detail}。请确认仓库文件完整，并重新打开本页。`);document.querySelector('#start').disabled=true}loadUser();setLang(localStorage.getItem('gongxing_lang')==='en'?'en':'zh');renderAccountButton();const params=new URLSearchParams(location.search);if(!bankFailed&&params.has('gameExpired'))error('游戏时间已结束。继续答题赚取积分，即可再次兑换游戏时间。');else if(!bankFailed&&params.has('gameAccess'))error('请先使用积分兑换游戏时间。');if(params.has('gameExpired')||params.has('gameAccess'))history.replaceState({},'',location.pathname)}
+async function refreshQuestionBanks(){
+  const loaded=await Promise.all(QUESTION_BANK_SOURCES.map(loadQuestionBank));
+  loaded.forEach(([source,bank])=>(source.mode==='hard'?hardBanks:banks)[source.subject]=bank);
+  document.querySelector('#start').disabled=false;
+  if(typeof renderAdminLevels==='function'&&typeof adminActive!=='undefined'&&adminActive)renderAdminLevels();
+  return loaded.length
+}
+function applyArcadeGameCount(count){
+  if(!Number.isInteger(count)||count<1)return arcadeGameCount;
+  arcadeGameCount=count;
+  if(typeof syncFreeGameCopy==='function')syncFreeGameCopy();
+  return arcadeGameCount
+}
+async function refreshArcadeContent(refreshAssets=false){
+  if(location.protocol==='file:')return applyArcadeGameCount(DEFAULT_ARCADE_GAME_COUNT);
+  const pageUrl=new URL('./games.html',location.href);
+  pageUrl.searchParams.set('contentRefresh',String(Date.now()));
+  const response=await fetch(pageUrl,{cache:'reload'});
+  if(!response.ok)throw Error(`games.html: ${response.status}`);
+  const documentCopy=new DOMParser().parseFromString(await response.text(),'text/html');
+  const count=documentCopy.querySelectorAll('.game-card[data-game]').length;
+  applyArcadeGameCount(count);
+  if(refreshAssets){
+    const assetUrls=[...documentCopy.querySelectorAll('script[src],link[rel="stylesheet"][href]')].map(element=>element.getAttribute('src')||element.getAttribute('href')).filter(Boolean);
+    await Promise.all(assetUrls.map(async asset=>{
+      const assetResponse=await fetch(new URL(asset,pageUrl),{cache:'reload'});
+      if(!assetResponse.ok)throw Error(`${asset}: ${assetResponse.status}`)
+    }))
+  }
+  return count
+}
+async function refreshLearningContent({refreshGameAssets=false}={}){
+  const [bankCount,gameCount]=await Promise.all([refreshQuestionBanks(),refreshArcadeContent(refreshGameAssets)]);
+  return{bankCount,gameCount}
+}
+async function init(){importArcadeReturn();loadAdminSettings();applyAdminMode();let bankFailed=false;try{await refreshQuestionBanks()}catch(e){console.error(e);bankFailed=true;const detail=e instanceof Error?e.message:String(e);error(`题库加载或格式验证失败：${detail}。请确认仓库文件完整，并重新打开本页。`);document.querySelector('#start').disabled=true}try{await refreshArcadeContent()}catch(e){console.warn('游戏目录刷新失败，继续使用内置数量。',e);applyArcadeGameCount(DEFAULT_ARCADE_GAME_COUNT)}loadUser();setLang(localStorage.getItem('gongxing_lang')==='en'?'en':'zh');renderAccountButton();const params=new URLSearchParams(location.search);if(!bankFailed&&params.has('gameExpired'))error('游戏时间已结束。继续答题赚取积分，即可再次兑换游戏时间。');else if(!bankFailed&&params.has('gameAccess'))error('请先使用积分兑换游戏时间。');if(params.has('gameExpired')||params.has('gameAccess'))history.replaceState({},'',location.pathname)}

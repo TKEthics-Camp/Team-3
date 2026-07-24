@@ -41,7 +41,7 @@ Changing these keys or their object shapes requires an explicit migration.
 
 - Gomoku and Chess relay validated move coordinates; each client also applies its local rules.
 - Battleship fleets remain on their owners' devices. The server relays shots and the defender's hit/miss result.
-- Stick Fighter relays press/release inputs. This is best-effort realtime play and is more latency-sensitive than the turn-based games.
+- Stick Fighter relays sequenced press/release inputs. Player 1 is the authoritative host for collision, health, rounds, and the match clock, and sends transient state snapshots to Player 2 for correction. Realtime play remains latency-sensitive and uses client prediction rather than server-side simulation.
 - Match rooms retain a bounded event log and are removed when a player leaves.
 
 The prototype match relay is not cheat-resistant or a substitute for an authoritative competitive game server.

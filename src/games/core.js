@@ -41,7 +41,8 @@ if(!localStorage.getItem('gongxing_forest_score_reset_v1')){
 }
 let arcadeLang=localStorage.getItem('gongxing_lang')==='en'?'en':'zh';
 const L=(zh,en)=>arcadeLang==='zh'?zh:en;
-const PAGE={zh:{brand:'无名游艺馆',back:'← 返回学苑',eyebrow:'独立游戏中心',headline:'八种玩法，随时开局。',intro:'动作、反应、节奏、棋类与策略。最高分保存在本机；登录云端账号后可使用在线对战。',six:'🎮 8 款完整游戏',modes:'🤖 电脑 + 本地 + 在线对战',localBest:'🏆 本地最高分',score:'得分',status:'状态',best:'最高',timeLeft:'剩余时间',ready:'准备就绪',playAgain:'再玩一次',restart:'重新开始'},en:{brand:'Nameless Arcade',back:'← Back to Academy',eyebrow:'INDEPENDENT GAME CENTER',headline:'Eight worlds. Play anytime.',intro:'Action, reflex, rhythm, board games, and strategy. High scores stay local; sign in to use online matches.',six:'🎮 8 complete games',modes:'🤖 AI + local + online play',localBest:'🏆 Local high scores',score:'SCORE',status:'STATUS',best:'BEST',timeLeft:'TIME LEFT',ready:'READY',playAgain:'Play again',restart:'Restart'}};
+const arcadeGameCount=document.querySelectorAll('.game-card[data-game]').length;
+const PAGE={zh:{brand:'无名游艺馆',back:'← 返回学苑',eyebrow:'独立游戏中心',headline:`${arcadeGameCount} 种玩法，随时开局。`,intro:'动作、反应、节奏、棋类与策略。最高分保存在本机；登录云端账号后可使用在线对战。',six:`🎮 ${arcadeGameCount} 款完整游戏`,modes:'🤖 电脑 + 本地 + 在线对战',localBest:'🏆 本地最高分',score:'得分',status:'状态',best:'最高',timeLeft:'剩余时间',ready:'准备就绪',playAgain:'再玩一次',restart:'重新开始'},en:{brand:'Nameless Arcade',back:'← Back to Academy',eyebrow:'INDEPENDENT GAME CENTER',headline:`${arcadeGameCount} worlds. Play anytime.`,intro:'Action, reflex, rhythm, board games, and strategy. High scores stay local; sign in to use online matches.',six:`🎮 ${arcadeGameCount} complete games`,modes:'🤖 AI + local + online play',localBest:'🏆 Local high scores',score:'SCORE',status:'STATUS',best:'BEST',timeLeft:'TIME LEFT',ready:'READY',playAgain:'Play again',restart:'Restart'}};
 const meta={
   gomoku:{zh:['曜石五子棋','点击棋盘交叉点落子；先连成横、竖或斜线五子者获胜。','传统 15×15 金木棋盘，支持三档电脑对手与本地黑白双人对弈。','棋类 · 电脑 / 双人'],en:['Obsidian Gomoku','Click an intersection to place a stone. Connect five horizontally, vertically, or diagonally to win.','A polished 15×15 wood board with three AI levels and local black-versus-white play.','Board · AI / PVP']},
   rhythm:{zh:['反应堆节拍','按下四个对应字母键，或点击四个轨道键。','音符抵达底部判定线时击中，连击会放大得分。','节奏 · 反应'],en:['Reactor Rhythm','Use D, F, J, K or tap the four lane controls.','Catch pulses at the judgment line and keep your combo alive.','Rhythm · Reflex']},
@@ -80,7 +81,8 @@ function controls(items=[],options={}){
     const button=document.createElement('button');
     button.type='button';
     button.className=`touch-btn${item.className?` ${item.className}`:''}`;
-    button.textContent=arcadeLang==='en'?englishText(item.label):item.label;
+    if(item.image){const image=document.createElement('img');image.src=item.image;image.alt='';image.draggable=false;button.appendChild(image)}
+    else button.textContent=arcadeLang==='en'?englishText(item.label):item.label;
     button.dataset.slot=item.slot||'';
     button.setAttribute('aria-label',arcadeLang==='en'?englishText(item.ariaLabel||item.label):item.ariaLabel||item.label);
     let pressed=false;

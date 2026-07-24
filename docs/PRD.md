@@ -122,7 +122,7 @@ The application and optional service have no third-party runtime package depende
 - A username can add another existing username as a mutual friend.
 - Friend leaderboards compare points credited during the current local calendar day, Monday-based week, or month.
 - Gomoku, Chess, Battleship, and Stick Fighter offer online matchmaking when the service is configured and the student is signed in.
-- Turn-based games relay discrete actions. Stick Fighter relays realtime input and is explicitly a best-effort prototype under network latency.
+- Turn-based games relay discrete actions. Stick Fighter relays realtime input and uses Player 1 as the authoritative simulation host, with transient state snapshots correcting Player 2 under network latency.
 
 ## 11. Product and engineering constraints
 

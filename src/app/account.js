@@ -30,7 +30,9 @@ async function accountLogout(){
 function renderAccountButton(){
   const auth=WumingRemote.loadAuth(),configured=WumingRemote.configured();
   accountButton.textContent=auth?`☁ ${auth.username}`:configured?'☁ 登录':'☁ 未配置';
-  friendsButton.hidden=!auth;leaderboardButton.hidden=!auth;syncButton.hidden=!auth;syncButton.disabled=!configured
+  friendsButton.hidden=!auth;leaderboardButton.hidden=!auth;syncButton.hidden=false;syncButton.disabled=accountBusy;
+  syncButton.title=lang==='zh'?'同步存档、题库和游戏':'Sync save, question banks, and games';
+  syncButton.setAttribute('aria-label',syncButton.title)
 }
 function renderAccount(){
   const auth=WumingRemote.loadAuth(),configured=WumingRemote.configured(),demo=window.REMOTE_SERVER_DEMO===true;
@@ -64,10 +66,17 @@ function accountError(error){
   return lang==='zh'?(map[error.message]||`操作失败：${error.message}`):`Request failed: ${error.message}`
 }
 async function manualRemoteSync(){
-  if(accountBusy)return;accountBusy=true;syncButton.disabled=true;accountMessage(lang==='zh'?'正在同步…':'Syncing…');
-  try{const result=await WumingRemote.sync(accountSnapshot());applyRemoteSnapshot(result.user.data);accountMessage(result.conflict?(lang==='zh'?'检测到其他设备的新版本，已采用服务器数据。':'A newer server version was applied.'):(lang==='zh'?'同步完成。':'Sync complete.'),true);renderAccount()}
+  if(accountBusy)return;accountBusy=true;let synced=false;syncButton.disabled=true;syncButton.textContent='…';accountMessage(lang==='zh'?'正在同步存档、题库和游戏…':'Syncing save, question banks, and games…');
+  try{
+    const auth=WumingRemote.loadAuth(),configured=WumingRemote.configured();
+    let conflict=false;
+    if(auth&&configured){const result=await WumingRemote.sync(accountSnapshot());applyRemoteSnapshot(result.user.data);conflict=result.conflict}
+    const content=await refreshLearningContent({refreshGameAssets:true});
+    const message=lang==='zh'?`${conflict?'已采用服务器上的新存档；':''}题库与 ${content.gameCount} 款游戏已同步。`:`${conflict?'The newer server save was applied; ':''}question banks and ${content.gameCount} games are up to date.`;
+    accountMessage(message,true);renderAccount();if(accountModal.hidden){syncButton.title=message;syncButton.setAttribute('aria-label',message)}synced=true
+  }
   catch(error){accountMessage(accountError(error));if(accountModal.hidden)openAccount()}
-  finally{accountBusy=false;syncButton.disabled=false}
+  finally{accountBusy=false;syncButton.disabled=false;syncButton.textContent=synced?'✓':'↻';if(synced)setTimeout(()=>{syncButton.textContent='↻';renderAccountButton()},1200)}
 }
 async function addFriend(event){
   event.preventDefault();const input=event.currentTarget.elements.username;

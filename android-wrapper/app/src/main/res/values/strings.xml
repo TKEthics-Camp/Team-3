@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">无名学苑 - 智能学习系统</string>
+    <string name="widget_description">打开无名学苑的离线学习页面</string>
+    <string name="widget_content_description">打开无名学苑 - 智能学习系统</string>
+</resources>
