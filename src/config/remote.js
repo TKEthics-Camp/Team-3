@@ -1,6 +1,10 @@
-// Direct file opening falls back to localhost. Pages served over HTTP use the
-// current page hostname, so phones on the same LAN connect to the computer.
-window.REMOTE_SERVER_HOST = location.hostname || 'localhost';
+// Use an explicit IPv4 loopback address for desktop pages. On Windows,
+// `localhost` can resolve to IPv6 (::1) while the demo server listens on IPv4.
+const remotePageHost = location.hostname;
+window.REMOTE_SERVER_HOST =
+  !remotePageHost || ['localhost', '::1', '[::1]'].includes(remotePageHost)
+    ? '127.0.0.1'
+    : remotePageHost;
 window.REMOTE_SERVER_PORT = 8787;
 window.REMOTE_SERVER_PROTOCOL = 'http:';
 window.REMOTE_SERVER_DEMO = true;

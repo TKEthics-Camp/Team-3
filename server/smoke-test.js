@@ -19,7 +19,7 @@ async function call(path,{token,method='GET',body}={}){
   const conflict=await call('/api/sync',{token:a.token,method:'POST',body:{baseRevision:1,data:{...data,points:99}}});assert.equal(conflict.conflict,true);assert.equal(conflict.user.data.points,5);
   assert.equal((await call('/api/matches/queue',{token:a.token,method:'POST',body:{game:'gomoku'}})).status,'waiting');
   const matched=await call('/api/matches/queue',{token:b.token,method:'POST',body:{game:'gomoku'}});assert.equal(matched.status,'matched');
-  const event=await call(`/api/matches/${matched.match.id}/events`,{token:a.token,method:'POST',body:{type:'move',payload:{index:112}}});assert.equal(event.event.seq,1);
+  const event=await call(`/api/matches/${matched.match.id}/events`,{token:a.token,method:'POST',body:{type:'move',payload:{index:112}}});assert.equal(event.event.seq,1);assert.equal(event.event.from,`alice_${suffix}`);
   assert.equal((await call(`/api/matches/${matched.match.id}`,{token:b.token})).match.events.length,1);
   await call(`/api/matches/${matched.match.id}/leave`,{token:a.token,method:'POST',body:{}});
   assert.equal((await call('/api/matches/queue',{token:a.token,method:'POST',body:{game:'chess'}})).status,'waiting');

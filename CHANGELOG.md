@@ -13,7 +13,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 - Added username-based friends and daily, weekly, and monthly friend point leaderboards.
 - Added server-mediated online matchmaking and play for Gomoku, Chess, Battleship, and Stick Fighter.
 - Added a dependency-free Node.js account server and end-to-end API smoke test.
-- Added configurable demo-server host, port, and protocol values, with current-host discovery for LAN pages and a `localhost` fallback for direct desktop opening.
+- Added configurable demo-server host, port, and protocol values, with current-host discovery and a cross-platform IPv4 loopback fallback for direct desktop opening.
 - Added narrow-screen layouts for account access, friend management, and period leaderboard controls.
 - Added a generated open-book and learning-path brand mark to replace the text-only academy badge.
 - Added point-based game-time top-ups while an existing paid session still has time remaining.
@@ -48,6 +48,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 
 ### Fixed
 
+- Normalized desktop demo connections to `127.0.0.1` so Windows, Linux, and macOS do not depend on different `localhost` IPv4/IPv6 resolution behavior.
+- Fixed Stick Fighter online input ownership so each matched account controls only its server-assigned fighter while both devices retain the P1 key layout.
 - Kept the leaderboard layout stable while switching between daily, weekly, and monthly views, and ignored stale asynchronous responses to prevent visual ghosting.
 - Fixed administrator-mode navigation incorrectly returning students from the arcade to the home page.
 - Fixed unused arcade time not being deducted consistently across page exits, backgrounding, and later resumes.

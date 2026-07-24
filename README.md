@@ -23,13 +23,17 @@ Without a configured remote server, all user state remains in the browser and ev
 
 For normal use, open `index.html` directly. The `file://` path loads the generated standalone question-bank bundle and does not require a server.
 
-For development, serving the repository over HTTP makes individual JSON changes visible after rebuilding the relevant source data:
+For development, serving the repository over HTTP makes individual JSON changes visible after rebuilding the relevant source data. Use the command available on your operating system:
 
 ```sh
+# Linux or macOS
 python3 -m http.server 8000
+
+# Windows PowerShell or Command Prompt
+py -m http.server 8000
 ```
 
-Then open <http://localhost:8000/>.
+Then open <http://127.0.0.1:8000/>.
 
 No install or build step is currently required.
 
@@ -41,14 +45,18 @@ The server has no third-party package dependencies and stores passwords as salte
 node server/index.js
 ```
 
-It listens on port `8787` on all network interfaces by default. `src/config/remote.js` uses the current page hostname when one exists and falls back to `localhost` when `index.html` is opened directly. A page opened at `http://192.168.1.20:8000`, for example, connects to `http://192.168.1.20:8787`; direct desktop opening connects to `http://localhost:8787`.
+It listens on port `8787` on all network interfaces by default. On Windows, Linux, and macOS, direct desktop opening and pages served from `localhost` use the explicit IPv4 loopback address `127.0.0.1`. This avoids operating-system differences where `localhost` may resolve to IPv6 `::1` while the demo server is listening on IPv4. A page opened through another hostname still uses that hostname.
 
 ### Change the remote address
 
 Edit the deployment values near the top of `src/config/remote.js`:
 
 ```js
-window.REMOTE_SERVER_HOST = location.hostname || 'localhost';
+const remotePageHost = location.hostname;
+window.REMOTE_SERVER_HOST =
+  !remotePageHost || ['localhost', '::1', '[::1]'].includes(remotePageHost)
+    ? '127.0.0.1'
+    : remotePageHost;
 window.REMOTE_SERVER_PORT = 8787;
 window.REMOTE_SERVER_PROTOCOL = 'http:';
 ```
@@ -68,7 +76,7 @@ For a desktop demonstration that opens `index.html` directly, start the account 
 node server/index.js
 ```
 
-Keep that terminal open, then double-click `index.html`. The page connects to `http://localhost:8787`.
+Keep that terminal open, then double-click `index.html`. The page connects to `http://127.0.0.1:8787` on Windows, Linux, and macOS. To verify the server independently, open <http://127.0.0.1:8787/api/health> and confirm that it returns `{"ok":true}`.
 
 For a phone or tablet demonstration, keep the account service running in terminal 1:
 
@@ -91,7 +99,14 @@ Server data is written under `server/data/` by default and is ignored by Git. Ba
 Run the API smoke test against a running server with:
 
 ```sh
+# Linux or macOS
 SERVER_URL=http://your-demo-host:8787 node server/smoke-test.js
+
+# Windows PowerShell
+$env:SERVER_URL='http://your-demo-host:8787'; node server/smoke-test.js
+
+# Windows Command Prompt
+set SERVER_URL=http://your-demo-host:8787 && node server/smoke-test.js
 ```
 
 ## Repository layout

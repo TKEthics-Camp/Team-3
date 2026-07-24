@@ -3,6 +3,10 @@ function onlineReady(){return WumingRemote.configured()&&!!WumingRemote.loadAuth
 function onlineOption(label='在线匹配'){return `<option value="online" ${onlineReady()?'':'disabled'}>${label}${onlineReady()?'':'（需配置服务器并登录）'}</option>`}
 function onlineIdentity(){return WumingRemote.loadAuth()?.username||''}
 function onlinePlayerNumber(){return onlineSession?.player||0}
+function onlineEventPlayer(event){
+  const index=onlineSession?.match?.players.indexOf(event?.from);
+  return Number.isInteger(index)&&index>=0?index+1:0
+}
 function onlineMatchId(){return onlineSession?.match?.id||''}
 function onlineStatusCopy(){return onlineReady()?L('在线匹配','Online matchmaking'):L('在线对战需要先在学苑登录云端账号','Sign in to an academy cloud account first')}
 async function beginOnlineMatch(gameId,{found,event,closed}){
