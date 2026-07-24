@@ -62,7 +62,7 @@ The browser loads six runtime JSON banks from `data/`. Reference and extension d
 
 ## 6. Current arcade experience
 
-The arcade contains seven games:
+The arcade contains eight games:
 
 1. Stick Fighter
 2. Reaction Test
@@ -71,6 +71,7 @@ The arcade contains seven games:
 5. Pac-Man-style Maze
 6. Chess
 7. Battleship
+8. 3D Tag Arena (local bots)
 
 Game access is controlled by a local timed session. The remaining time is visible while playing, pauses when the page is inactive, and returns the user to the learning page when exhausted. Scores remain on the current device.
 

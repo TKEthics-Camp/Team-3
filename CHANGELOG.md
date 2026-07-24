@@ -8,6 +8,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 
 ### Added
 
+- Added a sandboxed, local-bot edition of Tag Game 2 to the arcade without an extra server or port.
 - Added optional remote account registration and login with salted password hashing.
 - Added login/register/manual save synchronization with server revision conflict handling.
 - Added username-based friends and daily, weekly, and monthly friend point leaderboards.
@@ -48,6 +49,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Thi
 
 ### Fixed
 
+- Verified all 7,350 runtime questions against independently solved, answer-isolated copies and normalized high-school math notation for exponents, logarithms, limits, and definite integrals.
 - Normalized desktop demo connections to `127.0.0.1` so Windows, Linux, and macOS do not depend on different `localhost` IPv4/IPv6 resolution behavior.
 - Fixed Stick Fighter online input ownership so each matched account controls only its server-assigned fighter while both devices retain the P1 key layout.
 - Kept the leaderboard layout stable while switching between daily, weekly, and monthly views, and ignored stale asynchronous responses to prevent visual ghosting.

@@ -5,6 +5,8 @@ const levels = [];
 const round = (n) => Number(n.toFixed(6));
 const signedTerm = (value) => value >= 0 ? `+${value}` : `-${-value}`;
 const shiftedVariable = (variable, value) => value >= 0 ? `${variable}-${value}` : `${variable}+${-value}`;
+const superscript = value => String(value).replace(/\d/g, digit => '⁰¹²³⁴⁵⁶⁷⁸⁹'[digit]);
+const subscript = value => String(value).replace(/\d/g, digit => '₀₁₂₃₄₅₆₇₈₉'[digit]);
 
 function makeLevel(grade, zhName, enName) {
   const questions = [];
@@ -127,7 +129,7 @@ function makeLevel(grade, zhName, enName) {
 {
   const { add, finish } = makeLevel(10, '高一 · 无双', 'Grade 10 · Hard');
   for(let i=0;i<10;i++){const x=2+i,a=2+(i%4),b=5-i,c=3+(i%3);const linear=`${a}x${signedTerm(b)}`;add('composite function',`f(x)=${linear}，g(x)=x²-${c}，求 g(f(${x}))。`,`Let f(x)=${linear} and g(x)=x²-${c}. Find g(f(${x})).`,(a*x+b)**2-c);}
-  for(let i=0;i<10;i++){const base=2+(i%4),p=5+i,q=2+(i%3);add('exponents and logarithms',`log_${base}(${base**p}) - ${q} = ?`,`log base ${base} of ${base**p}, minus ${q}, equals?`,p-q);}
+  for(let i=0;i<10;i++){const base=2+(i%4),p=5+i,q=2+(i%3);add('exponents and logarithms',`log${subscript(base)}(${base**p}) - ${q} = ?`,`log base ${base} of ${base**p}, minus ${q}, equals?`,p-q);}
   for(let i=0;i<10;i++){const first=5+i,d=3+(i%5),n=12+(i%4);add('arithmetic sequence',`等差数列首项 ${first}、公差 ${d}，前 ${n} 项和是多少？`,`An arithmetic sequence has first term ${first}, difference ${d}. Find the sum of first ${n} terms.`,n*(2*first+(n-1)*d)/2);}
   for(let i=0;i<10;i++){const x1=-5+i,y1=3+i,x2=x1+4+(i%3),y2=y1+6+(i%4);add('analytic geometry',`点 A(${x1},${y1})、B(${x2},${y2})，线段 AB 中点的横纵坐标之和是多少？`,`For A(${x1},${y1}) and B(${x2},${y2}), what is the sum of the midpoint's coordinates?`,(x1+x2+y1+y2)/2);}
   for(let i=0;i<10;i++){const n=8+i,k=3;const p=n*(n-1)*(n-2);add('permutations',`从 ${n} 个不同元素中依次选 3 个排列，共有多少种？`,`How many ordered arrangements select 3 from ${n} distinct elements?`,p);}
@@ -139,7 +141,7 @@ function makeLevel(grade, zhName, enName) {
   const { add, finish } = makeLevel(11, '高二 · 无双', 'Grade 11 · Hard');
   for(let i=0;i<10;i++){const x=2+i,a=2+(i%4),b=3+(i%5),c=7-i;const polynomial=`${a}x³-${b}x²${signedTerm(c)}`;add('derivative',`f(x)=${polynomial}，求 f'(${x})。`,`For f(x)=${polynomial}, find f'(${x}).`,3*a*x*x-2*b*x);}
   for(let i=0;i<10;i++){const a=2+i,b=3+(i%5),c=-4+(i%4),d=5+i;add('vectors',`向量 u=(${a},${b})，v=(${c},${d})，内积 u·v 是多少？`,`For u=(${a},${b}) and v=(${c},${d}), find u·v.`,a*c+b*d);}
-  for(let i=0;i<10;i++){const n=10+i,k=2+(i%3);let comb=1;for(let j=1;j<=k;j++)comb=comb*(n-j+1)/j;add('binomial probability',`公平硬币抛 ${n} 次，恰好 ${k} 次正面的概率乘以 2^${n} 等于多少？`,`A fair coin is tossed ${n} times. The probability of exactly ${k} heads multiplied by 2^${n} equals what?`,comb);}
+  for(let i=0;i<10;i++){const n=10+i,k=2+(i%3);let comb=1;for(let j=1;j<=k;j++)comb=comb*(n-j+1)/j;add('binomial probability',`公平硬币抛 ${n} 次，恰好 ${k} 次正面的概率乘以 2${superscript(n)} 等于多少？`,`A fair coin is tossed ${n} times. The probability of exactly ${k} heads multiplied by 2${superscript(n)} equals what?`,comb);}
   for(let i=0;i<10;i++){const first=3+i,r=2+(i%3),n=6+(i%4);add('geometric sequence',`等比数列首项 ${first}、公比 ${r}，前 ${n} 项和是多少？`,`A geometric sequence has first term ${first}, ratio ${r}. Find the sum of first ${n} terms.`,first*(r**n-1)/(r-1));}
   for(let i=0;i<10;i++){const h=-3+i,k=4-i,r=5+(i%6);const x=h+3;const shiftedX=shiftedVariable('x',h),shiftedY=shiftedVariable('y',k);add('circle equation',`圆 (${shiftedX})²+(${shiftedY})²=${r*r} 上横坐标为 ${x} 的点，其纵坐标较大值是多少？`,`On (${shiftedX})²+(${shiftedY})²=${r*r}, a point has x=${x}. Find the larger y-coordinate.`,k+Math.sqrt(r*r-9));}
   finish();
@@ -148,8 +150,8 @@ function makeLevel(grade, zhName, enName) {
 // Grade 12
 {
   const { add, finish } = makeLevel(12, '高三 · 无双', 'Grade 12 · Hard');
-  for(let i=0;i<10;i++){const a=2+(i%5),b=3+i,upper=2+(i%4);add('definite integral',`计算 ∫₀^${upper} (${a}x² + ${b}x) dx。`,`Evaluate ∫ from 0 to ${upper} of (${a}x² + ${b}x) dx.`,a*upper**3/3+b*upper**2/2);}
-  for(let i=0;i<10;i++){const a=2+i,b=3+(i%5);add('limit',`计算 lim(x→0) [sin(${a}x)/(${b}x)]。`,`Evaluate lim as x→0 of sin(${a}x)/(${b}x).`,a/b);}
+  for(let i=0;i<10;i++){const a=2+(i%5),b=3+i,upper=2+(i%4);add('definite integral',`计算 ∫₀${superscript(upper)} (${a}x² + ${b}x) dx。`,`Evaluate ∫₀${superscript(upper)} (${a}x² + ${b}x) dx.`,a*upper**3/3+b*upper**2/2);}
+  for(let i=0;i<10;i++){const a=2+i,b=3+(i%5);add('limit',`计算 limₓ→₀ [sin(${a}x)/(${b}x)]。`,`Evaluate limₓ→₀ sin(${a}x)/(${b}x).`,a/b);}
   for(let i=0;i<10;i++){const a=2+i,b=3+(i%4),c=5-i,d=7+(i%5);add('matrix determinant',`矩阵 [[${a},${b}],[${c},${d}]] 的行列式是多少？`,`Find the determinant of [[${a},${b}],[${c},${d}]].`,a*d-b*c);}
   for(let i=0;i<10;i++){const a=2+i,b=1+(i%5),c=-3+(i%4),d=4+i;add('complex numbers',`复数 (${a}+${b}i)(${c}+${d}i) 的实部是多少？`,`Find the real part of (${a}+${b}i)(${c}+${d}i).`,a*c-b*d);}
   for(let i=0;i<10;i++){const sum=20+i*2;const product=(sum/2)**2;add('optimization',`两个非负实数之和为 ${sum}，它们乘积的最大值是多少？`,`Two nonnegative real numbers sum to ${sum}. What is their maximum product?`,product);}

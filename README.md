@@ -1,6 +1,6 @@
 # Nameless Academy
 
-Nameless Academy is an offline-friendly study and game-break web application. Students complete short, level-based quizzes in mathematics, English, and science, earn learning points, and exchange those points for bounded sessions in a seven-game arcade. An optional Node.js service adds accounts, manual cloud synchronization, friends, friend leaderboards, and online matches.
+Nameless Academy is an offline-friendly study and game-break web application. Students complete short, level-based quizzes in mathematics, English, and science, earn learning points, and exchange those points for bounded sessions in an eight-game arcade. An optional Node.js service adds accounts, manual cloud synchronization, friends, friend leaderboards, and online matches.
 
 The application is intentionally framework-free. It runs as static HTML, CSS, JavaScript, JSON, and image assets.
 
@@ -10,7 +10,7 @@ The application is intentionally framework-free. It runs as static HTML, CSS, Ja
 - Five-question study rounds with randomized, non-repeating selection
 - Local progress, achievements, streaks, and usage history
 - Point-based arcade access with configurable session limits
-- Seven browser games with local high scores
+- Eight browser games, including a local-bot edition of [Tag Game 2](https://github.com/Innocentgamerkid72/Tag-Game-2)
 - Responsive arcade layouts with touch controls for phones, tablets, and desktops
 - Chinese and English interfaces
 - Device-local administrator settings

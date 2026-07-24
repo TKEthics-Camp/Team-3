@@ -5155,7 +5155,7 @@
           "id": "hm10_11",
           "type": "number",
           "question": {
-            "zh": "log_2(32) - 2 = ?",
+            "zh": "log₂(32) - 2 = ?",
             "en": "log base 2 of 32, minus 2, equals?"
           },
           "answer": 3,
@@ -5166,7 +5166,7 @@
           "id": "hm10_12",
           "type": "number",
           "question": {
-            "zh": "log_3(729) - 3 = ?",
+            "zh": "log₃(729) - 3 = ?",
             "en": "log base 3 of 729, minus 3, equals?"
           },
           "answer": 3,
@@ -5177,7 +5177,7 @@
           "id": "hm10_13",
           "type": "number",
           "question": {
-            "zh": "log_4(16384) - 4 = ?",
+            "zh": "log₄(16384) - 4 = ?",
             "en": "log base 4 of 16384, minus 4, equals?"
           },
           "answer": 3,
@@ -5188,7 +5188,7 @@
           "id": "hm10_14",
           "type": "number",
           "question": {
-            "zh": "log_5(390625) - 2 = ?",
+            "zh": "log₅(390625) - 2 = ?",
             "en": "log base 5 of 390625, minus 2, equals?"
           },
           "answer": 6,
@@ -5199,7 +5199,7 @@
           "id": "hm10_15",
           "type": "number",
           "question": {
-            "zh": "log_2(512) - 3 = ?",
+            "zh": "log₂(512) - 3 = ?",
             "en": "log base 2 of 512, minus 3, equals?"
           },
           "answer": 6,
@@ -5210,7 +5210,7 @@
           "id": "hm10_16",
           "type": "number",
           "question": {
-            "zh": "log_3(59049) - 4 = ?",
+            "zh": "log₃(59049) - 4 = ?",
             "en": "log base 3 of 59049, minus 4, equals?"
           },
           "answer": 6,
@@ -5221,7 +5221,7 @@
           "id": "hm10_17",
           "type": "number",
           "question": {
-            "zh": "log_4(4194304) - 2 = ?",
+            "zh": "log₄(4194304) - 2 = ?",
             "en": "log base 4 of 4194304, minus 2, equals?"
           },
           "answer": 9,
@@ -5232,7 +5232,7 @@
           "id": "hm10_18",
           "type": "number",
           "question": {
-            "zh": "log_5(244140625) - 3 = ?",
+            "zh": "log₅(244140625) - 3 = ?",
             "en": "log base 5 of 244140625, minus 3, equals?"
           },
           "answer": 9,
@@ -5243,7 +5243,7 @@
           "id": "hm10_19",
           "type": "number",
           "question": {
-            "zh": "log_2(8192) - 4 = ?",
+            "zh": "log₂(8192) - 4 = ?",
             "en": "log base 2 of 8192, minus 4, equals?"
           },
           "answer": 9,
@@ -5254,7 +5254,7 @@
           "id": "hm10_20",
           "type": "number",
           "question": {
-            "zh": "log_3(4782969) - 2 = ?",
+            "zh": "log₃(4782969) - 2 = ?",
             "en": "log base 3 of 4782969, minus 2, equals?"
           },
           "answer": 12,
@@ -5824,8 +5824,8 @@
           "id": "hm11_21",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 10 次，恰好 2 次正面的概率乘以 2^10 等于多少？",
-            "en": "A fair coin is tossed 10 times. The probability of exactly 2 heads multiplied by 2^10 equals what?"
+            "zh": "公平硬币抛 10 次，恰好 2 次正面的概率乘以 2¹⁰ 等于多少？",
+            "en": "A fair coin is tossed 10 times. The probability of exactly 2 heads multiplied by 2¹⁰ equals what?"
           },
           "answer": 45,
           "knowledge": "binomial probability",
@@ -5835,8 +5835,8 @@
           "id": "hm11_22",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 11 次，恰好 3 次正面的概率乘以 2^11 等于多少？",
-            "en": "A fair coin is tossed 11 times. The probability of exactly 3 heads multiplied by 2^11 equals what?"
+            "zh": "公平硬币抛 11 次，恰好 3 次正面的概率乘以 2¹¹ 等于多少？",
+            "en": "A fair coin is tossed 11 times. The probability of exactly 3 heads multiplied by 2¹¹ equals what?"
           },
           "answer": 165,
           "knowledge": "binomial probability",
@@ -5846,8 +5846,8 @@
           "id": "hm11_23",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 12 次，恰好 4 次正面的概率乘以 2^12 等于多少？",
-            "en": "A fair coin is tossed 12 times. The probability of exactly 4 heads multiplied by 2^12 equals what?"
+            "zh": "公平硬币抛 12 次，恰好 4 次正面的概率乘以 2¹² 等于多少？",
+            "en": "A fair coin is tossed 12 times. The probability of exactly 4 heads multiplied by 2¹² equals what?"
           },
           "answer": 495,
           "knowledge": "binomial probability",
@@ -5857,8 +5857,8 @@
           "id": "hm11_24",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 13 次，恰好 2 次正面的概率乘以 2^13 等于多少？",
-            "en": "A fair coin is tossed 13 times. The probability of exactly 2 heads multiplied by 2^13 equals what?"
+            "zh": "公平硬币抛 13 次，恰好 2 次正面的概率乘以 2¹³ 等于多少？",
+            "en": "A fair coin is tossed 13 times. The probability of exactly 2 heads multiplied by 2¹³ equals what?"
           },
           "answer": 78,
           "knowledge": "binomial probability",
@@ -5868,8 +5868,8 @@
           "id": "hm11_25",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 14 次，恰好 3 次正面的概率乘以 2^14 等于多少？",
-            "en": "A fair coin is tossed 14 times. The probability of exactly 3 heads multiplied by 2^14 equals what?"
+            "zh": "公平硬币抛 14 次，恰好 3 次正面的概率乘以 2¹⁴ 等于多少？",
+            "en": "A fair coin is tossed 14 times. The probability of exactly 3 heads multiplied by 2¹⁴ equals what?"
           },
           "answer": 364,
           "knowledge": "binomial probability",
@@ -5879,8 +5879,8 @@
           "id": "hm11_26",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 15 次，恰好 4 次正面的概率乘以 2^15 等于多少？",
-            "en": "A fair coin is tossed 15 times. The probability of exactly 4 heads multiplied by 2^15 equals what?"
+            "zh": "公平硬币抛 15 次，恰好 4 次正面的概率乘以 2¹⁵ 等于多少？",
+            "en": "A fair coin is tossed 15 times. The probability of exactly 4 heads multiplied by 2¹⁵ equals what?"
           },
           "answer": 1365,
           "knowledge": "binomial probability",
@@ -5890,8 +5890,8 @@
           "id": "hm11_27",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 16 次，恰好 2 次正面的概率乘以 2^16 等于多少？",
-            "en": "A fair coin is tossed 16 times. The probability of exactly 2 heads multiplied by 2^16 equals what?"
+            "zh": "公平硬币抛 16 次，恰好 2 次正面的概率乘以 2¹⁶ 等于多少？",
+            "en": "A fair coin is tossed 16 times. The probability of exactly 2 heads multiplied by 2¹⁶ equals what?"
           },
           "answer": 120,
           "knowledge": "binomial probability",
@@ -5901,8 +5901,8 @@
           "id": "hm11_28",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 17 次，恰好 3 次正面的概率乘以 2^17 等于多少？",
-            "en": "A fair coin is tossed 17 times. The probability of exactly 3 heads multiplied by 2^17 equals what?"
+            "zh": "公平硬币抛 17 次，恰好 3 次正面的概率乘以 2¹⁷ 等于多少？",
+            "en": "A fair coin is tossed 17 times. The probability of exactly 3 heads multiplied by 2¹⁷ equals what?"
           },
           "answer": 680,
           "knowledge": "binomial probability",
@@ -5912,8 +5912,8 @@
           "id": "hm11_29",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 18 次，恰好 4 次正面的概率乘以 2^18 等于多少？",
-            "en": "A fair coin is tossed 18 times. The probability of exactly 4 heads multiplied by 2^18 equals what?"
+            "zh": "公平硬币抛 18 次，恰好 4 次正面的概率乘以 2¹⁸ 等于多少？",
+            "en": "A fair coin is tossed 18 times. The probability of exactly 4 heads multiplied by 2¹⁸ equals what?"
           },
           "answer": 3060,
           "knowledge": "binomial probability",
@@ -5923,8 +5923,8 @@
           "id": "hm11_30",
           "type": "number",
           "question": {
-            "zh": "公平硬币抛 19 次，恰好 2 次正面的概率乘以 2^19 等于多少？",
-            "en": "A fair coin is tossed 19 times. The probability of exactly 2 heads multiplied by 2^19 equals what?"
+            "zh": "公平硬币抛 19 次，恰好 2 次正面的概率乘以 2¹⁹ 等于多少？",
+            "en": "A fair coin is tossed 19 times. The probability of exactly 2 heads multiplied by 2¹⁹ equals what?"
           },
           "answer": 171,
           "knowledge": "binomial probability",
@@ -6163,8 +6163,8 @@
           "id": "hm12_01",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^2 (2x² + 3x) dx。",
-            "en": "Evaluate ∫ from 0 to 2 of (2x² + 3x) dx."
+            "zh": "计算 ∫₀² (2x² + 3x) dx。",
+            "en": "Evaluate ∫₀² (2x² + 3x) dx."
           },
           "answer": 11.333333,
           "knowledge": "definite integral",
@@ -6174,8 +6174,8 @@
           "id": "hm12_02",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^3 (3x² + 4x) dx。",
-            "en": "Evaluate ∫ from 0 to 3 of (3x² + 4x) dx."
+            "zh": "计算 ∫₀³ (3x² + 4x) dx。",
+            "en": "Evaluate ∫₀³ (3x² + 4x) dx."
           },
           "answer": 45,
           "knowledge": "definite integral",
@@ -6185,8 +6185,8 @@
           "id": "hm12_03",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^4 (4x² + 5x) dx。",
-            "en": "Evaluate ∫ from 0 to 4 of (4x² + 5x) dx."
+            "zh": "计算 ∫₀⁴ (4x² + 5x) dx。",
+            "en": "Evaluate ∫₀⁴ (4x² + 5x) dx."
           },
           "answer": 125.333333,
           "knowledge": "definite integral",
@@ -6196,8 +6196,8 @@
           "id": "hm12_04",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^5 (5x² + 6x) dx。",
-            "en": "Evaluate ∫ from 0 to 5 of (5x² + 6x) dx."
+            "zh": "计算 ∫₀⁵ (5x² + 6x) dx。",
+            "en": "Evaluate ∫₀⁵ (5x² + 6x) dx."
           },
           "answer": 283.333333,
           "knowledge": "definite integral",
@@ -6207,8 +6207,8 @@
           "id": "hm12_05",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^2 (6x² + 7x) dx。",
-            "en": "Evaluate ∫ from 0 to 2 of (6x² + 7x) dx."
+            "zh": "计算 ∫₀² (6x² + 7x) dx。",
+            "en": "Evaluate ∫₀² (6x² + 7x) dx."
           },
           "answer": 30,
           "knowledge": "definite integral",
@@ -6218,8 +6218,8 @@
           "id": "hm12_06",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^3 (2x² + 8x) dx。",
-            "en": "Evaluate ∫ from 0 to 3 of (2x² + 8x) dx."
+            "zh": "计算 ∫₀³ (2x² + 8x) dx。",
+            "en": "Evaluate ∫₀³ (2x² + 8x) dx."
           },
           "answer": 54,
           "knowledge": "definite integral",
@@ -6229,8 +6229,8 @@
           "id": "hm12_07",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^4 (3x² + 9x) dx。",
-            "en": "Evaluate ∫ from 0 to 4 of (3x² + 9x) dx."
+            "zh": "计算 ∫₀⁴ (3x² + 9x) dx。",
+            "en": "Evaluate ∫₀⁴ (3x² + 9x) dx."
           },
           "answer": 136,
           "knowledge": "definite integral",
@@ -6240,8 +6240,8 @@
           "id": "hm12_08",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^5 (4x² + 10x) dx。",
-            "en": "Evaluate ∫ from 0 to 5 of (4x² + 10x) dx."
+            "zh": "计算 ∫₀⁵ (4x² + 10x) dx。",
+            "en": "Evaluate ∫₀⁵ (4x² + 10x) dx."
           },
           "answer": 291.666667,
           "knowledge": "definite integral",
@@ -6251,8 +6251,8 @@
           "id": "hm12_09",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^2 (5x² + 11x) dx。",
-            "en": "Evaluate ∫ from 0 to 2 of (5x² + 11x) dx."
+            "zh": "计算 ∫₀² (5x² + 11x) dx。",
+            "en": "Evaluate ∫₀² (5x² + 11x) dx."
           },
           "answer": 35.333333,
           "knowledge": "definite integral",
@@ -6262,8 +6262,8 @@
           "id": "hm12_10",
           "type": "number",
           "question": {
-            "zh": "计算 ∫₀^3 (6x² + 12x) dx。",
-            "en": "Evaluate ∫ from 0 to 3 of (6x² + 12x) dx."
+            "zh": "计算 ∫₀³ (6x² + 12x) dx。",
+            "en": "Evaluate ∫₀³ (6x² + 12x) dx."
           },
           "answer": 108,
           "knowledge": "definite integral",
@@ -6273,8 +6273,8 @@
           "id": "hm12_11",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(2x)/(3x)]。",
-            "en": "Evaluate lim as x→0 of sin(2x)/(3x)."
+            "zh": "计算 limₓ→₀ [sin(2x)/(3x)]。",
+            "en": "Evaluate limₓ→₀ sin(2x)/(3x)."
           },
           "answer": 0.666667,
           "knowledge": "limit",
@@ -6284,8 +6284,8 @@
           "id": "hm12_12",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(3x)/(4x)]。",
-            "en": "Evaluate lim as x→0 of sin(3x)/(4x)."
+            "zh": "计算 limₓ→₀ [sin(3x)/(4x)]。",
+            "en": "Evaluate limₓ→₀ sin(3x)/(4x)."
           },
           "answer": 0.75,
           "knowledge": "limit",
@@ -6295,8 +6295,8 @@
           "id": "hm12_13",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(4x)/(5x)]。",
-            "en": "Evaluate lim as x→0 of sin(4x)/(5x)."
+            "zh": "计算 limₓ→₀ [sin(4x)/(5x)]。",
+            "en": "Evaluate limₓ→₀ sin(4x)/(5x)."
           },
           "answer": 0.8,
           "knowledge": "limit",
@@ -6306,8 +6306,8 @@
           "id": "hm12_14",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(5x)/(6x)]。",
-            "en": "Evaluate lim as x→0 of sin(5x)/(6x)."
+            "zh": "计算 limₓ→₀ [sin(5x)/(6x)]。",
+            "en": "Evaluate limₓ→₀ sin(5x)/(6x)."
           },
           "answer": 0.833333,
           "knowledge": "limit",
@@ -6317,8 +6317,8 @@
           "id": "hm12_15",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(6x)/(7x)]。",
-            "en": "Evaluate lim as x→0 of sin(6x)/(7x)."
+            "zh": "计算 limₓ→₀ [sin(6x)/(7x)]。",
+            "en": "Evaluate limₓ→₀ sin(6x)/(7x)."
           },
           "answer": 0.857143,
           "knowledge": "limit",
@@ -6328,8 +6328,8 @@
           "id": "hm12_16",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(7x)/(3x)]。",
-            "en": "Evaluate lim as x→0 of sin(7x)/(3x)."
+            "zh": "计算 limₓ→₀ [sin(7x)/(3x)]。",
+            "en": "Evaluate limₓ→₀ sin(7x)/(3x)."
           },
           "answer": 2.333333,
           "knowledge": "limit",
@@ -6339,8 +6339,8 @@
           "id": "hm12_17",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(8x)/(4x)]。",
-            "en": "Evaluate lim as x→0 of sin(8x)/(4x)."
+            "zh": "计算 limₓ→₀ [sin(8x)/(4x)]。",
+            "en": "Evaluate limₓ→₀ sin(8x)/(4x)."
           },
           "answer": 2,
           "knowledge": "limit",
@@ -6350,8 +6350,8 @@
           "id": "hm12_18",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(9x)/(5x)]。",
-            "en": "Evaluate lim as x→0 of sin(9x)/(5x)."
+            "zh": "计算 limₓ→₀ [sin(9x)/(5x)]。",
+            "en": "Evaluate limₓ→₀ sin(9x)/(5x)."
           },
           "answer": 1.8,
           "knowledge": "limit",
@@ -6361,8 +6361,8 @@
           "id": "hm12_19",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(10x)/(6x)]。",
-            "en": "Evaluate lim as x→0 of sin(10x)/(6x)."
+            "zh": "计算 limₓ→₀ [sin(10x)/(6x)]。",
+            "en": "Evaluate limₓ→₀ sin(10x)/(6x)."
           },
           "answer": 1.666667,
           "knowledge": "limit",
@@ -6372,8 +6372,8 @@
           "id": "hm12_20",
           "type": "number",
           "question": {
-            "zh": "计算 lim(x→0) [sin(11x)/(7x)]。",
-            "en": "Evaluate lim as x→0 of sin(11x)/(7x)."
+            "zh": "计算 limₓ→₀ [sin(11x)/(7x)]。",
+            "en": "Evaluate limₓ→₀ sin(11x)/(7x)."
           },
           "answer": 1.571429,
           "knowledge": "limit",
